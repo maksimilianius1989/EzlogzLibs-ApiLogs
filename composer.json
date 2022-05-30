@@ -1,0 +1,24 @@
+{
+  "name": "ezlogz-libs/api-logs",
+  "description": "Api logs of the Ezlogz",
+  "authors": [
+    {"name": "Maksim Bukach", "email": "it.vimax@gmail.com"}
+  ],
+  "autoload": {
+    "psr-4": {
+      "Ezlogz\\ApiLogs\\": "src/"
+    }
+  },
+  "require": {
+    "php": "~7.2",
+    "doctrine/common": "^2",
+    "doctrine/doctrine-bundle": "^2",
+    "doctrine/doctrine-migrations-bundle": "^2",
+    "doctrine/inflector": "^1.3",
+    "doctrine/orm": "^2"
+  },
+  "scripts": {
+    "cs-check": "phpcs",
+    "cs-fix": "phpcbf"
+  }
+}
