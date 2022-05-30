@@ -6,6 +6,7 @@ if (session_id() == '' && isset($_COOKIE['user'])) {
 }
 ?>
 <?php
+require_once 'config.php';
 require_once 'db/apiController.php';
 global $id, $validator, $db2, $version;
 
@@ -15,13 +16,14 @@ $zzSession = $db2->select('s.sessionId', 'users u left join sessions s on s.user
 $ZZsession = !empty($zzSession) ? $zzSession[0]['sessionId'] : 0;
 
 if (true) {
-    
-    function redirect($url) {
-        if (headers_sent()) {
-            die('<script type="text/javascript">window.location.href="' . $url . '";</script>');
-        } else {
-            header('Location: ' . $url);
-            die();
+    if (!function_exists('redirect')) {
+        function redirect($url) {
+            if (headers_sent()) {
+                die('<script type="text/javascript">window.location.href="' . $url . '";</script>');
+            } else {
+                header('Location: ' . $url);
+                die();
+            }
         }
     }
     
@@ -40,10 +42,10 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
     <title>EzLogz</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link rel="stylesheet" href="<?= MAIN_LINK ?>/dash/assets/css/libs/jquery-ui.css">
-    <link rel="icon" type="image/png" href="<?= MAIN_LINK ?>/frontend/assets/images/restyle/favicons/favicon_64x64.png" sizes="64x64">
-    <link rel="apple-touch-icon" sizes="180x180" href="<?= MAIN_LINK ?>/assets/img/icon/apple-touch-icon.png">
-    <link rel="mask-icon" href="<?= MAIN_LINK ?>/assets/img/icon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="stylesheet" href="<?= $MAIN_LINK ?>/dash/assets/css/libs/jquery-ui.css">
+    <link rel="icon" type="image/png" href="<?= $MAIN_LINK ?>/frontend/assets/images/restyle/favicons/favicon_64x64.png" sizes="64x64">
+    <link rel="apple-touch-icon" sizes="180x180" href="<?= $MAIN_LINK ?>/assets/img/icon/apple-touch-icon.png">
+    <link rel="mask-icon" href="<?= $MAIN_LINK ?>/assets/img/icon/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="theme-color" content="#ffffff">
     
     <?php $version->getCssDashUri($uri[0]); ?>
