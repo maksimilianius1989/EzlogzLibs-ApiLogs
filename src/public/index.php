@@ -1,12 +1,11 @@
 <?php
-
+//die();
 ob_start();
 if (session_id() == '' && isset($_COOKIE['user'])) {
     session_start();
 }
 ?>
 <?php
-require_once 'config.php';
 require_once 'db/apiController.php';
 global $id, $validator, $db2, $version;
 
@@ -17,16 +16,14 @@ $ZZsession = !empty($zzSession) ? $zzSession[0]['sessionId'] : 0;
 
 if (true) {
     
-	if (!function_exists('redirect')) {
-        function redirect($url) {
-            if (headers_sent()) {
-                die('<script type="text/javascript">window.location.href="' . $url . '";</script>');
-            } else {
-                header('Location: ' . $url);
-                die();
-            }
+    function redirect($url) {
+        if (headers_sent()) {
+            die('<script type="text/javascript">window.location.href="' . $url . '";</script>');
+        } else {
+            header('Location: ' . $url);
+            die();
         }
-	}
+    }
     
     $validator->checkSessionFull();
     $user = $db2->select('*', 'users', 'id=? and companyPosition = 2', [$id]);
@@ -39,16 +36,15 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
 <!doctype html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-	<title>EzLogz</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<link rel="stylesheet" href="<?= $MAIN_LINK ?>/dash/assets/css/libs/jquery-ui.css">
-	<link rel="icon" type="image/png" href="<?= $MAIN_LINK ?>/frontend/assets/images/restyle/favicons/favicon_64x64.png"
-		  sizes="64x64">
-	<link rel="apple-touch-icon" sizes="180x180" href="<?= $MAIN_LINK ?>/assets/img/icon/apple-touch-icon.png">
-	<link rel="mask-icon" href="<?= $MAIN_LINK ?>/assets/img/icon/safari-pinned-tab.svg" color="#5bbad5">
-	<meta name="theme-color" content="#ffffff">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>EzLogz</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="<?= MAIN_LINK ?>/dash/assets/css/libs/jquery-ui.css">
+    <link rel="icon" type="image/png" href="<?= MAIN_LINK ?>/frontend/assets/images/restyle/favicons/favicon_64x64.png" sizes="64x64">
+    <link rel="apple-touch-icon" sizes="180x180" href="<?= MAIN_LINK ?>/assets/img/icon/apple-touch-icon.png">
+    <link rel="mask-icon" href="<?= MAIN_LINK ?>/assets/img/icon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
     
     <?php $version->getCssDashUri($uri[0]); ?>
     <?php
@@ -67,188 +63,122 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
 <body>
 
 <style>
-	#logs_table .one_log {
-		font-size: 0;
-		border-bottom: 2px solid gray;
-		margin-bottom: 10px;
-		height: 150px;
-		min-height: 150px;
-		overflow: hidden;
-		position: relative;
-	}
-
-	#logs_table .one_log.small {
-		height: auto;
-		min-height: auto;
-	}
-
-	#logs_table .one_log .exp_button {
-		width: 100%;
-	}
-
-	#logs_table .one_log .del_button {
-		position: absolute;
-		top: 6px;
-		right: 6px;
-		font-size: 16px;
-	}
-
-	.buttons_hover {
-		display: none !important;
-		position: absolute;
-		top: -1px;
-		right: 4px;
-	}
-
-	.res_response:hover .buttons_hover, .res_request:hover .buttons_hover {
-		display: inline-block !important;
-	}
-
-	#logs_table .one_log.expanded {
-		height: auto;
-		overflow: visible;
-	}
-
-	#logs_table .one_log div {
-		display: inline-block;
+	#logs_table .one_log{font-size: 0;border-bottom: 2px solid gray;margin-bottom: 10px;height: 150px;min-height: 150px;overflow: hidden;position:relative;}
+	#logs_table .one_log.small{height: auto;min-height: auto;}
+	#logs_table .one_log .exp_button{width:100%;}
+	#logs_table .one_log .del_button{position: absolute;top: 6px;right: 6px;font-size: 16px;}
+	.buttons_hover{display: none !important;position: absolute;top: -1px;right: 4px;}
+	.res_response:hover .buttons_hover, .res_request:hover .buttons_hover{display:inline-block !important;}
+	#logs_table .one_log.expanded{height: auto;overflow: visible;}
+	#logs_table .one_log div{
+		display:inline-block;
 		box-sizing: border-box;
 		font-size: 13px;
 		word-wrap: break-word;
 		vertical-align: top;
 		padding: 1px;
 	}
-
-	#logs_nav {
-		display: none;
+	#logs_nav{
+		display:none;
 		border-bottom: 1px solid #ccc;
 		border-top: 1px solid #ccc;
 		padding-top: 4px;
 		padding-bottom: 2px;
 	}
-
-	#logs_nav input, #logs_nav button {
-		height: 35px;
-		vertical-align: middle;
-	}
-
-	.res_ip {
+	#logs_nav input, #logs_nav button{height:35px;vertical-align: middle;}
+	.res_ip{
 		text-align: center;
 		width: 10%;
 	}
-
-	.res_request {
+	.res_request{
 		width: 18%;
 		max-height: 141px;
 		overflow: auto;
 	}
-
-	.res_response {
+	.res_response{
 		width: 53%;
 		height: 141px;
 		overflow: auto;
 	}
-
-	.res_response, .res_request {
-		position: relative;
+	.res_response, .res_request{
+		position:relative;
 	}
-
-	#logs_table .one_log.expanded .res_response, #logs_table .one_log.expanded .res_request {
+	#logs_table .one_log.expanded .res_response,#logs_table .one_log.expanded .res_request{
 		height: auto;
 		max-height: initial;
 		overflow: visible;
 	}
-
-	.res_cookies {
+	.res_cookies{
 		width: 10%;
 	}
-
-	.platform {
+	.platform{
 		width: 7%;
 		text-align: center;
 	}
-
-	.action {
+	.action{
 		width: 5%;
 		text-align: center;
 	}
-
-	.res_request_time {
+	.res_request_time{
 		text-align: center;
 		width: 13%;
 	}
-
-	.res_response_time {
+	.res_response_time{
 		text-align: center;
 		width: 6%;
 	}
-
-	#search_bar {
+	#search_bar{
 		border-right: 2px solid gray;
 		border-left: 2px solid gray;
 	}
-
-	#dataJson {
+	#dataJson{
 		height: 150px;
 	}
-
-	#testRequest {
+	#testRequest{
 
 	}
-
-	#request_response_table {
+	#request_response_table{
 		border: 1px solid black;
 		table-layout: fixed;
 		width: 100%;
 	}
-
-	#request_response_table th {
-		text-align: center;
+	#request_response_table th{
+		text-align:center;
 		width: 150px;
 	}
-
-	#request_response_table th, #request_response_table td {
+	#request_response_table th, #request_response_table td{
 		vertical-align: top;
 		border: 1px solid black;
 		padding: 2px;
 	}
-
-	#request_response_table td {
+	#request_response_table td{
 
 	}
-
-	#logs_result {
+	#logs_result{
 		clear: both;
 	}
-
-	#jsonData {
+	#jsonData{
 		display: block;
 	}
-
-	#examplesBox {
+	#examplesBox{
 		height: 200px;
 		border: 1px solid #ccc;
 		border-radius: 5px;
 		overflow-y: auto;
 		overflow-x: hidden;
 	}
-
-	.oneApiBox {
+	.oneApiBox{
 		cursor: pointer;
 	}
-
-	.oneApiBox:hover, .oneApiBox.active {
-		background: #ccc;
+	.oneApiBox:hover, .oneApiBox.active{background:#ccc;}
+	pre{
+		white-space: pre-wrap;       /* Since CSS 2.1 */
+		white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+		white-space: -pre-wrap;      /* Opera 4-6 */
+		white-space: -o-pre-wrap;    /* Opera 7 */
+		word-wrap: break-word;       /* Internet Explorer 5.5+ */
 	}
-
-	pre {
-		white-space: pre-wrap; /* Since CSS 2.1 */
-		white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
-		white-space: -pre-wrap; /* Opera 4-6 */
-		white-space: -o-pre-wrap; /* Opera 7 */
-		word-wrap: break-word; /* Internet Explorer 5.5+ */
-	}
-
-	#search_user_results {
+	#search_user_results{
 		position: absolute;
 		background: white;
 		width: auto;
@@ -258,56 +188,30 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
 		top: 55px;
 		z-index: 999;
 	}
-
-	#search_user {
+	#search_user{
 		min-width: 340px;
 	}
-
-	#search_user_results p {
-		cursor: pointer;
-		padding: 0 5px;
+	#search_user_results p{
+		cursor:pointer;
+		padding: 0 5px ;
 		margin: 0;
 		min-width: 340px;
 	}
-
-	#search_user_results p:hover {
-		background: #ccc;
+	#search_user_results p:hover{
+		background:#ccc;
 	}
-
-	#showPushLogs {
+	#showPushLogs
+	{
 		display: block;
 		margin-top: 5px;
 	}
-
-	pre {
-		outline: 1px solid #ccc;
-		padding: 5px;
-		margin: 5px;
-		background: #282923;
-		color: #aaa;
-	}
-
-	.string {
-		color: #E95384;
-	}
-
-	.number {
-		color: darkorange;
-	}
-
-	.boolean {
-		color: blue;
-	}
-
-	.null {
-		color: magenta;
-	}
-
-	.key {
-		color: #EAE192;
-	}
-
-	.list_box {
+	pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; background:#282923;color:#aaa;}
+	.string { color: #E95384; }
+	.number { color: darkorange; }
+	.boolean { color: blue; }
+	.null { color: magenta; }
+	.key { color: #EAE192; }
+	.list_box{
 		position: absolute;
 		background: white;
 		width: 100%;
@@ -319,23 +223,21 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
 		overflow: auto;
 		z-index: 999;
 	}
-
-	.list_box p {
+	.list_box p{
 		padding: 0 5px;
-		margin: 0;
+		margin:0;
 	}
-
-	.list_box p:not(.no_click):hover {
+	.list_box p:not(.no_click):hover{
 		background: #ecfaff;
-		cursor: pointer;
+		cursor:pointer;
 	}
-
-	#showPushLogs {
+	#showPushLogs
+	{
 		display: block;
 		margin-top: 5px;
 	}
-
-	#logsStatisticsDate {
+	#logsStatisticsDate
+	{
 		width: 1px;
 		height: 1px;
 		position: absolute;
@@ -343,281 +245,222 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
 		top: 20px;
 		z-index: -1;
 	}
-
-	#iosixParseData {
+	#iosixParseData{
 		width: 340px;
 	}
-
-	#iosixParseData span {
+	#iosixParseData span{
 		display: inline-block;
 		width: 100px;
 		font-weight: bold;
 	}
-
-	.wrapper {
-		padding-left: 10px;
-		padding-right: 10px;
-		overflow-x: hidden;
-	}
-
-	.wrapper .form-group label {
-		margin-bottom: 1px;
-		min-height: auto;
-	}
-
-	.wrapper .form-group {
-		margin-bottom: 5px;
-	}
-
-	.mobile_block {
-		display: inline-block;
-	}
-
-	.one_log label {
-		min-height: 15px;
-	}
-
-	#mobile_switcher_block button {
-		width: 33.333%;
-	}
-
+	.wrapper{padding-left:10px;padding-right:10px;overflow-x: hidden;}
+	.wrapper .form-group label{margin-bottom:1px;min-height: auto;}
+	.wrapper .form-group{margin-bottom:5px;}
+	.mobile_block{display:inline-block;}
+	.one_log label{min-height:15px;}
+	#mobile_switcher_block button{width: 33.333%;}
 	@media (max-width: 991px) {
-		#mobile_switchable > div {
-			display: none;
-		}
-
-		#mobile_switchable > div.showMobile {
-			display: block;
-		}
-
-		#logs_table .one_log > div {
-			width: 100%;
-		}
-
-		#logs_table .one_log {
-			height: auto;
-		}
-
-		.mobile_block {
-			display: block;
-			margin-top: 3px;
-		}
-
-		.mobile_block label {
-			width: 90px;
-		}
+		#mobile_switchable > div{display:none;}
+		#mobile_switchable > div.showMobile{display:block;}
+		#logs_table .one_log > div{width: 100%;}
+		#logs_table .one_log{height: auto;}
+		.mobile_block{display:block;margin-top:3px;}
+		.mobile_block label{width:90px;}
 	}
-
 	@media (min-width: 992px) {
-		#mobile_switcher {
-			display: none
-		}
+		#mobile_switcher{display:none}
 	}
 </style>
 <section>
-	<div class="wrapper">
-		<div class="form-horizontal mt-2" id="mobile_switcher">
-			<div class="form-group">
-				<div class="col-sm-12">
-					<div class="check_buttons_block new full_width modal_switcher" id="mobile_switcher_block">
-						<button class="btn btn-default active" onclick="doActive(this);switchMobileSection(this)"
-								data-val="test_bar">Requests
-						</button>
-						<button class="btn btn-default" onclick="doActive(this);switchMobileSection(this)"
-								data-val="search_bar">Search
-						</button>
-						<button class="btn btn-default" onclick="doActive(this);switchMobileSection(this)"
-								data-val="eld_logs">Eld Logs
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="row" id="mobile_switchable">
-			<div id="test_bar" class="col-md-4 pt-2">
-				<div class="form-horizontal">
-					<div class="form-group">
-						<div class="col-sm-12">
-							<label>Session Id</label>
-							<input class="form-control" type="text" placeholder="Session Id" id="sessionId"
-								   value="<?= $ZZsession ?>"/>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-12">
-							<label>Action</label>
-							<input class="form-control" type="text" placeholder="Action" id="action" value="logIn"
-								   onkeyup="checkReqActions(this)"/>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-12">
-							<label id="jsonData">Data json</label>
-							<div id="examplesBox" class="mb-1"></div>
-							<textarea class="form-control" type="text" placeholder="Action" id="dataJson">{"email":"zz@zz.zz","pass":"zzzzzz", "version":7, "debug":1, "phoneType": 1, "appVersion": "1.43.9"}</textarea>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-12">
-							<button id="testRequest" class="btn btn-default">Send Request</button>
-						</div>
-					</div>
-				</div>
-
-			</div>
-			<div id="search_bar" class="col-md-4 pt-2">
-				<div class="form-horizontal">
-					<div class="form-group">
-						<div class="col-sm-12">
-							<label>Ip</label>
-							<input class="form-control" type="text" placeholder="ip" id="ip"/>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-12">
-							<label>Date</label>
-							<input class="datepicker form-control" placeholder="date" id="date"/>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-12">
-							<label>Time From</label>
-							<input type="text" placeholder="time from" class="datetimepicker form-control"
-								   id="dateFrom"/>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-12">
-							<label>Time Till</label>
-							<input type="text" placeholder="time till" class="datetimepicker form-control"
-								   id="dateTill"/>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-12">
-							<label>User Id</label>
-							<input class="form-control" type="text" placeholder="" user id" id="userId"/>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-12">
-							<label>Actions</label>
-							<input class="form-control" placeholder="action" id="action_req"
-								   onkeyup="checkReqActions(this)"></textarea>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-12">
-							<label>Platform</label>
-							<select class="form-control" id="platform_req">
-								<option value="-1">All</option>
-								<option value="0">App</option>
-								<option value="1">Web</option>
-								<option value="2">Email</option>
-								<option value="5">FMCSA Output logs</option>
-								<option value="6">PDF</option>
-								<option value="7">Finances</option>
-								<option value="8">Finances Recurring</option>
-								<option value="9">Charging Fleets</option>
-								<option value="10">Charging Solo Drivers</option>
-								<option value="32">Background Push</option>
-								<option value="31">Visible Push</option>
-								<option value="33">Web Push</option>
-							</select>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-12">
-							<label>Amount</label>
-							<select class="form-control" id="search_amount">
-								<option>1</option>
-								<option>5</option>
-								<option>25</option>
-								<option>50</option>
-								<option selected="selected">100</option>
-								<option>200</option>
-								<option>500</option>
-								<option>1000</option>
-							</select>
-						</div>
-					</div>
-				</div>
-				<div class="one_field" style="position:relative">
-					<button onclick="searchClick()" class="btn btn-default">Search</button>
-					<button onclick="liveView(true)" id="liveViewBtn" class="btn btn-default">Live Data</button>
-					<button onclick="cleaLiveData(true)" id="cleaLiveDataBtn" class="btn btn-default">Clear Result
-					</button>
-					<button id="showLogsStatistics" class="btn btn-default">Show logs statistics</button>
-					<input type="text" class="datepicker" id="logsStatisticsDate"/>
-				</div>
-			</div>
-			<div id="eld_logs" class="col-md-4 pt-2">
-				<div class="form-horizontal">
-					<div class="form-group">
-						<div class="col-sm-12">
-							<label>Show User Eld Logs</label>
-							<input class="form-control" onkeyup="getUsers();" type="text" id="search_user"/>
-							<div id="search_user_results"></div>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-12">
-							<button onclick="showLogs();" class="btn btn-default">Show Logs</button>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-12">
-							<a href="https://jsonformatter.curiousconcept.com/" target="_blank" style="font-size:15px;">Validator
-								1</a><br/>
-							<a href="https://jsonlint.com/" target="_blank" style="font-size:15px;">Validator 2</a>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-12">
-							<label>Iosix Row Parser</label>
-							<textarea class="form-control" placeholder="iosix row" id="iosixData" style="height: 80px;">0,3AKNHHDR4KSKA0055,0,0,193514.315,0.000,2230.85,0.00,13.31,05/19/19,16:35:14,42.782276,-74.029510,0,36,10,120,1.1,8008,271</textarea>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-12">
-							<button onclick="parseIosix($('#iosixData').val())" class="btn btn-default">Parse Iosix
-							</button>
-							<button onclick="$('#iosixParseData').text('')" class="btn btn-default">Clear</button>
-							<div id="iosixParseData"></div>
-						</div>
-					</div>
-				</div>
-
-
-			</div>
-		</div>
-		<div class="row">
-			<div id="logs_result" class="col-md-12">
-				<div id="logs_nav">
-					<button id="left_end" class="btn btn-default"><<</button>
-					<button id="left" class="btn btn-default"><</button>
-					<span id="from"></span>-
-					<span id="till"></span>/
-					<span id="total"></span>
-					<button id="right" class="btn btn-default">></button>
-					<button id="right_end" class="btn btn-default">>></button>
-					<div class="mobile_block">
-						<label>Filter:</label>
-						<input type="text" id="filter_search" onkeyup="filterSearch()" class="form-control"
-							   style="width:160px;display: inline-block;">
-					</div>
-					<div class="mobile_block">
-						<label>Move to page:</label>
-						<input id="moveTo" class="form-control" style="width:160px;display: inline-block;"></select>
-					</div>
-					<button id="moveToButton" class="btn btn-default">Move</button>
-				</div>
-				<div id="logs_table">
-
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="wrapper">
+        <div class="form-horizontal mt-2" id="mobile_switcher">
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <div class="check_buttons_block new full_width modal_switcher" id="mobile_switcher_block">
+                        <button class="btn btn-default active" onclick="doActive(this);switchMobileSection(this)" data-val="test_bar">Requests</button>
+                        <button class="btn btn-default" onclick="doActive(this);switchMobileSection(this)" data-val="search_bar">Search</button>
+                        <button class="btn btn-default" onclick="doActive(this);switchMobileSection(this)" data-val="eld_logs">Eld Logs</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="mobile_switchable">
+            <div id="test_bar" class="col-md-4 pt-2">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <label>Session Id</label>
+                            <input class="form-control" type="text" placeholder="Session Id" id="sessionId" value="<?= $ZZsession ?>"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <label>Action</label>
+                            <input class="form-control" type="text" placeholder="Action" id="action" value="logIn" onkeyup="checkReqActions(this)"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <label id="jsonData">Data json</label>
+                            <div id="examplesBox" class="mb-1"></div>
+                            <textarea class="form-control" type="text" placeholder="Action" id="dataJson">{"email":"zz@zz.zz","pass":"zzzzzz", "version":7, "debug":1, "phoneType": 1, "appVersion": "1.43.9"}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <button id="testRequest" class="btn btn-default">Send Request</button>
+                        </div>
+                    </div>
+                </div>
+            
+            </div>
+            <div id="search_bar" class="col-md-4 pt-2">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <label>Ip</label>
+                            <input class="form-control" type="text" placeholder="ip" id="ip"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <label>Date</label>
+                            <input class="datepicker form-control" placeholder="date" id="date"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <label>Time From</label>
+                            <input type="text" placeholder="time from" class="datetimepicker form-control" id="dateFrom"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <label>Time Till</label>
+                            <input type="text" placeholder="time till" class="datetimepicker form-control" id="dateTill"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <label>User Id</label>
+                            <input class="form-control" type="text" placeholder=""user id" id="userId"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <label>Actions</label>
+                            <input class="form-control" placeholder="action" id="action_req" onkeyup="checkReqActions(this)"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <label>Platform</label>
+                            <select class="form-control" id="platform_req">
+                                <option value="-1">All</option>
+                                <option value="0">App</option>
+                                <option value="1">Web</option>
+                                <option value="2">Email</option>
+                                <option value="5">FMCSA Output logs</option>
+                                <option value="6">PDF</option>
+                                <option value="7">Finances</option>
+                                <option value="8">Finances Recurring</option>
+                                <option value="9">Charging Fleets</option>
+                                <option value="10">Charging Solo Drivers</option>
+                                <option value="32">Background Push</option>
+                                <option value="31">Visible Push</option>
+                                <option value="33">Web Push</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <label>Amount</label>
+                            <select class="form-control" id="search_amount">
+                                <option>1</option>
+                                <option>5</option>
+                                <option>25</option>
+                                <option>50</option>
+                                <option selected="selected">100</option>
+                                <option>200</option>
+                                <option>500</option>
+                                <option>1000</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="one_field" style="position:relative">
+                    <button onclick="searchClick()"  class="btn btn-default">Search</button>
+                    <button onclick="liveView(true)" id="liveViewBtn" class="btn btn-default">Live Data</button>
+                    <button onclick="cleaLiveData(true)" id="cleaLiveDataBtn" class="btn btn-default">Clear Result</button>
+                    <button id="showLogsStatistics" class="btn btn-default">Show logs statistics</button>
+                    <input type="text" class="datepicker" id="logsStatisticsDate"/>
+                </div>
+            </div>
+            <div id="eld_logs" class="col-md-4 pt-2">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <label>Show User Eld Logs</label>
+                            <input class="form-control" onkeyup="getUsers();" type="text" id="search_user" />
+                            <div id="search_user_results"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <button onclick="showLogs();" class="btn btn-default">Show Logs</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <a href="https://jsonformatter.curiousconcept.com/" target="_blank" style="font-size:15px;">Validator 1</a><br/>
+                            <a href="https://jsonlint.com/" target="_blank" style="font-size:15px;">Validator 2</a>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <label>Iosix Row Parser</label>
+                            <textarea class="form-control" placeholder="iosix row" id="iosixData" style="height: 80px;">0,3AKNHHDR4KSKA0055,0,0,193514.315,0.000,2230.85,0.00,13.31,05/19/19,16:35:14,42.782276,-74.029510,0,36,10,120,1.1,8008,271</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <button onclick="parseIosix($('#iosixData').val())" class="btn btn-default">Parse Iosix</button>
+                            <button onclick="$('#iosixParseData').text('')" class="btn btn-default">Clear</button>
+                            <div id="iosixParseData"></div>
+                        </div>
+                    </div>
+                </div>
+            
+            
+            
+            </div>
+        </div>
+        <div class="row">
+            <div id="logs_result"  class="col-md-12">
+                <div id="logs_nav">
+                    <button id="left_end" class="btn btn-default"><<</button>
+                    <button id="left" class="btn btn-default"><</button>
+                    <span id="from"></span>-
+                    <span id="till"></span>/
+                    <span id="total"></span>
+                    <button id="right" class="btn btn-default">></button>
+                    <button id="right_end" class="btn btn-default">>></button>
+                    <div class="mobile_block">
+                        <label>Filter:</label>
+                        <input type="text" id="filter_search" onkeyup="filterSearch()" class="form-control" style="width:160px;display: inline-block;">
+                    </div>
+                    <div class="mobile_block">
+                        <label>Move to page:</label>
+                        <input id="moveTo" class="form-control" style="width:160px;display: inline-block;"></select>
+                    </div>
+                    <button id="moveToButton" class="btn btn-default">Move</button>
+                </div>
+                <div id="logs_table">
+                
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 <script>
 	var DEV_ENV = 1;
@@ -625,11 +468,9 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
 	var apiRequest = false;
 	var oldLogs = [];
 	var oldLogsJson = '';
-
 	function cleaLiveData() {
 		$("#logs_table").empty();
 	}
-
 	function liveView() {
 		if (liveViewRunning) {
 			$('#cleaLiveDataBtn').hide();
@@ -647,13 +488,11 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
 			getLogs();
 		}
 	}
-
 	function searchClick() {
 		$('#logs_table').removeClass();
 		startFrom = 0;
 		getLogs();
 	}
-
 	function getLogs() {
 		if (!liveViewRunning) {
 			$("#logs_table").empty();
@@ -680,17 +519,10 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
 		history.pushState({}, "Ezlogz", url);
 		if (apiRequest)
 			apiRequest.abort();
-		apiRequest = AjaxCall({
-			url: '/db/apiController/',
-			data: data,
-			action: 'getApiLogsNew',
-			successHandler: showLogsNew
-		})
+		apiRequest = AjaxCall({url: '/db/apiController/', data: data, action: 'getApiLogsNew', successHandler: showLogsNew})
 	}
-
 	startFrom = 0;
 	totally = 0;
-
 	function showLogsNew(response) {
 		var data = response.data;
 		totally = data.totally;
@@ -805,13 +637,11 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
 			getLogs();
 		}
 	}
-
 	function switchMobileSection(el) {
 		var sectionId = $(el).attr('data-val')
 		$('#mobile_switchable > div').removeClass('showMobile');
 		$('#' + sectionId).addClass('showMobile')
 	}
-
 	function parseIosix(rowData) {
 		var pieces = rowData.split(",");
 		var result = '';
@@ -838,7 +668,6 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
 		c(pieces);
 		$('#iosixParseData').html(result)
 	}
-
 	function filterSearch() {
 		if ($('.res_request').length > 0) {// if logs
 			var vl = $('#filter_search').val().toLowerCase();
@@ -852,14 +681,12 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
 			}
 		}
 	}
-
 	function selectAction(el) {
 		var per = $(el).closest('.col-sm-12');
 		per.find('input').val($(el).text())
 		per.find('textarea').val($(el).text())
 		$('.list_box').remove();
 	}
-
 	function checkReqActions(el) {
 		var per = $(el).closest('.col-sm-12');
 		var vl = $(el).val().toLowerCase();
@@ -876,83 +703,52 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
 			}
 		}
 	}
-
 	var SITECOOKIES = '<?= SITECOOKIES ?>';
 	var ZZsession = '<?= $ZZsession ?>';
 	data = {};
 	apis = <?= json_encode($apis) ?>;
 	apisObj = {};
-	apis.forEach(function (item) {
+	apis.forEach(function (item)
+	{
 		var example = (item.example);
-		apisObj[item.id] = {
-			name: example.slice(example.indexOf('action') + 8, example.indexOf(',')).replace(/["'':]/g, ""),
-			example: example.slice(example.indexOf('data') + 5, example.indexOf('}') + 1).replace(/:{/g, "{")
-		};
+		apisObj[item.id] = {name: example.slice(example.indexOf('action') + 8, example.indexOf(',')).replace(/["'':]/g, ""),
+			example: example.slice(example.indexOf('data') + 5, example.indexOf('}') + 1).replace(/:{/g, "{")};
 	});
 	apiss = {
-		5: {
-			name: 'logIn',
-			example: '{"email": "test@test.com", "pass": "somepassword","dId": "asdwqeqwasd", "provider": "password"}'
-		},
-		6: {
-			name: 'registration',
-			example: '{"email": "test@test.com",  "pass": "somepassword", "phone": 12312321, "firstName": "Vlad", "lastName": "Topolsky"}'
-		},
+		5: {name: 'logIn', example: '{"email": "test@test.com", "pass": "somepassword","dId": "asdwqeqwasd", "provider": "password"}'},
+		6: {name: 'registration', example: '{"email": "test@test.com",  "pass": "somepassword", "phone": 12312321, "firstName": "Vlad", "lastName": "Topolsky"}'},
 		7: {name: 'searchIfCarrierExistByUsdot', example: '{"usdot": 44110}'},
-		8: {
-			name: 'testPush',
-			example: '{"cloudId": "123","action": "signOut","title": "qwe","message": "mes","androidVersion": "1","iosVersion":"1"}'
-		},
-		9: {
-			name: 'setCarrier',
-			example: '{"name": "testCarrier", "usdot":44110, "mainOffice": {"address": "SomeStreet" 43, "city": "Portland", "state": 12, "zip": 12345}'
-		},
+		8: {name: 'testPush', example: '{"cloudId": "123","action": "signOut","title": "qwe","message": "mes","androidVersion": "1","iosVersion":"1"}'},
+		9: {name: 'setCarrier', example: '{"name": "testCarrier", "usdot":44110, "mainOffice": {"address": "SomeStreet" 43, "city": "Portland", "state": 12, "zip": 12345}'},
 		10: {name: 'leaveFleet', example: '{}'},
 		11: {name: 'joinCarrier', example: '{"id": 123}'},
 		12: {name: 'updateLogbookRules', example: '{"cycle": {"id":1}}'},
-		13: {
-			name: 'createStatus', example: '{"time": "2015-12-05 05:10:20", "statusTypeId": 1, "note": "it was a good day", "documents":[12, 13], \n\
-                    "location"{"lat": 30.21268333491144,  "long": -91.9906297962341,  "locationName": "Dallas, TX, "}'
-		},
-		14: {
-			name: 'editStatus', example: '{"id": 123, "time": "2015-12-05 05:10:20", "statusTypeId": 1, "note": "it was a good day", "documents":[12, 13],\n\
-                    "location"{"lat": 30.21268333491144,  "long": -91.9906297962341,  "locationName": "Dallas, TX, "}'
-		},
+		13: {name: 'createStatus', example: '{"time": "2015-12-05 05:10:20", "statusTypeId": 1, "note": "it was a good day", "documents":[12, 13], \n\
+                    "location"{"lat": 30.21268333491144,  "long": -91.9906297962341,  "locationName": "Dallas, TX, "}'},
+		14: {name: 'editStatus', example: '{"id": 123, "time": "2015-12-05 05:10:20", "statusTypeId": 1, "note": "it was a good day", "documents":[12, 13],\n\
+                    "location"{"lat": 30.21268333491144,  "long": -91.9906297962341,  "locationName": "Dallas, TX, "}'},
 		15: {name: 'deleteStatus', example: '{"id": 123}'},
 		16: {name: 'sendMessage', example: '{"toId": 123, "message": "how are you?"}'},
 		17: {name: 'checkMessages', example: '{"dateTime": "2015-10-09 16:23:26"}'},
-		18: {
-			name: 'updateUser',
-			example: '{"phone": 123123, "firstName": "John", "lastName": "Doe", "type": "Driver"}'
-		},
-		19: {
-			name: 'createRemark', example: '{ "time": "2015-12-05 05:10:20", "remarkTypeId": 1, "remarkTypeName": "Vehicle inspection", "note": "it was a good day",\n\
-                    "location"{  "lat": 30.21268333491144,  "long": -91.9906297962341,  "locationName": "Dallas, TX,"}'
-		},
-		20: {
-			name: 'editRemark', example: '{ "id":123, "time": "2015-12-05 05:10:20", "remarkTypeId": 1, "remarkTypeName": "Vehicle inspection," "note": "it was a good day",\n\
-                    "location"{  "lat": 30.21268333491144,  "long": -91.9906297962341,  "locationName": "Dallas, TX,"}'
-		},
+		18: {name: 'updateUser', example: '{"phone": 123123, "firstName": "John", "lastName": "Doe", "type": "Driver"}'},
+		19: {name: 'createRemark', example: '{ "time": "2015-12-05 05:10:20", "remarkTypeId": 1, "remarkTypeName": "Vehicle inspection", "note": "it was a good day",\n\
+                    "location"{  "lat": 30.21268333491144,  "long": -91.9906297962341,  "locationName": "Dallas, TX,"}'},
+		20: {name: 'editRemark', example: '{ "id":123, "time": "2015-12-05 05:10:20", "remarkTypeId": 1, "remarkTypeName": "Vehicle inspection," "note": "it was a good day",\n\
+                    "location"{  "lat": 30.21268333491144,  "long": -91.9906297962341,  "locationName": "Dallas, TX,"}'},
 		21: {name: 'deleteRemark', example: '{"id": 123}'},
 		22: {name: 'sendLogbookData', example: '{"date":"2015-12-05", "shippingDocs":[{"id":5}"]}'},
-		23: {
-			name: 'DVIR', example: '{"date": "2015-12-05", "trucks": [  {   "id":5,   "location": "somewhere",   "time": 15:05:32,   "odometer": 123,\n\
-                    "note": "something to say",   "signature": 12321,   "mechanicSignatureId": 12332,   "defects":[{"id":12}"}'
-		},
-		24: {
-			name: 'sendDocument', example: '{"imageArray": "imageArrayFormat", "date": "2015-12-05 05:10:20", "type": 1, "truckId": 22,\n\
-                    "price": 123, "gallons": 22, "note": "it was a good day"}'
-		},
+		23: {name: 'DVIR', example: '{"date": "2015-12-05", "trucks": [  {   "id":5,   "location": "somewhere",   "time": 15:05:32,   "odometer": 123,\n\
+                    "note": "something to say",   "signature": 12321,   "mechanicSignatureId": 12332,   "defects":[{"id":12}"}'},
+		24: {name: 'sendDocument', example: '{"imageArray": "imageArrayFormat", "date": "2015-12-05 05:10:20", "type": 1, "truckId": 22,\n\
+                    "price": 123, "gallons": 22, "note": "it was a good day"}'},
 		25: {name: 'resetPassword', example: '{"email": "test@test".com}'},
 		26: {name: 'uploadSignature', example: '{"imageArray": "imageArrayFormat", "useAsMain": 1}'},
 		27: {name: 'getSignatureNamebyId', example: '{"id": 123}'},
 		28: {name: 'createTruck', example: '{"name": "truck3545"}'},
 		29: {name: 'createTrailer', example: '{"name": truck3545}'},
 		30: {name: 'deleteDocument', example: '{"id": 123}'},
-		31: {
-			name: 'editDocument', example: '"id": 123, "imageArray": "imageArrayFormat", "date": "2015-12-05 05:10:20", "type": 1,\n\
-                    "truckId": 22, "price": 123, "gallons": 22, "note": "it was a good day"'
-		},
+		31: {name: 'editDocument', example: '"id": 123, "imageArray": "imageArrayFormat", "date": "2015-12-05 05:10:20", "type": 1,\n\
+                    "truckId": 22, "price": 123, "gallons": 22, "note": "it was a good day"'},
 		32: {name: 'checkIfDocumentExists', example: '{"eqId": 343, "docTypeId": 1}'},
 		33: {name: 'getPlacesRating', example: '{"placesId": [  {"id":123}, {"id":124}, {"id":125} ]}'},
 		34: {name: 'getPlaceReviews', example: '{"placeId": 123}'},
@@ -961,24 +757,16 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
 		37: {name: 'addParkingStatus', example: '{"id": 123, "status": 0}'},
 		38: {name: 'getWSStatuses', example: '{"ids": [  {"id":123}, {"id":124}, {"id":125} ]}'},
 		39: {name: 'getParkingStatus', example: '{"id": "getParkingStatus"}'},
-		40: {
-			name: 'suggestionAddPlace', example: '{"name": "Burget Parking", "type": 12, "ln": 90.123123, "lt": -90.123123,\n\
-                    "address": "Portland OR SomeStreet 43", "note": "Cool parking place,"}'
-		},
-		41: {
-			name: 'suggestionEditPlace', example: '{ "id": 123, "groupId": 12, "title": parking lot, "active": 1, "lt": 90.164488, "ln": -90.123123,\n\
+		40: {name: 'suggestionAddPlace', example: '{"name": "Burget Parking", "type": 12, "ln": 90.123123, "lt": -90.123123,\n\
+                    "address": "Portland OR SomeStreet 43", "note": "Cool parking place,"}'},
+		41: {name: 'suggestionEditPlace', example: '{ "id": 123, "groupId": 12, "title": parking lot, "active": 1, "lt": 90.164488, "ln": -90.123123,\n\
                     "state": "OR", "city": "Portland", "address": "SomeStreet 43", "zip": 22222, "phone": +3868118131265, "fax": +3868118131265, "highway": "H32",\n\
                     "ext": 433, "web": "parkingLot.com", "rating": 4, "scale": 1, "shower": 1, "wifi": 0, "atm": 1, "bulk": 1, "tire": 1, "transFE": 1, "RVDump": 1,\n\
-                    "overNP": 1, "trParkSp": 1, "workingTime": "10 - 22", "note": "wi-fi not working here"}'
-		},
-		42: {
-			name: 'sendInspectionEmail', example: '{"email": "test@test.com," "dates":[{"date":"2016-02-25"},{"date":"2016-02-26"}],\n\
-                    "print_settings":{  "incl_recap":1,  "incl_dvir":1,  "same_page":1,  "incl_odometer":1,  "incl_docs":1 }}'
-		},
-		43: {
-			name: 'generateInspectionPDF', example: '{"dates":[{"date":"2016-02-25"},{"date":"2016-02-26"}],\n\
-                    "print_settings":{  "incl_recap":1,  "incl_dvir":1,  "same_page":1,  "incl_odometer":1,  "incl_docs":1 }'
-		},
+                    "overNP": 1, "trParkSp": 1, "workingTime": "10 - 22", "note": "wi-fi not working here"}'},
+		42: {name: 'sendInspectionEmail', example: '{"email": "test@test.com," "dates":[{"date":"2016-02-25"},{"date":"2016-02-26"}],\n\
+                    "print_settings":{  "incl_recap":1,  "incl_dvir":1,  "same_page":1,  "incl_odometer":1,  "incl_docs":1 }}'},
+		43: {name: 'generateInspectionPDF', example: '{"dates":[{"date":"2016-02-25"},{"date":"2016-02-26"}],\n\
+                    "print_settings":{  "incl_recap":1,  "incl_dvir":1,  "same_page":1,  "incl_odometer":1,  "incl_docs":1 }'},
 		44: {name: 'addDocToStatus', example: '{"statusId": 322, "docId": 11}'},
 		45: {name: 'removeDocFromStatus', example: '{"connectionId": 332}'},
 		49: {name: 'choseTruck', example: '{"id": 123}'},
@@ -986,8 +774,7 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
 		51: {name: 'shareReview', example: '{ "stars" 5,  "message": "great app"}'},
 		52: {name: 'createTruckSynch', example: '{ "name": "truck3545", "id": "-123"}'},
 		53: {name: 'createTrailerSynch', example: '{"name": "truck3545", "id": "-123"}'},
-		54: {
-			name: 'synchroniseDays', example: '{"days":[  {"2016-14-11":{ "statuses":[\n\
+		54: {name: 'synchroniseDays', example: '{"days":[  {"2016-14-11":{ "statuses":[\n\
                     {   "id": 12312,   "time": "2016-14-11 13:30:00 ",   "statusTypeId": 1,   "location": {    "lat": 12.35258333291134,    "long": -51.9406197952141, \n\
                     "locationName": "New York, TX"   },   "documents":[12, 13],   "note": "I stopped for a launch"  },\n\
                     {   "id": 23322,   "time": "2016-14-11 12:20:00 ",   "statusTypeId": 0,   "location": {    "lat": 30.21268333491144,    "long": -91.9906297962341,\n\
@@ -1001,28 +788,17 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
                      "mechanicSignatureId":123,   "defects":[    {"id":12},    {"id":32}   ],\n\
                      "trailers":{    "ids":[     {id:12},     {id:32}    ],    "defects":[     {"id":50},     {"id":43}    ]   }  } },\n\
                    "remarks":[  {   "id":1232,   "time": "2016-14-11 13:45:00",   "remarkTypeId": 0,   "location": {    "lat": 12.35258333291134,\n\
-                      "long": -51.9406197952141,    "locationName": "Dallas, TX"   },   "note": "I was inspected by officer"  } ] }  }]}'
-		},
+                      "long": -51.9406197952141,    "locationName": "Dallas, TX"   },   "note": "I was inspected by officer"  } ] }  }]}'},
 		55: {name: 'sendDocEmail', example: '{"email":"blaba@bal.com",  "documents":[{"id":10},{"id":15}]}'},
-		56: {
-			name: 'createEldTruck', example: '{"name": "truck3545", "odometer": 123123.112, "vin": "V213123V2134321",\n\
-                    "protocol": 1, "bluetoothId":"dad12321", "id": "-123"}'
-		},
-		59: {
-			name: 'appUserInfoSave', example: '{"field":"Route", "value":[ { "waypointsCount": 0, "waypoints": [], \n\
+		56: {name: 'createEldTruck', example: '{"name": "truck3545", "odometer": 123123.112, "vin": "V213123V2134321",\n\
+                    "protocol": 1, "bluetoothId":"dad12321", "id": "-123"}'},
+		59: {name: 'appUserInfoSave', example: '{"field":"Route", "value":[ { "waypointsCount": 0, "waypoints": [], \n\
                     "startPoint": { "lat": "40.71", "long": "-74" }, "name": "test", "waypointsNames": [], "endPoint": { "lat": "37.77", "long": "-122.41" } }, \n\
                     { "waypointsCount": 0, "waypoints": [], "startPoint": { "lat": 34.2498501, "long": -119.1597182 }, "name": "test 2", "waypointsNames": [], \n\
-                    "endPoint": { "lat": 32.7996566, "long": -117.1294072 } } ] }}'
-		},
+                    "endPoint": { "lat": 32.7996566, "long": -117.1294072 } } ] }}'},
 		60: {name: 'GetUserSocGroups', example: '{}'},
-		62: {
-			name: 'editSocGroup',
-			example: '{ "id": 2, "name": "name", "thumb": "link", "image": "link", "description": "description" } '
-		},
-		63: {
-			name: 'createSocGroup',
-			example: '{"name": "name", "thumb": "link", "image": "link", "description": "description"}'
-		},
+		62: {name: 'editSocGroup', example: '{ "id": 2, "name": "name", "thumb": "link", "image": "link", "description": "description" } '},
+		63: {name: 'createSocGroup', example: '{"name": "name", "thumb": "link", "image": "link", "description": "description"}'},
 		64: {name: 'JoinSocGroup', example: '{"id":12}'},
 		65: {name: 'LeaveSocGroup', example: '{}'},
 		66: {name: 'GetSocGroupFeed', example: '{"id":15}'},
@@ -1031,7 +807,6 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
 		70: {name: 'sendOutputFileToFmcsaServer', example: '{"outputFileComment":"message"}'},
 		71: {name: 'pullDeviceDebugLogs', example: '{}'}
 	};
-
 	function createCookie(name, value, days) {
 		var expires;
 		if (days) {
@@ -1043,23 +818,25 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
 		}
 		document.cookie = encodeURIComponent(name) + "=" + value + expires + ";path=/";
 	}
-
 	function eraseCookie(name) {
 		createCookie(name, "", -1);
 	}
-
-	function getUploadFile(input) {
-		if (input.files && input.files[0]) {
-			if (input.files[0].size > 200000000) {
+	function getUploadFile(input)
+	{
+		if (input.files && input.files[0])
+		{
+			if (input.files[0].size > 200000000)
+			{
 				return false;
 			}
 			var file = input.files[0],
 				reader = new FileReader();
-			reader.onload = function (e) {
-				if (input.files[0].type.includes("image")) {
+			reader.onload = function (e)
+			{
+				if (input.files[0].type.includes("image"))
+				{
 					z = JSON.stringify([{bytesArray: e.target.result, fileName: file.name}]);
-					data = {
-						action: 'createSocGroup',
+					data = {action: 'createSocGroup',
 						data: {
 							name: "ABC",
 							description: "decs",
@@ -1070,7 +847,8 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
 						}
 						//
 					};
-				} else if (input.files[0].type.includes("video")) {
+				} else if (input.files[0].type.includes("video"))
+				{
 
 				}
 				$("#file-upload-task").val('');
@@ -1078,19 +856,16 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
 			reader.readAsDataURL(input.files[0]);
 		}
 	}
-
 	function expandRow(el) {
 		$(el).attr('onclick', 'smallRow(this)');
 		$(el).text('Narrow')
 		$(el).closest('.one_log').addClass('expanded')
 	}
-
 	function smallRow(el) {
 		$(el).attr('onclick', 'expandRow(this)');
 		$(el).text('Expand')
 		$(el).closest('.one_log').removeClass('expanded')
 	}
-
 	function validateJson(el, req = false) {
 		var id = $(el).closest('.one_log').attr('data-id');
 		$.each(logs, function (key, one_log) {
@@ -1103,7 +878,6 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
 			}
 		})
 	}
-
 	function copy(text) {
 		var input = document.createElement('input');
 		input.setAttribute('value', text);
@@ -1113,7 +887,6 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
 		document.body.removeChild(input)
 		return result;
 	}
-
 	function copyJson(el, req = false) {
 		var id = $(el).closest('.one_log').attr('data-id');
 		$.each(logs, function (key, one_log) {
@@ -1126,7 +899,6 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
 			}
 		})
 	}
-
 	function safelyParseJSON(json) {
 		// This function cannot be optimised, it's best to
 		// keep it small!
@@ -1162,7 +934,6 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
 			return '<span class="' + cls + '">' + match + '</span>';
 		});
 	}
-
 	function initUrl() {
 		var searchParams = new URL(window.location.href).searchParams;
 		if (searchParams.get("request")) {
@@ -1185,7 +956,8 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
 
 	}
 
-	function getPushLogs() {
+	function getPushLogs()
+	{
 		data = {
 			date: $("#date").val(),
 			startFrom: startFrom,
@@ -1197,8 +969,8 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
 		};
 		AjaxCall({url: '/db/apiController/', data: data, action: 'getPushLogs', successHandler: showPushLogs})
 	}
-
-	function showPushLogs(response) {
+	function showPushLogs(response)
+	{
 		var logsInfo = response.data;
 		var logsArr = logsInfo.logs;
 		fromLog = logsInfo.from;
@@ -1212,8 +984,8 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
 		$('#logs_nav').show();
 		$('#logs_table').empty().append(logsRows);
 	}
-
-	function getOnePushLogRow(notification) {
+	function getOnePushLogRow(notification)
+	{
 		return `<div class="one_log">
                     <div class="res_ip"><button onclick="expandRow(this)" class="exp_button">Expand</button>Id: ${notification.id}</div>
                     <div class="res_request_time">${toTime(notification.dateTime)}</div>
@@ -1225,11 +997,12 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
                     
                 </div>`;
 	}
-
-	function getPushNotificationTypeById(pushNotificationTypeId) {
+	function getPushNotificationTypeById(pushNotificationTypeId)
+	{
 		var value = '';
 
-		switch (Number(pushNotificationTypeId)) {
+		switch (Number(pushNotificationTypeId))
+		{
 			case 1:
 				value = 'visible';
 				break;
@@ -1242,7 +1015,6 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
 		}
 		return value;
 	}
-
 	function getPlatfornById(platformId) {
 		var value = '';
 
@@ -1259,19 +1031,12 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
 		}
 		return value;
 	}
-
 	function getLogsStatisticsByDate() {
 		var data = {
 			date: $("#logsStatisticsDate").val()
 		};
-		AjaxCall({
-			url: '/db/apiController/',
-			data: data,
-			action: 'getLogsStatisticsByDate',
-			successHandler: getLogsStatisticsByDateHandler
-		})
+		AjaxCall({url: '/db/apiController/', data: data, action: 'getLogsStatisticsByDate', successHandler: getLogsStatisticsByDateHandler})
 	}
-
 	function getLogsStatisticsByDateHandler(response) {
 		var logsArr = response.data.map((item) => {
 			return `<div class="one_log small">
@@ -1283,7 +1048,6 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
 		$("#logs_nav").hide();
 		$('#logs_table').empty().append(logsArr);
 	}
-
 	function toTime(secs) {
 		var date = new Date(1970, 0, 1); // Epoch
 		date.setSeconds(secs);
@@ -1304,7 +1068,6 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
 	}
 
 	var eldUserId = 0;
-
 	function selectEldUser(el) {
 		eldUserId = $(el).attr('data-id');
 		session = $(el).attr('data-session');
@@ -1314,16 +1077,12 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
 		$('#search_user_results').hide();
 
 	}
-
 	function deleteRow(el) {
 		var id = $(el).closest('.one_log').attr('data-id');
-		AjaxCall({
-			url: '/db/apiController/', data: {id: id}, action: 'deleteEldLogs', successHandler: function (response) {
+		AjaxCall({url: '/db/apiController/', data: {id: id}, action: 'deleteEldLogs', successHandler: function (response) {
 				$(el).closest('.one_log').remove()
-			}
-		})
+			}})
 	}
-
 	function showLogs() {
 		$('#logs_table').append('<div class="one_log" data-id="0" style="text-align:center;text-align: center;font-size: 15px;height: auto;min-height: auto;">Searching...</div>');
 		if (eldUserId != '') {
@@ -1331,14 +1090,8 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
 			url += "&userId=" + eldUserId;
 		}
 		history.pushState({}, "Ezlogz", url);
-		AjaxCall({
-			url: '/db/apiController/',
-			data: {userId: eldUserId},
-			action: 'getEldLogs',
-			successHandler: getEldLogsHandler
-		})
+		AjaxCall({url: '/db/apiController/', data: {userId: eldUserId}, action: 'getEldLogs', successHandler: getEldLogsHandler})
 	}
-
 	function getEldLogsHandler(response) {
 		var logs = response.data;
 		$('#logs_table').empty();
@@ -1351,7 +1104,6 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
 			$('#logs_table').append('<div class="one_log" data-id="0" style="text-align:center;text-align: center;font-size: 15px;height: auto;min-height: auto;">No results</div>');
 		}
 	}
-
 	function getUsers() {
 		var val = $('#search_user').val();
 		if (val == '') {
@@ -1359,14 +1111,8 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
 			$('#search_user_results').hide();
 			return false;
 		}
-		AjaxCall({
-			url: '/db/apiController/',
-			data: {name: val},
-			action: 'getUsersByName',
-			successHandler: getUsersByNameHandler
-		})
+		AjaxCall({url: '/db/apiController/', data: {name: val}, action: 'getUsersByName', successHandler: getUsersByNameHandler})
 	}
-
 	function getUsersByNameHandler(response) {
 		var users = response.data;
 		$('#search_user_results').empty();
@@ -1375,7 +1121,6 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
 		})
 		$('#search_user_results').show();
 	}
-
 	$().ready(function () {
 		$.each(apiss, function (key, item) {
 			$('#examplesBox').append('<div class="oneApiBox pl-1 pr-1" data-id="' + key + '">' + item.name + '</div>')
@@ -1385,13 +1130,15 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
 				$('.list_box').remove()
 			}
 		});
-		$('.oneApiBox').click(function () {
+		$('.oneApiBox').click(function ()
+		{
 			$('.oneApiBox').removeClass('active');
 			$(this).addClass('active');
 			$('#action').val(apiss[$(this).attr('data-id')].name);
 			$('#dataJson').text(apiss[$(this).attr('data-id')].example);
 		});
-		$('body').on('change', '#file-upload-task', function () {
+		$('body').on('change', '#file-upload-task', function ()
+		{
 			getUploadFile(this);
 		});
 		$("#testRequest").click(function () {
@@ -1401,8 +1148,7 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
 			} else {
 				createCookie('PHPSESSID', $("#sessionId").val(), 30);
 			}
-			var data = {
-				action: $("#action").val(),
+			var data = {action: $("#action").val(),
 				data: JSON.parse($("#dataJson").val())
 			};
 			$.ajax({
@@ -1456,7 +1202,8 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
 
 		$('#showLogsStatistics').click(() => $('#logsStatisticsDate').datepicker('show'));
 		$('#logsStatisticsDate').change(() => getLogsStatisticsByDate());
-		$('#showPushLogs').click(() => {
+		$('#showPushLogs').click(() =>
+		{
 			$('#logs_table').removeClass().addClass('pushLogs');
 			startFrom = 0;
 			getPushLogs();
@@ -1468,9 +1215,11 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
 				startFrom -= parseInt($('#search_amount').val());
 				return false;
 			}
-			if ($('#logs_table').hasClass('pushLogs')) {
+			if ($('#logs_table').hasClass('pushLogs'))
+			{
 				getPushLogs();
-			} else {
+			} else
+			{
 				getLogs();
 			}
 		})
