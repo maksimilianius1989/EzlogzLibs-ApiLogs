@@ -1,6 +1,6 @@
 <?php
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/db/classes/Driver.php';
+namespace Ezlogz\ApiLogs\db\classes;
 
 class Date
 {
@@ -133,24 +133,6 @@ class Date
 		$mins = $mins - $hours * 60;
 		return sprintf('%02d', $hours) . 'h ' . sprintf('%02d', $mins) . 'm';
 	}
-	
-	public static $driverArr = [];
-	
-	public static function getStrTimeFromUserTimeZoneToUTC($dateTimeStr, $userId, $isUtc = false)
-	{
-		if (!$isUtc) {
-			if (!isset(self::$driverArr[$userId])) {
-				self::$driverArr[$userId] = new Driver($userId);
-			}
-			$driver = self::$driverArr[$userId];
-			$timeZoneName = self::getTimeZone($driver->timeZoneId);
-			$dateTime = new DateTime($dateTimeStr, $timeZoneName);
-			$dateTime->setTimezone(new DateTimeZone('UTC'));
-		} else {
-			$dateTime = new DateTime($dateTimeStr, new DateTimeZone('UTC'));
-		}
-		return $dateTime->format('Y-m-d H:i:s');
-	}
 
 	public static function convertDateTime($array, $userId, $timeField = 'dateTime', $timeFieldUTC = 'dateTimeUtc')
 	{
@@ -184,16 +166,6 @@ class Date
 		return $item;
 	}
 	
-	public static function getUserTimeZone($userId): DateTimeZone
-	{
-		if (!isset(self::$driverArr[$userId])) {
-			self::$driverArr[$userId] = new Driver($userId);
-		}
-		$driver = self::$driverArr[$userId];
-		
-		return self::getTimeZone($driver->timeZoneId);
-	}
-	
 	public static $timeZoneLoc = [];
 	
 	public static function getTimeZone($timeZoneId): DateTimeZone
@@ -211,26 +183,6 @@ class Date
 		} else {
 			return new DateTimeZone(self::generateTimeDiff(self::$timeZoneLoc[$timeZoneId]));
 		}
-	}
-	
-	public static function getDateTimeZoneOffSet($userId)
-	{
-		global $db2;
-		
-		if (!isset(self::$driverArr[$userId])) {
-			self::$driverArr[$userId] = new Driver($userId);
-		}
-		$driver = self::$driverArr[$userId];
-		
-		$timeZoneId = $driver->timeZoneId;
-		
-		if (!isset(self::$timeZoneLoc[$timeZoneId])) {
-			$timeZoneTypes = $db2->select('*', '`timeZoneTypes`', 'id=?', [$timeZoneId]);
-			$timeZone = reset($timeZoneTypes);
-			self::$timeZoneLoc[$timeZoneId] = $timeZone['valueSave'];
-		}
-		
-		return self::$timeZoneLoc[$timeZoneId];
 	}
 	
 	private static function generateTimeDiff($value)
