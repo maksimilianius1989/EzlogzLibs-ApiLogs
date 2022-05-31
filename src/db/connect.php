@@ -12,6 +12,7 @@ require_once __DIR__ . '/../config.php';
 require_once __DIR__ . '/utils.php';
 require_once __DIR__ . '/classes/db.php';
 require_once __DIR__ . '/classes/db2.php';
+require_once __DIR__ . '/classes/Date.php';
 require_once __DIR__ . '/version.php';
 require_once __DIR__ . '/classes/Response.php';
 require_once __DIR__ . '/classes/Validator.php';

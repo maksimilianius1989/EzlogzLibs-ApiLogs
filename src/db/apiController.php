@@ -2,6 +2,10 @@
 
 namespace Ezlogz\ApiLogs\db;
 
+use DateTime;
+use Ezlogz\ApiLogs\db\classes\Date;
+use function Ezlogz\ApiLogs\db\classes\done;
+
 require_once __DIR__ . '/connect.php';
 
 class apiController
@@ -316,7 +320,7 @@ class apiController
 
 $action = isset($data['action']) ? $data['action'] : '';
 if (!empty($action)) {
-    if (method_exists('apiController', $action)) {
+    if (method_exists(apiController::class, $action)) {
         $apiC = new apiController();
         $apiC->data = $data;
         

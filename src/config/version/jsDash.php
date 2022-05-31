@@ -1,4 +1,4 @@
-git <?php
+<?php
 
 return array(
     '/dash/assets/js/libs/jquery-2.1.4.min.js' => array(

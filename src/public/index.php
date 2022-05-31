@@ -1,9 +1,12 @@
 <?php
 require_once __DIR__ . '/../config.php';
 require_once __DIR__ . '/../db/apiController.php';
+require_once __DIR__ . '/../db/classes/Validator.php';
 require_once __DIR__ . '/../LogKeys.php';
 
 use Ezlogz\ApiLogs\LogKeys;
+use Ezlogz\ApiLogs\db\apiController;
+use Ezlogz\ApiLogs\db\Version;
 
 ob_start();
 if (session_id() == '' && isset($_COOKIE['user'])) {
@@ -365,22 +368,22 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
                         <div class="col-sm-12">
                             <label>Platform</label>
                             <select class="form-control" id="platform_req">
-                                <option value="-1">All</option>
-                                <option value="0">App</option>
-                                <option value="1">Web</option>
-                                <option value="2">Email</option>
-                                <option value="5">FMCSA Output logs</option>
-                                <option value="6">PDF</option>
-                                <option value="7">Finances</option>
-                                <option value="8">Finances Recurring</option>
-                                <option value="9">Charging Fleets</option>
-                                <option value="10">Charging Solo Drivers</option>
-                                <option value="32">Background Push</option>
-                                <option value="31">Visible Push</option>
-                                <option value="33">Web Push</option>
+                                <option value="<?php echo LogKeys::ALL; ?>">All</option>
+                                <option value="<?php echo LogKeys::APP; ?>">App</option>
+                                <option value="<?php echo LogKeys::WEB; ?>">Web</option>
+								<option value="<?php echo LogKeys::API; ?>">API</option>
+                                <option value="<?php echo LogKeys::EMAIL; ?>">Email</option>
+                                <option value="<?php echo LogKeys::FMCSA_OUTPUT_LOGS; ?>">FMCSA Output logs</option>
+                                <option value="<?php echo LogKeys::PDF; ?>">PDF</option>
+                                <option value="<?php echo LogKeys::FINANCES; ?>">Finances</option>
+                                <option value="<?php echo LogKeys::FINANCES_RECURRING; ?>">Finances Recurring</option>
+                                <option value="<?php echo LogKeys::CHARGING_FLEETS; ?>">Charging Fleets</option>
+                                <option value="<?php echo LogKeys::CHARGING_SOLO_DRIVERS; ?>">Charging Solo Drivers</option>
+                                <option value="<?php echo LogKeys::BACKGROUND_PUSH; ?>">Background Push</option>
+                                <option value="<?php echo LogKeys::VISIBLE_PUSH; ?>">Visible Push</option>
+                                <option value="<?php echo LogKeys::WEB_PUSH; ?>">Web Push</option>
                                 <option value="<?php echo LogKeys::SPEED_GAUGE; ?>">SpeedGauge</option>
                                 <option value="<?php echo LogKeys::FLEET_OPS; ?>">FleetOps</option>
-                                <option value="<?php echo LogKeys::EZLOGZ_API; ?>">Ezlogz API</option>
                             </select>
                         </div>
                     </div>

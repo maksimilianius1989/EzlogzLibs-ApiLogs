@@ -21,9 +21,9 @@ class Logs
         $insParams['web'] = $web;
         $insParams['action'] = $action;
         $insParams['platform'] = isset($_SERVER['HTTP_USER_AGENT']) ? json_encode($_SERVER['HTTP_USER_AGENT']) : '';
-        $insParams['requestData'] = json_encode($req);
+        $insParams['requestData'] = json_encode($req, JSON_UNESCAPED_SLASHES);
         $insParams['responseData'] = '';
-        $insParams['cookies'] = json_encode($_COOKIE);
+        $insParams['cookies'] = json_encode($_COOKIE, JSON_UNESCAPED_SLASHES);
         $insParams['userId'] = $id ?? $GLOBALS['API_LOGS']['USER_ID'] ?? 0;
         Logs::createLogTable();
         if ($GLOBALS['API_LOGS']['LOCAL_ENV'])
