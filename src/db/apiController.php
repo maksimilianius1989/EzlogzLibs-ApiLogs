@@ -1,52 +1,48 @@
 <?php
 
+namespace Ezlogz\ApiLogs\db;
+
 require_once __DIR__ . '/connect.php';
-require_once __DIR__ . '/classes/Date.php';
 
 class apiController
 {
-    function apiController()
+    function __construct()
     {
-        $this->conn = connect();
         $this->db2 = $GLOBALS['API_LOGS']['DB2'];
+        $this->db = $GLOBALS['API_LOGS']['DB'];
         $this->mongoDb = $GLOBALS['API_LOGS']['MONGO_DB'];
         $this->mongoLogsTable = $GLOBALS['API_LOGS']['MONGO_LOGS_TABLE'];
         
-        $this->today = $todayTime = Date::Today();
-        $this->id = $id;
+        $this->today = Date::Today();
+        $this->id = $GLOBALS['API_LOGS']['USER_ID'];
         $this->response = $GLOBALS['API_LOGS']['RESPONSE'];
         $this->validator = $GLOBALS['API_LOGS']['VALIDATOR'];
         $this->data = [];
     }
     
-    function getApis()
-    {
+    function getApis() {
         return $this->db->select('*', 'api_docs', 1);
     }
     
-    function getApisChat()
-    {
+    function getApisChat() {
         return $this->db->select('*', 'api_docs_chat', 1);
     }
     
-    function getErrors()
-    {
+    function getErrors() {
         return $this->db->select('*', 'api_errors', 1);
     }
     
-    function newApi($name, $description, $example, $chat = false, $GLOBALS['API_LOGS']['RESPONSE'] = false)
-    {
+    function newApi($name, $description, $example, $chat = false, $response = false) {
         if ($chat) {
-            $this->db->insert('api_docs_chat', "null,'{$name}','{$description}', '{$example}', '{$GLOBALS['API_LOGS']['RESPONSE']}'");
+            $this->db->insert('api_docs_chat', "null,'{$name}','{$description}', '{$example}', '{$response}'");
         } else {
             $this->db->insert('api_docs', "null,'{$name}','{$description}', '{$example}'");
         }
     }
     
-    function editApi($apiId, $name, $description, $example, $chat = false, $GLOBALS['API_LOGS']['RESPONSE'] = false)
-    {
+    function editApi($apiId, $name, $description, $example, $chat = false, $response = false) {
         if ($chat) {
-            $this->db->update('api_docs_chat', "name='{$name}', description='{$description}', response='{$GLOBALS['API_LOGS']['RESPONSE']}', example='{$example}'", "id={$apiId}");
+            $this->db->update('api_docs_chat', "name='{$name}', description='{$description}', response='{$response}', example='{$example}'", "id={$apiId}");
         } else {
             $this->db->update('api_docs', "name='{$name}', description='{$description}', example='{$example}'", "id={$apiId}");
         }
@@ -59,6 +55,73 @@ class apiController
         } else {
             $this->db->delete('api_docs', "id={$apiId}");
         }
+    }
+    
+    function getApiLogs() {
+        
+        date_default_timezone_set('UTC');
+        $startFrom = $this->data['startFrom'];
+        $ip = $this->data['ip'];
+        $date = $this->data['date'];
+        $timeFrom = $this->data['dateFrom'];
+        $timeTill = $this->data['dateTill'];
+        $action = $this->data['action'];
+        $userId = $this->data['userId'];
+        
+        $where = '';
+        if (!empty($ip)) {
+            $where .= "ip = '{$ip}'";
+        }
+        if (!empty($userId) && $userId != 0) {
+            $where .= "userId = '{$userId}'";
+        }
+        if (!empty($date)) {
+            if (!empty($where)) {
+                $where .= " and ";
+            }
+            $timestamp = DATE::GetTimeinMsFromDateTime($date);
+            $beginOfDay = strtotime("midnight", $timestamp);
+            $endOfDay = strtotime("tomorrow", $beginOfDay) - 1;
+            if (isset($this->data['dateFrom']) && !empty($timeFrom)) {
+                
+                $startDate = $date . ' ' . $timeFrom;
+                
+                $beginOfDay = DATE::GetTimeinMsFromDateTime($startDate);
+            }
+            if (isset($this->data['dateTill']) && !empty($timeTill)) {
+                $startDate = $date . ' ' . $timeTill;
+                $endOfDay = DATE::GetTimeinMsFromDateTime($startDate);
+            }
+            $where .= "dateTime >= '{$beginOfDay}' && dateTime <= '{$endOfDay}'";
+        }
+        
+        if (empty($where)) {
+            $where = '1';
+        }
+        
+        $ret = [];
+        
+        if (!empty($action)) {
+            $ret['logs'] = $this->db->select('*', "api_logs", "{$where} and type = 0 and action='{$action}' order by dateTime desc LIMIT {$startFrom}, 100  ");
+            $ret['totally'] = $this->db->select('count(*) as totally', "api_logs", "{$where} and type=0 and action='{$action}'")[0]['totally'];
+            $ids = [];
+            foreach ($ret['logs'] as $log) {
+                $ids[] = $log['id'];
+            }
+            $ids = implode(',', $ids);
+            $logs2 = $this->db->select('*', "api_logs", "id in ({$ids}) and type = 1");
+            $allLogs = array_merge($ret['logs'], $logs2);
+            $ret['logs'] = $allLogs;
+        } else {
+            $ret['logs'] = $this->db->select('*', "api_logs", "{$where} order by dateTime desc LIMIT {$startFrom}, 100  ");
+            
+            
+            $ret['totally'] = $this->db->select('count(*) as totally', "api_logs", "{$where} and type=0")[0]['totally'];
+        }
+        
+        $ret['from'] = $startFrom;
+        
+        return $ret;
     }
     
     function deleteEldLogs()
@@ -153,74 +216,6 @@ class apiController
         return $ret;
     }
     
-    function getApiLogs()
-    {
-        
-        date_default_timezone_set('UTC');
-        $startFrom = $this->data['startFrom'];
-        $GLOBALS['API_LOGS']['IP'] = $this->data['ip'];
-        $date = $this->data['date'];
-        $timeFrom = $this->data['dateFrom'];
-        $timeTill = $this->data['dateTill'];
-        $action = $this->data['action'];
-        $userId = $this->data['userId'];
-        
-        $where = '';
-        if (!empty($GLOBALS['API_LOGS']['IP'])) {
-            $where .= "ip = '{$GLOBALS['API_LOGS']['IP']}'";
-        }
-        if (!empty($userId) && $userId != 0) {
-            $where .= "userId = '{$userId}'";
-        }
-        if (!empty($date)) {
-            if (!empty($where)) {
-                $where .= " and ";
-            }
-            $timestamp = DATE::GetTimeinMsFromDateTime($date);
-            $beginOfDay = strtotime("midnight", $timestamp);
-            $endOfDay = strtotime("tomorrow", $beginOfDay) - 1;
-            if (isset($this->data['dateFrom']) && !empty($timeFrom)) {
-                
-                $startDate = $date . ' ' . $timeFrom;
-                
-                $beginOfDay = DATE::GetTimeinMsFromDateTime($startDate);
-            }
-            if (isset($this->data['dateTill']) && !empty($timeTill)) {
-                $startDate = $date . ' ' . $timeTill;
-                $endOfDay = DATE::GetTimeinMsFromDateTime($startDate);
-            }
-            $where .= "dateTime >= '{$beginOfDay}' && dateTime <= '{$endOfDay}'";
-        }
-        
-        if (empty($where)) {
-            $where = '1';
-        }
-        
-        $ret = [];
-        
-        if (!empty($action)) {
-            $ret['logs'] = $this->db->select('*', "API_LOGSs", "{$where} and type = 0 and action='{$action}' order by dateTime desc LIMIT {$startFrom}, 100  ");
-            $ret['totally'] = $this->db->select('count(*) as totally', "API_LOGSs", "{$where} and type=0 and action='{$action}'")[0]['totally'];
-            $ids = [];
-            foreach ($ret['logs'] as $log) {
-                $ids[] = $log['id'];
-            }
-            $ids = implode(',', $ids);
-            $logs2 = $this->db->select('*', "API_LOGSs", "id in ({$ids}) and type = 1");
-            $allLogs = array_merge($ret['logs'], $logs2);
-            $ret['logs'] = $allLogs;
-        } else {
-            $ret['logs'] = $this->db->select('*', "API_LOGSs", "{$where} order by dateTime desc LIMIT {$startFrom}, 100  ");
-            
-            
-            $ret['totally'] = $this->db->select('count(*) as totally', "API_LOGSs", "{$where} and type=0")[0]['totally'];
-        }
-        
-        $ret['from'] = $startFrom;
-        
-        return $ret;
-    }
-    
     function getApiLogsNew()
     {
         date_default_timezone_set('UTC');
@@ -277,8 +272,8 @@ class apiController
         }
         $ret['where'] = $where;
         if (!empty($action_req)) {
-            if (LOCAL_ENV) {
-                $ret['logs'] = $this->db2->select('SQL_CALC_FOUND_ROWS *', "`API_LOGSs_{$date}`", "{$where} and action='{$action_req}' order by requestDateTime desc LIMIT {$startFrom}, {$amount}");
+            if ($GLOBALS['API_LOGS']['LOCAL_ENV']) {
+                $ret['logs'] = $this->db2->select('SQL_CALC_FOUND_ROWS *', "`api_logs_{$date}`", "{$where} and action='{$action_req}' order by requestDateTime desc LIMIT {$startFrom}, {$amount}");
             } else {
                 $action_req = array_filter(explode(',', $action_req));
                 foreach ($action_req as $key => $act) {
@@ -287,18 +282,18 @@ class apiController
                 $mongoWhere['action'] = ['$in' => $action_req];
             }
         } else {
-            if (LOCAL_ENV) {
-                $ret['logs'] = $this->db->select('SQL_CALC_FOUND_ROWS *', "`API_LOGSs_{$date}`", "{$where} order by requestDateTime desc LIMIT {$startFrom}, {$amount}  ");
+            if($GLOBALS['API_LOGS']['LOCAL_ENV']) {
+                $ret['logs'] = $this->db->select('SQL_CALC_FOUND_ROWS *', "`api_logs_{$date}`", "{$where} order by requestDateTime desc LIMIT {$startFrom}, {$amount}  ");
             }
         }
         $ret['totally'] = $this->db2->found_rows();
         $ret['from'] = $startFrom;
-        if (!LOCAL_ENV) {
+        if (!$GLOBALS['API_LOGS']['LOCAL_ENV']) {
             $mongoResult = [];
             $mongoWhere['requestDateTime'] = ['$gte' => $beginOfDay, '$lte' => $endOfDay];
             
             $ret['$mongoWhere'] = $mongoWhere;
-            $GLOBALS['API_LOGS']['MONGO_LOGS_TABLE'] = $this->mongoDb->selectCollection("API_LOGSs_{$date}");
+            $GLOBALS['API_LOGS']['MONGO_LOGS_TABLE'] = $this->mongoDb->selectCollection("api_logs_{$date}");
             
             $ret['totally'] = $GLOBALS['API_LOGS']['MONGO_LOGS_TABLE']->count($mongoWhere);
             
@@ -328,9 +323,7 @@ if (!empty($action)) {
         if (isset($data['date'])) {
             $date = DateTime::createFromFormat('Y-m-d', $data['date']);
             $date2 = DateTime::createFromFormat('Y-m-d', '2023-02-05');
-//            var_dump($date, $date2);
             if ($date < $date2) {
-                
                 $apiC->mongoDb = $GLOBALS['API_LOGS']['MONGO_DB2'];
                 $apiC->mongoLogsTable = $GLOBALS['API_LOGS']['MONGO_LOGS_TABLE2'];
             }

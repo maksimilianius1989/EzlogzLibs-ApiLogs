@@ -4,7 +4,6 @@ namespace Ezlogz\ApiLogs\db\classes;
 
 class Validator
 {
-	
 	function __construct($response, $conn)
 	{
 		$this->response = $response;

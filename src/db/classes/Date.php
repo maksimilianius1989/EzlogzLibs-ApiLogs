@@ -4,10 +4,6 @@ namespace Ezlogz\ApiLogs\db\classes;
 
 class Date
 {
-    function __construct()
-    {
-    }
-    
     public static function getDurationFromSec($time, $simpleway)
     {
         $hours = floor($time / 3600);
@@ -130,38 +126,6 @@ class Date
         $hours = floor($mins / 60);
         $mins = $mins - $hours * 60;
         return sprintf('%02d', $hours) . 'h ' . sprintf('%02d', $mins) . 'm';
-    }
-    
-    public static function convertDateTime($array, $userId, $timeField = 'dateTime', $timeFieldUTC = 'dateTimeUtc')
-    {
-        $timeZone = Date::getUserTimeZone($userId);
-        $utcTimeZone = new DateTimeZone('UTC');
-        foreach ($array as &$item) {
-            $dateString = $item[$timeFieldUTC];
-            try {
-                $date = new DateTime($dateString, $utcTimeZone);
-                $date->setTimezone($timeZone);
-                $item[$timeField] = $date->format('Y-m-d H:i:s');
-            } catch (Exception $e) {
-            }
-        }
-        return $array;
-    }
-    
-    public static function convertDateTimeRow($item, $userId, $timeField = 'dateTime', $timeFieldUTC = 'dateTimeUtc')
-    {
-        if (!isset($item[$timeField]) || !isset($item[$timeFieldUTC])) {
-            return $item;
-        }
-        $timeZone = Date::getUserTimeZone($userId);
-        $dateString = $item[$timeFieldUTC];
-        try {
-            $date = new DateTime($dateString, new DateTimeZone('UTC'));
-            $date->setTimezone($timeZone);
-            $item[$timeField] = $date->format('Y-m-d H:i:s');
-        } catch (Exception $e) {
-        }
-        return $item;
     }
     
     public static $timeZoneLoc = [];

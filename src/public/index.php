@@ -1,39 +1,45 @@
 <?php
-//die();
+require_once __DIR__ . '/../config.php';
+require_once __DIR__ . '/../db/apiController.php';
+require_once __DIR__ . '/../LogKeys.php';
+
+use Ezlogz\ApiLogs\LogKeys;
+
 ob_start();
 if (session_id() == '' && isset($_COOKIE['user'])) {
     session_start();
 }
-?>
-<?php
-require_once __DIR__ . '/config.php';
-require_once __DIR__ . '/db/apiController.php';
-
-use Ezlogz\ApiLogs\LogKeys;
 
 $apiC = new apiController();
 $apis = $apiC->getApis();
 $zzSession = $GLOBALS['API_LOGS']['DB2']->select('s.sessionId', 'users u left join sessions s on s.userId = u.id', "u.email='zz@zz.zz' and s.site = 0", []);
 $ZZsession = !empty($zzSession) ? $zzSession[0]['sessionId'] : 0;
 
-if (true) {
-    if (!function_exists('redirect')) {
-        function redirect($url) {
-            if (headers_sent()) {
-                die('<script type="text/javascript">window.location.href="' . $url . '";</script>');
-            } else {
-                header('Location: ' . $url);
-                die();
-            }
-        }
-    }
-    
-    $GLOBALS['API_LOGS']['VALIDATOR']->checkSessionFull();
-    $user = $GLOBALS['API_LOGS']['DB2']->select('*', 'users', 'id=? and companyPosition = 2', [$id]);
-    if (empty($user)) {
-        redirect('/');
-    }
+
+if (!function_exists('redirect')) {
+	function redirect($url) {
+		if (headers_sent()) {
+			die('<script type="text/javascript">window.location.href="' . $url . '";</script>');
+		} else {
+			header('Location: ' . $url);
+			die();
+		}
+	}
 }
+
+$GLOBALS['API_LOGS']['VALIDATOR']->checkSessionFull();
+$sessionValue = $_COOKIE['session'] ?? $_COOKIE['PHPSESSID'];
+if (empty($GLOBALS['API_LOGS']['USER_ID'])) {
+    $sessionData = $GLOBALS['API_LOGS']['DB2']->select('u.*', 'users u join sessions s on s.userId = u.id', 'sessionId=? and companyPosition = 2', [$sessionValue]);
+	if ($sessionData) {
+        $user = $sessionData[0];
+	}
+}
+
+if (empty($user)) {
+	redirect('/');
+}
+
 $uri = explode('?', $_SERVER['REQUEST_URI']);
 ?>
 <!doctype html>
@@ -43,10 +49,10 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
     <title>EzLogz</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <link rel="stylesheet" href="<?= $MAIN_LINK ?>/dash/assets/css/libs/jquery-ui.css">
-    <link rel="icon" type="image/png" href="<?= $MAIN_LINK ?>/frontend/assets/images/restyle/favicons/favicon_64x64.png" sizes="64x64">
-    <link rel="apple-touch-icon" sizes="180x180" href="<?= $MAIN_LINK ?>/assets/img/icon/apple-touch-icon.png">
-    <link rel="mask-icon" href="<?= $MAIN_LINK ?>/assets/img/icon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="stylesheet" href="<?= $GLOBALS['API_LOGS']['MAIN_LINK'] ?>/dash/assets/css/libs/jquery-ui.css">
+    <link rel="icon" type="image/png" href="<?= $GLOBALS['API_LOGS']['MAIN_LINK'] ?>/frontend/assets/images/restyle/favicons/favicon_64x64.png" sizes="64x64">
+    <link rel="apple-touch-icon" sizes="180x180" href="<?= $GLOBALS['API_LOGS']['MAIN_LINK'] ?>/assets/img/icon/apple-touch-icon.png">
+    <link rel="mask-icon" href="<?= $GLOBALS['API_LOGS']['MAIN_LINK'] ?>/assets/img/icon/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="theme-color" content="#ffffff">
     
     <?php $GLOBALS['API_LOGS']['VERSION']->getCssDashUri($uri[0]); ?>
@@ -570,13 +576,13 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
 		oldLogsJson = newLogsJson;
 		oldLogs = JSON.parse(newLogsJson);
 		$.each(logs, function (key, one_log) {
-			$GLOBALS['API_LOGS']['IP'] = one_log.ip;
+			$ip = one_log.ip;
 			one_log.requestData = one_log.requestData.replace(/\\"/g, '"');
 			var req = safelyParseJSON(one_log.requestData)
 			if (req) {
 				one_log.requestData = JSON.stringify(req, null, 4);
 			}
-			$GLOBALS['API_LOGS']['REQUEST']Time = toTime(one_log.requestDateTime);
+			$requestTime = toTime(one_log.requestDateTime);
 			$platform = one_log.platform;
 			$action = one_log.action;
 			$responseTime = 'No Answer';
@@ -593,7 +599,7 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
 				}
 				$responseTime = toTime(one_log.responseDateTime);
 			} else {
-				$GLOBALS['API_LOGS']['RESPONSE'] = "no response";
+				$response = "no response";
 			}
 			$cookies = one_log.cookies;
 			$type = 'App Post request';
@@ -612,22 +618,22 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
 			}
 			if (one_log.web == 2) {
 				$log_append = $('<div class="one_log" data-id="' + one_log.id + '" >\n\
-                        <div class="res_ip"><button onclick="expandRow(this)" class="exp_button btn btn-default">Expand</button><label>IP:</label>' + $GLOBALS['API_LOGS']['IP'] + '<br/><label>UserId:</label>' + one_log.userId + '<br/><label>Platform:</label>' + $platform + '</div>\n\
-                        <div class="res_request_time">' + $GLOBALS['API_LOGS']['REQUEST']Time + '<br/>' + $action + '<br/>' + $type + '</div>\n\
+                        <div class="res_ip"><button onclick="expandRow(this)" class="exp_button btn btn-default">Expand</button><label>IP:</label>' + $ip + '<br/><label>UserId:</label>' + one_log.userId + '<br/><label>Platform:</label>' + $platform + '</div>\n\
+                        <div class="res_request_time">' + $requestTime + '<br/>' + $action + '<br/>' + $type + '</div>\n\
                         <div class="res_request" style="width:77%;"><pre><div class="buttons_hover"><button onclick="copyJson(this, true)" class="btn btn-default">Copy</button><button onclick="validateJson(this, true)"  class="btn btn-default ml-1">Validator</button></div>' + syntaxHighlight(one_log.requestData) + '</pre><pre>' + $cookies + '</pre></div>\n\
                         </div>')
 
 			} else if (one_log.web == 31 || one_log.web == 32 || one_log.web == 33) {
 				$log_append = $('<div class="one_log" data-id="' + one_log.id + '" >\n\
-                        <div class="res_ip"><button onclick="expandRow(this)" class="exp_button btn btn-default">Expand</button><label>IP:</label>' + $GLOBALS['API_LOGS']['IP'] + '<br/><label>UserId:</label>' + one_log.userId + '<br/><label>Platform:</label>' + $platform + '</div>\n\
-                        <div class="res_request_time">' + $GLOBALS['API_LOGS']['REQUEST']Time + '<br/>' + $action + '<br/>' + $type + '<br/>From: ' + one_log.responseData + '</div>\n\
+                        <div class="res_ip"><button onclick="expandRow(this)" class="exp_button btn btn-default">Expand</button><label>IP:</label>' + $ip + '<br/><label>UserId:</label>' + one_log.userId + '<br/><label>Platform:</label>' + $platform + '</div>\n\
+                        <div class="res_request_time">' + $requestTime + '<br/>' + $action + '<br/>' + $type + '<br/>From: ' + one_log.responseData + '</div>\n\
                         <div class="res_request" style="width:77%;"><pre><div class="buttons_hover"><button onclick="copyJson(this, true)"  class="btn btn-default">Copy</button><button onclick="validateJson(this, true)"  class="btn btn-default ml-1">Validator</button></div>' + syntaxHighlight(one_log.requestData) + '</pre><pre>' + $cookies + '</pre></div>\n\
                         </div>')
 
 			} else {
 				$log_append = $('<div class="one_log" data-id="' + one_log.id + '" >\n\
-                        <div class="res_ip"><button onclick="expandRow(this)" class="exp_button btn btn-default">Expand</button><label>IP:</label>' + $GLOBALS['API_LOGS']['IP'] + '<br/><label>UserId:</label>' + one_log.userId + '<br/><label>Platform:</label>' + $platform + '</div>\n\
-                        <div class="res_request_time">' + $GLOBALS['API_LOGS']['REQUEST']Time + '<br/>' + $action + '<br/>' + $type + '</div>\n\
+                        <div class="res_ip"><button onclick="expandRow(this)" class="exp_button btn btn-default">Expand</button><label>IP:</label>' + $ip + '<br/><label>UserId:</label>' + one_log.userId + '<br/><label>Platform:</label>' + $platform + '</div>\n\
+                        <div class="res_request_time">' + $requestTime + '<br/>' + $action + '<br/>' + $type + '</div>\n\
                         <div class="res_request"><pre><div class="buttons_hover"><button onclick="copyJson(this, true)" class="btn btn-default">Copy</button><button onclick="validateJson(this, true)" class="btn btn-default ml-1">Validator</button></div>' + syntaxHighlight(one_log.requestData) + '</pre><pre>' + $cookies + '</pre></div>\n\
                         <div class="res_response_time">' + $responseTime + '</div>\n\
                         <div class="res_response" onclick=""><pre><div class="buttons_hover"><button onclick="copyJson(this)" class="btn btn-default">Copy</button><button onclick="validateJson(this)" class="btn btn-default ml-1">Validator</button></div>' + syntaxHighlight(one_log.responseData) + '</pre></div>\n\

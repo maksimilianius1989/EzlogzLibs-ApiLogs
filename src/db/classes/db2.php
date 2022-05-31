@@ -1,5 +1,9 @@
 <?php
 
+namespace Ezlogz\ApiLogs\db\classes;
+
+use ReflectionClass;
+
 ini_set('memory_limit', '556M');
 
 class databaseControllerNew

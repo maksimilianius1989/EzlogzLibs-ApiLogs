@@ -14,7 +14,7 @@ require_once __DIR__ .  '/../../libs/mongodb/Operation/UpdateOne.php';
 require_once __DIR__ .  '/../../libs/mongodb/Operation/Count.php';
 require_once __DIR__ .  '/../../libs/mongodb/Operation/CountDocuments.php';
 require_once __DIR__ .  '/../../libs/mongodb/Operation/DropCollection.php';
-require_once __DIR__ .  '/../../libs/mongodb/functions.php';
+//require_once __DIR__ .  '/../../libs/mongodb/functions.php';
 require_once __DIR__ .  '/../../libs/mongodb/Model/BSONDocument.php';
 require_once __DIR__ .  '/../../libs/mongodb/Model/BSONArray.php';
 require_once __DIR__ .  '/../../libs/mongodb/Model/CollectionInfo.php';
@@ -35,7 +35,7 @@ try{
 
 	if (isset($client2)) {
         $GLOBALS['API_LOGS']['MONGO_DB']=   $GLOBALS['API_LOGS']['MONGO_DB2'] = $client2->selectDatabase("logs");
-        $GLOBALS['API_LOGS']['MONGO_LOGS_TABLE'] = $GLOBALS['API_LOGS']['MONGO_LOGS_TABLE2'] = $GLOBALS['API_LOGS']['MONGO_DB2']->selectCollection("API_LOGSs_{$GLOBALS['API_LOGS']['REQUEST_DATE']}");
+        $GLOBALS['API_LOGS']['MONGO_LOGS_TABLE'] = $GLOBALS['API_LOGS']['MONGO_LOGS_TABLE2'] = $GLOBALS['API_LOGS']['MONGO_DB2']->selectCollection("api_logs_{$GLOBALS['API_LOGS']['REQUEST_DATE']}");
     }
 }catch(Exception $e){
 	echo $e;

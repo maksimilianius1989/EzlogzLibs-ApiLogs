@@ -107,18 +107,6 @@ function getModelOrder($params) {
     return $orderByText;
 }
 
-function curUserIsEzlogzEmployee() {
-    global $curUser;
-    if (in_array($curUser->position, [TYPE_EMPLOYEE, TYPE_SUPERADMIN, TYPE_EZLOGZ_MANAGER, TYPE_EZLOGZ_RESELLER])) {
-        return true;
-    }
-    return false;
-}
-
-function curUserIsClient() {
-    return !curUserIsEzlogzEmployee();
-}
-
 function getTimeZoneStrFromId($timeZone) {
     if ($timeZone == 1) {
         $tzString = 'America/Chicago';
@@ -201,30 +189,11 @@ function generateSession() {
     return $newSession;
 }
 
-function isDriver($position) {
-    return in_array($position, [TYPE_DRIVER_ELD, TYPE_DRIVER]);
-}
-
 function setTimeZoneTime($timeZone) {
     $tzString = getTimeZoneStrFromId($timeZone);
     date_default_timezone_set($tzString);
 }
 
-function getCurrentProjectName() {
-    $name = PROJECT_INFO['MAIN']['COMPANY_NAME'];
-    if (getCurrentProject() == 'LOGIT') {
-        $name = PROJECT_INFO['LOGIT']['COMPANY_NAME'];
-    }
-    return $name;
-}
-
-function getCurrentProject() {
-    $platform = PROJECT_TYPE;
-    if (isset($_COOKIE['cur_platform']) && $_COOKIE['cur_platform'] == 'logit') {
-        $platform = 'LOGIT';
-    }
-    return $platform;
-}
 
 function getCurrentSupportMail() {
     return EZLOGZ_EMAIL_SUPPORT;

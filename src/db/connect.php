@@ -1,13 +1,20 @@
 <?php
 
-require_once __DIR__ . '/../config.php';
-require_once __DIR__ . '/utils.php';
-require_once __DIR__ . '/classes/db2.php';
-require_once __DIR__ . '/version.php';
-require_once __DIR__ . '/classes/Response.php';
+namespace Ezlogz\ApiLogs\db;
 
 use Ezlogz\ApiLogs\db\classes\Date;
 use Ezlogz\ApiLogs\db\classes\Validator;
+use Ezlogz\ApiLogs\db\classes\Response;
+use Ezlogz\ApiLogs\db\classes\databaseController;
+use Ezlogz\ApiLogs\db\classes\databaseControllerNew;
+
+require_once __DIR__ . '/../config.php';
+require_once __DIR__ . '/utils.php';
+require_once __DIR__ . '/classes/db.php';
+require_once __DIR__ . '/classes/db2.php';
+require_once __DIR__ . '/version.php';
+require_once __DIR__ . '/classes/Response.php';
+require_once __DIR__ . '/classes/Validator.php';
 
 function myErrorHandler($errno, $errstr, $errfile, $errline)
 {
@@ -74,7 +81,7 @@ class Database
         $this->_database = $GLOBALS['API_LOGS']['DB_NAME'];
         
         
-        $this->_connection = new mysqli(
+        $this->_connection = new \mysqli(
             $this->_host,
             $this->_username,
             $this->_password,
@@ -113,6 +120,7 @@ $GLOBALS['API_LOGS']['REQUEST'] = json_decode(file_get_contents('php://input'), 
 
 $data = isset($GLOBALS['API_LOGS']['REQUEST']['data']) ? $GLOBALS['API_LOGS']['REQUEST']['data'] : [];
 
+$GLOBALS['API_LOGS']['DB'] = new databaseController($GLOBALS['API_LOGS']['RESPONSE'], $conn);
 $GLOBALS['API_LOGS']['DB2'] = new databaseControllerNew($GLOBALS['API_LOGS']['RESPONSE'], $conn, $conn_read);
 
 $configs = $GLOBALS['API_LOGS']['DB2']->select('*', 'configs');

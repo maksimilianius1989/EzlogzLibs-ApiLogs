@@ -1,5 +1,7 @@
 <?php
 
+namespace Ezlogz\ApiLogs\db\classes;
+
 if (!function_exists('getallheaders')) {
     function getallheaders()
     {
