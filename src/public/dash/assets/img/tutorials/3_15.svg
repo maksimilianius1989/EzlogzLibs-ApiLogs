@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="Слой_1" viewBox="0 0 194.9 130.7">
+    <style>
+        .st0,.st1{fill-rule:evenodd;clip-rule:evenodd;fill:#f3f4f8}.st1{fill:#e3e7ec}.st2{stroke-linecap:round;stroke-linejoin:round}.st2,.st3,.st4{fill:none;stroke:#c5c9d5;stroke-width:2}.st4{fill-rule:evenodd;clip-rule:evenodd;fill:#fff}.st5{fill:none;stroke:#c4c9d6;stroke-linecap:round;stroke-linejoin:round}.st6{fill-rule:evenodd;clip-rule:evenodd;fill:#fff;stroke:#c5c9d5}.st6,.st7,.st8,.st9{stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}.st7{fill-rule:evenodd;clip-rule:evenodd;stroke:#3498db;stroke-miterlimit:10;fill:#fff}.st8,.st9{fill:none}.st8{stroke-miterlimit:10;stroke:#3498db}.st9{stroke:#c5c9d5}
+    </style>
+    <path d="M98.4 27.9h43.9v22.4H98.4V27.9zM98.9 58.9h43.4V98H98.9V58.9z" class="st0"/>
+    <path d="M49 27.9h39.9v1.5H49v-1.5zM49 34.8h39.9v1.5H49v-1.5zM49 41.7h39.9v1.5H49v-1.5zM49 48.6h39.9v1.5H49v-1.5z" class="st1"/>
+    <path d="M31.9 110.6h131.3M17.2 110.6h7.2" class="st2"/>
+    <path d="M47.7 15.8h95.9c5.9 0 10.8 4.2 10.8 9.3v76.2c0 5.1-4.9 9.3-10.8 9.3H47.7c-5.9 0-10.8-4.2-10.8-9.3V25.1c0-5.1 4.9-9.3 10.8-9.3z" class="st3"/>
+    <path d="M49.5 56h48.8c3 0 5.5 2.5 5.5 5.5v45c0 3-2.5 5.5-5.5 5.5H49.5c-3 0-5.5-2.5-5.5-5.5v-45c0-3 2.5-5.5 5.5-5.5z" class="st4"/>
+    <path d="M95.7 61.5l2.3 2.3M98 61.5l-2.3 2.3" class="st5"/>
+    <g>
+        <path d="M58.4 70.6h30v4.9h-30z" class="st6"/>
+        <circle cx="61.9" cy="73.1" r="5" class="st6"/>
+        <path d="M58.4 83.2h30v4.9h-30z" class="st6"/>
+        <circle cx="85.3" cy="85.6" r="5" class="st7"/>
+        <path d="M58.4 95.8h30v4.9h-30z" class="st6"/>
+        <circle cx="61.9" cy="98.2" r="5" class="st6"/>
+        <path d="M80.4 85.6h-6M72 85.6h-1.2" class="st8"/>
+        <path d="M69.5 73.1h10.9M69.5 98.2h10.9" class="st9"/>
+    </g>
+</svg>

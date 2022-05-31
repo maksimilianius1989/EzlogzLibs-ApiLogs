@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="Слой_1" viewBox="0 0 205 105.3">
+    <style>
+        .st0,.st1{fill-rule:evenodd;clip-rule:evenodd;fill:#e4e7ec}.st1{fill:#f4f5f9}.st2,.st3{stroke-linecap:round;stroke-linejoin:round}.st2{fill:none;stroke:#3498db;stroke-miterlimit:10;stroke-width:2}.st3{stroke-width:1.5}.st3,.st4{fill:#fff;stroke:#3498db;stroke-miterlimit:10}.st4,.st5,.st6{stroke-width:1.5}.st5{stroke:#3498db;stroke-miterlimit:10;fill:none}.st6{fill:#fff;stroke-linecap:round;stroke-linejoin:round}.st6,.st7,.st8{stroke:#c4c9d6}.st7{fill-rule:evenodd;clip-rule:evenodd;fill:#fff;stroke-width:1.5}.st8{fill:none;stroke-width:2}.st9{fill-rule:evenodd;clip-rule:evenodd;fill:#c4c9d6}.st10{fill:none;stroke:#c4c9d6;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}.st11,.st12{fill-rule:evenodd;clip-rule:evenodd;fill:#3498db}.st12{fill:#fff}
+    </style>
+    <path d="M51 88h28v1.4H51V88zM77.4 47.5l1.8 1.8c.2.2.5.2.7 0s.2-.5 0-.7l-1.8-1.8 1.8-1.8c.2-.2.2-.5 0-.7s-.5-.2-.7 0l-1.9 1.9-1.7-1.7c-.2-.2-.5-.2-.7 0s-.2.5 0 .7l1.8 1.8-1.7 1.8c-.2.2-.2.5 0 .7s.5.2.7 0l1.7-2z" class="st0"/>
+    <path d="M103.6 61.2l-33.4 2.6-.1-2.1 33.3-2.6-2-27.6L37.5 36v55.9l67.9-4.8zM101.4 0l2 29.2 64-4.5L165.7 0zM173.2 105.3l-1.5-20.8-64.1 4.5 1.3 16.3zM103.6 31.3l4 55.6 63.8-4.5-4-55.6zM204.9 24.1l-35.2 2.5 4 55.6 31.2-2.2zM173.7 84.3l1.5 21H198c3.9 0 7-3.1 7-7V82.1l-31.3 2.2zM105.6 89.2L37.5 94v11.3h69.4zM169.4 24.6l35.6-2.5v-15c0-3.9-3.1-7-7-7h-30.3l1.7 24.5zM101.4 29.4L99.2 0H44.5c-3.9 0-7 3.1-7 7v26.9l63.9-4.5z" class="st1"/>
+    <g>
+        <circle cx="123.2" cy="53.1" r="31.5" class="st2"/>
+    </g>
+    <g>
+        <path d="M127.2 48.5h3.7l2 4.4h4v6.2h-9.7M112.2 44.8h15v14.4h-15z" class="st3"/>
+        <circle cx="129.2" cy="58.4" r="2.7" class="st4"/>
+        <circle cx="118.2" cy="58.4" r="2.7" class="st4"/>
+    </g>
+    <g>
+        <path d="M175.9 82.9h3.5l2.3 4.4h4v6.2h-9.8M160.9 79.1h15v14.4h-15z" class="st6"/>
+        <circle cx="177.9" cy="92.8" r="2.7" class="st6"/>
+        <circle cx="166.9" cy="92.8" r="2.7" class="st6"/>
+    </g>
+    <g>
+        <path d="M59.2 24.9h-53c-3.1 0-5.5 2.4-5.5 5.5v68.7c0 3.1 2.4 5.5 5.5 5.5h53c3.1 0 5.5-2.4 5.5-5.5V30.4c-.1-3.1-2.7-5.5-5.5-5.5z" class="st7"/>
+        <path d="M17.1 59.3h39.5M17.1 45.5h39.5M17.1 73.1h39.5" class="st8"/>
+        <path d="M9.3 47.1h1.2c.6 0 1.1-.5 1.1-1.1v-1.2c0-.6-.5-1.1-1.1-1.1H9.3c-.6 0-1.1.5-1.1 1.1V46c-.2.6.5 1.1 1.1 1.1zM9.3 61h1.2c.6 0 1.1-.5 1.1-1.1v-1.2c0-.6-.5-1.1-1.1-1.1H9.3c-.6 0-1.1.5-1.1 1.1v1.2c-.2.5.5 1.1 1.1 1.1zM9.3 74.8h1.2c.6 0 1.1-.5 1.1-1.1v-1.2c0-.6-.5-1.1-1.1-1.1H9.3c-.6 0-1.1.5-1.1 1.1v1.2c-.2.5.5 1.1 1.1 1.1z" class="st9"/>
+        <path d="M52.8 32.2l3.8 3.7M56.6 32.2l-3.8 3.7" class="st10"/>
+    </g>
+    <g>
+        <circle cx="49.5" cy="89.7" r="7.2" class="st11"/>
+        <path d="M50 90.1h2.5c.3 0 .5-.2.5-.5s-.2-.5-.5-.5H50v-2.5c0-.3-.2-.5-.5-.5s-.5.2-.5.5v2.6h-2.4c-.3 0-.5.2-.5.5s.2.5.5.5H49v2.5c0 .3.2.5.5.5s.5-.2.5-.5v-2.6z" class="st12"/>
+    </g>
+</svg>
