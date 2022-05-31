@@ -1,0 +1,3 @@
+.modal .modal-dialog, .modal-white .modal-dialog, .modal-bs-basic .modal-dialog {
+    z-index: 1051;
+}

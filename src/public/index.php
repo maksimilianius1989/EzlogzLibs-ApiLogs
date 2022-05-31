@@ -41,6 +41,7 @@ if (empty($GLOBALS['API_LOGS']['USER_ID'])) {
 
 if (empty($user)) {
 	echo '<h1>You have to set session key to session or PHPSESSID cookie and role of admin</h1>';
+	die();
 }
 
 $uri = explode('?', $_SERVER['REQUEST_URI']);
