@@ -9,6 +9,8 @@ if (session_id() == '' && isset($_COOKIE['user'])) {
 require_once __DIR__ . '/config.php';
 require_once __DIR__ . '/db/apiController.php';
 
+use Ezlogz\ApiLogs\LogKeys;
+
 $apiC = new apiController();
 $apis = $apiC->getApis();
 $zzSession = $GLOBALS['API_LOGS']['DB2']->select('s.sessionId', 'users u left join sessions s on s.userId = u.id', "u.email='zz@zz.zz' and s.site = 0", []);
@@ -370,6 +372,9 @@ $uri = explode('?', $_SERVER['REQUEST_URI']);
                                 <option value="32">Background Push</option>
                                 <option value="31">Visible Push</option>
                                 <option value="33">Web Push</option>
+                                <option value="<?php echo LogKeys::SPEED_GAUGE; ?>">SpeedGauge</option>
+                                <option value="<?php echo LogKeys::FLEET_OPS; ?>">FleetOps</option>
+                                <option value="<?php echo LogKeys::EZLOGZ_API; ?>">Ezlogz API</option>
                             </select>
                         </div>
                     </div>

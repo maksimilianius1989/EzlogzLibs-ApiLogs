@@ -27,7 +27,7 @@ class Logs
         $insParams['userId'] = $id ?? $GLOBALS['API_LOGS']['USER_ID'] ?? 0;
         Logs::createLogTable();
         if ($GLOBALS['API_LOGS']['LOCAL_ENV'])
-            $GLOBALS['API_LOGS']['GLOB_LOG_ID'] = $GLOBALS['API_LOGS']['DB2']->insert("`API_LOGSs_{$GLOBALS['API_LOGS']['REQUEST_DATE']}`", $insParams);
+            $GLOBALS['API_LOGS']['GLOB_LOG_ID'] = $GLOBALS['API_LOGS']['DB2']->insert("`api_logs_{$GLOBALS['API_LOGS']['REQUEST_DATE']}`", $insParams);
         $insParams = (object)$insParams;
         if (!$GLOBALS['API_LOGS']['LOCAL_ENV'])
             try {
@@ -61,7 +61,7 @@ class Logs
         $insParams['userId'] = !empty($userData['id']) ? (int)$userData['id'] : 0;
         Logs::createLogTable();
         if ($GLOBALS['API_LOGS']['LOCAL_ENV'])
-            $GLOBALS['API_LOGS']['DB2']->insert("`API_LOGSs_{$GLOBALS['API_LOGS']['REQUEST_DATE']}`", $insParams);
+            $GLOBALS['API_LOGS']['DB2']->insert("`api_logs_{$GLOBALS['API_LOGS']['REQUEST_DATE']}`", $insParams);
         if (!$GLOBALS['API_LOGS']['LOCAL_ENV'])
             try {
                 $GLOBALS['API_LOGS']['MONGO_LOGS_TABLE']->insertOne($insParams);
@@ -91,7 +91,7 @@ class Logs
         $insParams['userId'] = $id;
         Logs::createLogTable();
         if ($GLOBALS['API_LOGS']['LOCAL_ENV'])
-            $GLOBALS['API_LOGS']['GLOB_LOG_ID'] = $GLOBALS['API_LOGS']['DB2']->insert("`API_LOGSs_{$GLOBALS['API_LOGS']['REQUEST_DATE']}`", $insParams);
+            $GLOBALS['API_LOGS']['GLOB_LOG_ID'] = $GLOBALS['API_LOGS']['DB2']->insert("`api_logs_{$GLOBALS['API_LOGS']['REQUEST_DATE']}`", $insParams);
         if (!$GLOBALS['API_LOGS']['LOCAL_ENV'])
             try {
                 $GLOBALS['API_LOGS']['MONGO_LOGS_TABLE']->insertOne($insParams);
@@ -122,7 +122,7 @@ class Logs
         $insParams['userId'] = (int)$userId;
         Logs::createLogTable();
         if ($GLOBALS['API_LOGS']['LOCAL_ENV'])
-            $GLOBALS['API_LOGS']['DB2']->insert("`API_LOGSs_{$GLOBALS['API_LOGS']['REQUEST_DATE']}`", $insParams);
+            $GLOBALS['API_LOGS']['DB2']->insert("`api_logs_{$GLOBALS['API_LOGS']['REQUEST_DATE']}`", $insParams);
         if (!$GLOBALS['API_LOGS']['LOCAL_ENV'])
             try {
                 $GLOBALS['API_LOGS']['MONGO_LOGS_TABLE']->insertOne($insParams);
@@ -139,9 +139,9 @@ class Logs
     private static function createLogTable()
     {
         if ($GLOBALS['API_LOGS']['LOCAL_ENV']) {
-            $check = $GLOBALS['API_LOGS']['DB2']->querySql("SHOW TABLES LIKE 'API_LOGSs_{$GLOBALS['API_LOGS']['REQUEST_DATE']}'");
+            $check = $GLOBALS['API_LOGS']['DB2']->querySql("SHOW TABLES LIKE 'api_logs_{$GLOBALS['API_LOGS']['REQUEST_DATE']}'");
             if (count($check) == 0) {
-                $GLOBALS['API_LOGS']['DB2']->querySql("CREATE TABLE `API_LOGSs_{$GLOBALS['API_LOGS']['REQUEST_DATE']}` (
+                $GLOBALS['API_LOGS']['DB2']->querySql("CREATE TABLE `api_logs_{$GLOBALS['API_LOGS']['REQUEST_DATE']}` (
                         `id` BIGINT(17) NOT NULL AUTO_INCREMENT,
                         `requestDateTime` INT(11) NULL DEFAULT NULL,
                         `responseDateTime` INT(11) NULL DEFAULT NULL,
@@ -165,21 +165,21 @@ class Logs
                     ENGINE=InnoDB;");
                 $GLOBALS['API_LOGS']['REQUEST_DATE_MONTH_AGO'] = strtotime($GLOBALS['API_LOGS']['REQUEST_DATE'] . ' -1 months');
                 $GLOBALS['API_LOGS']['REQUEST_DATE_MONTH_AGO'] = date('Y-m-d', $GLOBALS['API_LOGS']['REQUEST_DATE_MONTH_AGO']);
-                $GLOBALS['API_LOGS']['DB2']->querySql("DROP TABLE `API_LOGSs_{$GLOBALS['API_LOGS']['REQUEST_DATE_MONTH_AGO']}`");
+                $GLOBALS['API_LOGS']['DB2']->querySql("DROP TABLE `api_logs_{$GLOBALS['API_LOGS']['REQUEST_DATE_MONTH_AGO']}`");
             }
         }
         if (!$GLOBALS['API_LOGS']['LOCAL_ENV'])
             try {
                 $existCollection = $GLOBALS['API_LOGS']['MONGO_DB']->listCollections([
                     'filter' => [
-                        'name' => "API_LOGSs_{$GLOBALS['API_LOGS']['REQUEST_DATE']}",
+                        'name' => "api_logs_{$GLOBALS['API_LOGS']['REQUEST_DATE']}",
                     ],
                 ]);
                 if (iterator_count($existCollection) == 0) {
-                    $GLOBALS['API_LOGS']['MONGO_DB']->createCollection("API_LOGSs_{$GLOBALS['API_LOGS']['REQUEST_DATE']}");
+                    $GLOBALS['API_LOGS']['MONGO_DB']->createCollection("api_logs_{$GLOBALS['API_LOGS']['REQUEST_DATE']}");
                     $dropDate = date('Y-m-d', Date::Today() - 100 * 86400);//100 - days to save logs
-                    $GLOBALS['API_LOGS']['MONGO_DB']->dropCollection("API_LOGSs_{$dropDate}");
-                    $GLOBALS['API_LOGS']['MONGO_LOGS_TABLE'] = $GLOBALS['API_LOGS']['MONGO_DB']->selectCollection("API_LOGSs_{$GLOBALS['API_LOGS']['REQUEST_DATE']}");
+                    $GLOBALS['API_LOGS']['MONGO_DB']->dropCollection("api_logs_{$dropDate}");
+                    $GLOBALS['API_LOGS']['MONGO_LOGS_TABLE'] = $GLOBALS['API_LOGS']['MONGO_DB']->selectCollection("api_logs_{$GLOBALS['API_LOGS']['REQUEST_DATE']}");
                     $GLOBALS['API_LOGS']['MONGO_LOGS_TABLE']->createIndexes([
                         ['key' => ['action' => 1]],
                         ['key' => ['userId' => 1]],
@@ -197,7 +197,7 @@ class Logs
     public static function UpdateLogUser($userId)
     {
         if ($GLOBALS['API_LOGS']['LOCAL_ENV'])
-            $GLOBALS['API_LOGS']['DB2']->update("`API_LOGSs_{$GLOBALS['API_LOGS']['REQUEST_DATE']}`", 'userId=?', 'id=?', [$userId, $GLOBALS['API_LOGS']['GLOB_LOG_ID']]);
+            $GLOBALS['API_LOGS']['DB2']->update("`api_logs_{$GLOBALS['API_LOGS']['REQUEST_DATE']}`", 'userId=?', 'id=?', [$userId, $GLOBALS['API_LOGS']['GLOB_LOG_ID']]);
         if (!$GLOBALS['API_LOGS']['LOCAL_ENV'])
             try {
                 $GLOBALS['API_LOGS']['MONGO_LOGS_TABLE']->updateOne(
@@ -218,7 +218,7 @@ class Logs
         $userId = isset($id) && !empty($id) ? $id : 0;
         if ($userId != 0) {
             if ($GLOBALS['API_LOGS']['LOCAL_ENV'])
-                $GLOBALS['API_LOGS']['DB2']->update("`API_LOGSs_{$GLOBALS['API_LOGS']['REQUEST_DATE']}`", 'responseDateTime=?, responseData=?, userId=?', 'id=?', [$responseDateTime, $resp, $userId, $GLOBALS['API_LOGS']['GLOB_LOG_ID']]);
+                $GLOBALS['API_LOGS']['DB2']->update("`api_logs_{$GLOBALS['API_LOGS']['REQUEST_DATE']}`", 'responseDateTime=?, responseData=?, userId=?', 'id=?', [$responseDateTime, $resp, $userId, $GLOBALS['API_LOGS']['GLOB_LOG_ID']]);
             if (!$GLOBALS['API_LOGS']['LOCAL_ENV'])
                 try {
                     $GLOBALS['API_LOGS']['MONGO_LOGS_TABLE']->updateOne(
@@ -233,7 +233,7 @@ class Logs
             
         } else {
             if ($GLOBALS['API_LOGS']['LOCAL_ENV'])
-                $GLOBALS['API_LOGS']['DB2']->update("`API_LOGSs_{$GLOBALS['API_LOGS']['REQUEST_DATE']}`", 'responseDateTime=?, responseData=?', 'id=?', [$responseDateTime, $resp, $GLOBALS['API_LOGS']['GLOB_LOG_ID']]);
+                $GLOBALS['API_LOGS']['DB2']->update("`api_logs_{$GLOBALS['API_LOGS']['REQUEST_DATE']}`", 'responseDateTime=?, responseData=?', 'id=?', [$responseDateTime, $resp, $GLOBALS['API_LOGS']['GLOB_LOG_ID']]);
             if (!$GLOBALS['API_LOGS']['LOCAL_ENV'])
                 try {
                     $GLOBALS['API_LOGS']['MONGO_LOGS_TABLE']->updateOne(
@@ -271,9 +271,9 @@ class Logs
         Logs::createLogTable();
         if ($GLOBALS['API_LOGS']['LOCAL_ENV']) {
             if ($global) {
-                $GLOBALS['API_LOGS']['GLOB_LOG_ID'] = $GLOBALS['API_LOGS']['DB2']->insert("`API_LOGSs_{$GLOBALS['API_LOGS']['REQUEST_DATE']}`", $insParams);
+                $GLOBALS['API_LOGS']['GLOB_LOG_ID'] = $GLOBALS['API_LOGS']['DB2']->insert("`api_logs_{$GLOBALS['API_LOGS']['REQUEST_DATE']}`", $insParams);
             } else {
-                return $GLOBALS['API_LOGS']['DB2']->insert("`API_LOGSs_{$GLOBALS['API_LOGS']['REQUEST_DATE']}`", $insParams);
+                return $GLOBALS['API_LOGS']['DB2']->insert("`api_logs_{$GLOBALS['API_LOGS']['REQUEST_DATE']}`", $insParams);
             }
         }
         $insParams = (object)$insParams;
@@ -300,7 +300,7 @@ class Logs
         $userId = isset($id) && !empty($id) ? $id : 0;
         if ($userId != 0) {
             if ($GLOBALS['API_LOGS']['LOCAL_ENV'])
-                $GLOBALS['API_LOGS']['DB2']->update("`API_LOGSs_{$GLOBALS['API_LOGS']['REQUEST_DATE']}`", 'responseDateTime=?, responseData=?, userId=?', 'id=?', [$responseDateTime, $resp, $userId, $logId]);
+                $GLOBALS['API_LOGS']['DB2']->update("`api_logs_{$GLOBALS['API_LOGS']['REQUEST_DATE']}`", 'responseDateTime=?, responseData=?, userId=?', 'id=?', [$responseDateTime, $resp, $userId, $logId]);
             if (!$GLOBALS['API_LOGS']['LOCAL_ENV'])
                 try {
                     $GLOBALS['API_LOGS']['MONGO_LOGS_TABLE']->updateOne(
@@ -315,7 +315,7 @@ class Logs
             
         } else {
             if ($GLOBALS['API_LOGS']['LOCAL_ENV'])
-                $GLOBALS['API_LOGS']['DB2']->update("`API_LOGSs_{$GLOBALS['API_LOGS']['REQUEST_DATE']}`", 'responseDateTime=?, responseData=?', 'id=?', [$responseDateTime, $resp, $logId]);
+                $GLOBALS['API_LOGS']['DB2']->update("`api_logs_{$GLOBALS['API_LOGS']['REQUEST_DATE']}`", 'responseDateTime=?, responseData=?', 'id=?', [$responseDateTime, $resp, $logId]);
             if (!$GLOBALS['API_LOGS']['LOCAL_ENV'])
                 try {
                     $GLOBALS['API_LOGS']['MONGO_LOGS_TABLE']->updateOne(

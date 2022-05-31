@@ -5,7 +5,6 @@ require_once __DIR__ . '/classes/Date.php';
 
 class apiController
 {
-    
     function apiController()
     {
         $this->conn = connect();
