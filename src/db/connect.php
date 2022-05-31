@@ -1,8 +1,13 @@
 <?php
 
-namespace Ezlogz\ApiLogs\db\classes;
+require_once __DIR__ . '/../config.php';
+require_once __DIR__ . '/utils.php';
+require_once __DIR__ . '/classes/db2.php';
+require_once __DIR__ . '/version.php';
+require_once __DIR__ . '/classes/Response.php';
 
-require_once '../config.php';
+use Ezlogz\ApiLogs\db\classes\Date;
+use Ezlogz\ApiLogs\db\classes\Validator;
 
 function myErrorHandler($errno, $errstr, $errfile, $errline)
 {
@@ -33,28 +38,20 @@ function myErrorHandler($errno, $errstr, $errfile, $errline)
     error_log(sprintf("PHP %s:  %s in %s on line %d", $errors, $errstr, $errfile, $errline));
 }
 
-require_once 'utils.php';
-require_once 'classes/db2.php';
-require_once 'version.php';
-require_once 'classes/Response.php';
-require_once 'classes/Validator.php';
-require_once 'classes/Date.php';
-require_once 'classes/Logs.php';
-
-$requestDate = Date::Today(true, false);
-if (!LOCAL_ENV)
-    require_once $_SERVER['DOCUMENT_ROOT'] . '/db/classes/MongoDb.php';
-$globLogId = 0;
-$globMongoLogId = 0;
+$GLOBALS['API_LOGS']['REQUEST_DATE'] = Date::Today(true, false);
+if (!$GLOBALS['API_LOGS']['LOCAL_ENV'])
+    require_once  __DIR__ . '/classes/MongoDb.php';
+$GLOBALS['API_LOGS']['GLOB_LOG_ID'] = 0;
+$GLOBALS['API_LOGS']['GLOB_MONGO_LOG_ID'] = 0;
 
 class Database
 {
     private $_connection;
     private static $_instance; //The single instance
-    private $_host = $DB_HOST;
-    private $_username = $$DB_USER;
-    private $_password = $DB_PASSWORD;
-    private $_database = $DB_NAME;
+    private $_host;
+    private $_username;
+    private $_password;
+    private $_database;
     
     /*
     Get an instance of the Database
@@ -71,6 +68,12 @@ class Database
     // Constructor
     private function __construct()
     {
+        $this->_host = $GLOBALS['API_LOGS']['DB_HOST'];
+        $this->_username = $GLOBALS['API_LOGS']['DB_USER'];
+        $this->_password = $GLOBALS['API_LOGS']['DB_PASSWORD'];
+        $this->_database = $GLOBALS['API_LOGS']['DB_NAME'];
+        
+        
         $this->_connection = new mysqli(
             $this->_host,
             $this->_username,
@@ -87,11 +90,6 @@ class Database
         $this->_connection->set_charset("utf8mb4");
     }
     
-    // Magic method clone is empty to prevent duplication of connection
-    private function __clone()
-    {
-    }
-    
     // Get mysqli connection
     public function getConnection()
     {
@@ -99,92 +97,25 @@ class Database
     }
 }
 
-class DatabaseRead
-{
-    private $_connection;
-    private static $_instance; //The single instance
-    private $_host = $DB_HOST;
-    private $_username = $$DB_USER;
-    private $_password = $DB_PASSWORD;
-    private $_database = $DB_NAME;
-    
-    /*
-    Get an instance of the Database
-    @return Instance
-    */
-    public static function getInstance()
-    {
-        if (!self::$_instance) { // If no instance then make one
-            self::$_instance = new self();
-        }
-        return self::$_instance;
-    }
-    
-    // Constructor
-    private function __construct()
-    {
-        $this->_connection = new mysqli(
-            $this->_host,
-            $this->_username,
-            $this->_password,
-            $this->_database
-        );
-        
-        // Error handling
-        if (mysqli_connect_error()) {
-            trigger_error("Failed to conencto to MySQL: " . mysqli_connect_error(),
-                E_USER_ERROR);
-        }
-    }
-    
-    // Magic method clone is empty to prevent duplication of connection
-    private function __clone()
-    {
-    }
-    
-    // Get mysqli connection
-    public function getConnection()
-    {
-        return $this->_connection;
-    }
-}
-
-
-//$conn = connect(); 
 $conn = Database::getInstance()->getConnection();
 $conn_read = $conn;
 
-//$conn_read = DatabaseRead::getInstance()->getConnection();
-//$conn = nDB::getInstance();
+$GLOBALS['API_LOGS']['RESPONSE'] = new Response();
 
+$GLOBALS['API_LOGS']['VERSION'] = new Version();
 
-$response = new Response();
-
-$version = new Version();
-//Uncomment to enter maintenance mode
-//$response->setError('201', 'Server on maintenance update, approximately till 5am PST', true);
 if (!$conn) {
-    $response->setError('201');
+    $GLOBALS['API_LOGS']['RESPONSE']->setError('201');
 }
 
-$validator = new Validator($response, $conn);
-$request = json_decode(file_get_contents('php://input'), true);
+$GLOBALS['API_LOGS']['VALIDATOR'] = new Validator($GLOBALS['API_LOGS']['RESPONSE'], $conn);
+$GLOBALS['API_LOGS']['REQUEST'] = json_decode(file_get_contents('php://input'), true);
 
-$data = isset($request['data']) ? $request['data'] : [];
+$data = isset($GLOBALS['API_LOGS']['REQUEST']['data']) ? $GLOBALS['API_LOGS']['REQUEST']['data'] : [];
 
-function connect()
-{
-    $mysqli = new mysqli($DB_HOST, $DB_USER, $DB_PASSWORD, $DB_NAME);
-    
-    
-    return $mysqli;
-}
+$GLOBALS['API_LOGS']['DB2'] = new databaseControllerNew($GLOBALS['API_LOGS']['RESPONSE'], $conn, $conn_read);
 
-$db = new databaseController($response, $conn);
-
-$db2 = new databaseControllerNew($response, $conn, $conn_read);
-
-$configs = $db2->select('*', 'configs');
+$configs = $GLOBALS['API_LOGS']['DB2']->select('*', 'configs');
 foreach ($configs as $config) {
     define($config['key'], $config['value']);
 }

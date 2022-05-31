@@ -23,7 +23,6 @@ class Validator
 	
 	function checkSessionFull($site = false, $params = [])
 	{
-		global $db, $db2, $Gsession;
 		$session = [];
 		$cookieSession = isset($_COOKIE['session']) ? $_COOKIE['session'] : null;
 		$sessionValue = isset($_SERVER['HTTP_SESSION']) ? $_SERVER['HTTP_SESSION'] : $cookieSession;
@@ -33,7 +32,7 @@ class Validator
 		}
 		
 		if (isset($sessionValue))
-			$session = $db2->select('*', '`sessions`', '`sessionId`=?', [$sessionValue]);
+			$session = $GLOBALS['API_LOGS']['DB2']->select('*', '`sessions`', '`sessionId`=?', [$sessionValue]);
 		
 		if (empty($session)) {
 			if ($site) {
@@ -60,15 +59,14 @@ class Validator
 				$this->response->setError('205');
 			}
 		}
-		global $id;
+
 		$id = $session[0]['userId'];
 	}
 	
 	function checkAppSessionFull()
 	{
-		global $db, $db2;
 		if (isset($_COOKIE['PHPSESSID'])) {
-			$session = $db2->select('*', '`sessions`', '`sessionId`=?', [$_COOKIE['PHPSESSID']]);
+			$session = $GLOBALS['API_LOGS']['DB2']->select('*', '`sessions`', '`sessionId`=?', [$_COOKIE['PHPSESSID']]);
 			if (!empty($session)) {
 				return $session[0];
 			}

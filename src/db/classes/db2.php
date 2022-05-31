@@ -12,8 +12,6 @@ class databaseControllerNew
         $this->response = $response;
         $this->conn = $conn;
         $this->conn_read = $conn_read;
-        $this->cache_server = new Memcached();
-        $this->cache_server->addServer(MEMCACHED_HOST, MEMCACHED_PORT);
     }
     
     function getParamType($param)
@@ -64,16 +62,6 @@ class databaseControllerNew
         }
         return ['updateSql' => $updateSql, 'insertParams' => $insertParams, 'params' => $params, 'colsToUpdate' => $colsToUpdate, 'isValid' => $isValid];
     }
-    
-    /*
-     *
-     * $userId = 637;
-      $date = '2018-03-06 00:00:00';
-      $statuses = $dash->db2->querySql('(select * from status where userId = ? and dateTime < ? order by dateTime desc LIMIT 1)
-      UNION
-      (select * from status where userId = ? and dateTime >= ?)', [$userId, $date,$userId, $date]);
-      c($statuses);
-     */
     
     function querySqlLog($sql, $params = false)
     {
@@ -185,9 +173,8 @@ class databaseControllerNew
         }
         if (count($questMarks) != count($params)) {
             l('insert $questMarks ' . count($questMarks) . ' $params ' . count($params));
-            global $request;
-            error_log($request['action']);
-            error_log($request['data']['action']);
+            error_log($GLOBALS['API_LOGS']['REQUEST']['action']);
+            error_log($GLOBALS['API_LOGS']['REQUEST']['data']['action']);
         }
         array_unshift($params, $types);
         foreach ($fields as $key => $field) {
@@ -210,9 +197,8 @@ class databaseControllerNew
             error_log($sql);
             error_log(json_encode($params));
             error_log(mysqli_error($this->conn));
-            global $request;
-            error_log($request['action']);
-            error_log($request['data']['action']);
+            error_log($GLOBALS['API_LOGS']['REQUEST']['action']);
+            error_log($GLOBALS['API_LOGS']['REQUEST']['data']['action']);
         }
         $ref = new ReflectionClass('mysqli_stmt');
         $method = $ref->getMethod("bind_param");
@@ -223,9 +209,8 @@ class databaseControllerNew
             error_log($sql);
             error_log(json_encode($params));
             error_log(mysqli_error($this->conn));
-            global $request;
-            error_log($request['action']);
-            error_log($request['data']['action']);
+            error_log($GLOBALS['API_LOGS']['REQUEST']['action']);
+            error_log($GLOBALS['API_LOGS']['REQUEST']['data']['action']);
         }
         // ini_set('display_errors', 1);
         // ini_set('display_startup_errors', 1);
@@ -287,22 +272,8 @@ class databaseControllerNew
             $from = '`' . preg_replace('/`?\.`?/', '`.`', trim($from, '`')) . '`';
         }
         
-        //  $con_rand = rand(0,1);
-        /*
-         * Connect to API to find which replica to read from
-         */
-//if($this->conn_read==false)
-        //  $this->conn_read = DatabaseRead::getInstance()->getConnection();
-        
-        
-        if (false) {
-            $conn = $this->conn_read;
-            $this->read_replica = true;
-        } else {
-            $conn = $this->conn;
-            $this->read_replica = false;
-        }
-        
+        $conn = $this->conn;
+        $this->read_replica = false;
         
         if (is_array($where)) {
             $this->where($where);
@@ -329,7 +300,6 @@ class databaseControllerNew
             $method->invokeArgs($query, $params);
         }
         if (false === $query) {
-            
             error_log($sql);
             error_log(json_encode($params));
             error_log(mysqli_error($conn));
@@ -342,35 +312,29 @@ class databaseControllerNew
             $paramsk = array();
         }
         
-        
         //l($result);
-        if (false) {
-            return $result;
-        } else {
-            $query->execute();
-            
-            $meta = $query->result_metadata();
-            $params = [];
-            while ($field = $meta->fetch_field()) {
-                $params[] = &$row[$field->name];
-            }
-            call_user_func_array(array($query, 'bind_result'), $params);
-            $result = array();
-            while ($query->fetch()) {
-                $c = array();
-                foreach ($row as $key => $val) {
-                    $c[$key] = $val;
-                }
-                $result[] = $c;
-            }
-            if ($result == null) {
-                $result = [];
-            }
-            $query->close();
-            
-            
-            return $result;
+        $query->execute();
+        
+        $meta = $query->result_metadata();
+        $params = [];
+        while ($field = $meta->fetch_field()) {
+            $params[] = &$row[$field->name];
         }
+        call_user_func_array(array($query, 'bind_result'), $params);
+        $result = array();
+        while ($query->fetch()) {
+            $c = array();
+            foreach ($row as $key => $val) {
+                $c[$key] = $val;
+            }
+            $result[] = $c;
+        }
+        if ($result == null) {
+            $result = [];
+        }
+        $query->close();
+        
+        return $result;
     }
     
     /**
@@ -384,12 +348,14 @@ class databaseControllerNew
     function rowLog($fields, $from, $where = false, $params = false)
     {
         $result = $this->selectLog($fields, $from, $where, $params);
+        
         return isset($result[0]) && !empty($result[0]) ? $result[0] : [];
     }
     
     function row($fields, $from, $where = false, $params = false)
     {
         $result = $this->select($fields, $from, $where, $params);
+        
         return isset($result[0]) && !empty($result[0]) ? $result[0] : [];
     }
     
@@ -405,6 +371,7 @@ class databaseControllerNew
         
         $this->where = $where;
         $this->params = $params;
+        
         return $this;
     }
     
@@ -423,6 +390,7 @@ class databaseControllerNew
             $params[] = $v;
         }
         $whereStr = rtrim($whereStr, ',');
+        
         $this->update($table, $setStr, $whereStr, $params);
     }
     
@@ -508,6 +476,7 @@ class databaseControllerNew
                 error_log(mysqli_error($this->conn));
             }
         }
+        
         return;
     }
     
@@ -524,6 +493,7 @@ class databaseControllerNew
         $query = preg_replace($keys, $paramsDebug, $sql, 1, $count);
         $sql = trim(preg_replace('/\s+/', ' ', $sql));
         l($query);
+        
         return $this->delete($table, $where, $params, $what);
     }
     
@@ -555,6 +525,7 @@ class databaseControllerNew
             }
             $query->execute();
         }
+        
         return;
     }
     
@@ -593,6 +564,7 @@ class databaseControllerNew
         if (isset($result[0]['quantity']) && $result[0]['quantity'] > 0) {
             return $result[0]['quantity'];
         }
+        
         return 0;
     }
     

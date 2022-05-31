@@ -1,0 +1,26 @@
+<?php
+
+return [
+    '/dash/assets/js/controllers/AjaxController.js' => ['uri' => 'all'],
+    '/frontend/assets/js/loginController.js' => ['uri' => 'all'],
+    '/frontend/assets/js/main.js' => ['uri' => 'all'],
+    '/assets/js/main.js' => ['uri' => 'all'],
+    '/frontend/assets/js/home/homeScr.js' => ['uri' => 'all'],
+    '/frontend/assets/js/home/svgxuse.js' => ['uri' => ['/']],
+    '/dash/assets/js/libs/jquery.mask/jquery.mask.js' => ['uri' => 'all'],
+    '/frontend/assets/libs/foundation/js/vendor/what-input.js' => ['uri' => ['/promo/', '/support/', '/faq/', '/terms/', '/privacy/']],
+    '/dash/assets/js/facebooksdk.js' => ['uri' => 'all'],
+    '/dash/assets/js/googlesdk.js' => ['uri' => 'all'],
+    '/frontend/assets/js/lease.js' => ['uri' => ['/lease/']],
+    '/frontend/assets/js/service_agreement.js' => ['uri' => ['/service_agreement/']],
+    '/dash/assets/js/libs/jsencrypt.js' => ['uri' => ['/paylink/']],
+    '/frontend/assets/libs/owl_carousel/dist/owl.carousel.min.js' => ['uri' => 'all'],
+    '/dash/assets/js/classes/simplePaginator.js' => ['uri' => 'all'],
+    '/dash/assets/js/utilities.js' => ['uri' => ['/debug/']],
+    '/frontend/assets/js/eldTransactions.js' => ['uri' => ['/eldTransaction/', '/eldTransactions/']],
+    '/frontend/assets/js/debug.js' => ['uri' => ['/debug/']],
+    '/frontend/assets/libs/rateyo/jquery.rateyo.min.js' => ['uri' => 'all'],
+    '/dash/assets/js/classes/validate.js' => ['uri' => 'all'],
+    '/dash/assets/js/libs/jquery.serialize-object.min.js' => ['uri' => 'all'],
+    '/frontend/assets/js/controllers/surveyFormController.js' => ['uri' => 'all'],
+];

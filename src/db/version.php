@@ -29,27 +29,27 @@ class Version {
     }
     
     public function setJsArray() {
-        $this->jsArray = include $_SERVER['DOCUMENT_ROOT'] . '/config/version/jsFront.php';
+        $this->jsArray = include __DIR__ . '/../config/version/jsFront.php';
     }
     
     public function setJsDashArray() {
-        $this->jsDashArray = include $_SERVER['DOCUMENT_ROOT'] . '/config/version/jsDash.php';
+        $this->jsDashArray = include __DIR__ . '/../config/version/jsDash.php';
     }
     
     public function setJsSocialArray() {
-        $this->jsSocialArray = include $_SERVER['DOCUMENT_ROOT'] . '/config/version/jsSocial.php';
+        $this->jsSocialArray = include __DIR__ . '/../config/version/jsSocial.php';
     }
     
     public function setCssArray() {
-        $this->cssArray = include $_SERVER['DOCUMENT_ROOT'] . '/config/version/cssFront.php'; 
+        $this->cssArray = include __DIR__ . '/../config/version/cssFront.php';
     }
     
     public function setCssDashArray() {
-        $this->cssDashArray = include $_SERVER['DOCUMENT_ROOT'] . '/config/version/cssDash.php'; 
+        $this->cssDashArray = include __DIR__ . '/../config/version/cssDash.php';
     }
     
     public function setCssSocialArray() {
-        $this->cssSocialArray = include $_SERVER['DOCUMENT_ROOT'] . '/config/version/cssSocial.php'; 
+        $this->cssSocialArray = include __DIR__ . '/../config/version/cssSocial.php';
     }
 
     public function getAllJavaScript() {
@@ -150,7 +150,7 @@ class Version {
 
     public static function echoUrl($urlObj, $css = false) {
         $fileUrl = $urlObj;//$urlObj['path'] . $urlObj['name'] . '.' . $urlObj['type'];
-        $cacheSum = sha1(filemtime($_SERVER['DOCUMENT_ROOT'] . $fileUrl));
+        $cacheSum = sha1(filemtime(__DIR__ . $fileUrl));
         if ($css) {
             echo "<link rel=\"stylesheet\" href=\"{$fileUrl}?{$cacheSum}\">";
         } else {

@@ -395,10 +395,10 @@ class Response
                 $this->message = "Upload Error. " . ($name != 'null' ? $name : "");
             }
         }
-        global $globLogId, $globMongoLogId, $db, $db2, $ip, $response, $id;
-        if ($this->app == true || (isset($globLogId) && !empty($globLogId)) || (isset($globMongoLogId) && !empty($globMongoLogId))) {
+        
+        if ($this->app == true || (isset($GLOBALS['API_LOGS']['GLOB_LOG_ID']) && !empty($GLOBALS['API_LOGS']['GLOB_LOG_ID'])) || (isset($GLOBALS['API_LOGS']['GLOB_MONGO_LOG_ID']) && !empty($GLOBALS['API_LOGS']['GLOB_MONGO_LOG_ID']))) {
             $web = $this->app == true ? 0 : 1;
-            $res = json_encode($response);
+            $res = json_encode($GLOBALS['API_LOGS']['RESPONSE']);
             $res = $db->conn->real_escape_string(trim(strip_tags($res)));
             Logs::AddLogResponse($res);
         }
@@ -461,19 +461,9 @@ class Response
     */
 }
 
-function saveXHProf($action)
-{
-    $xhprof_data = xhprof_disable();
-    require_once $_SERVER['DOCUMENT_ROOT'] . "/xhprof/xhprof_lib/utils/xhprof_lib.php";
-    require_once $_SERVER['DOCUMENT_ROOT'] . "/xhprof/xhprof_lib/utils/xhprof_runs.php";
-    $xhprof_runs = new XHProfRuns_Default();
-    $run_id = $xhprof_runs->save_run($xhprof_data, $action);
-}
-
 function done($response)
 {
-    global $db2;
-    $db2->close();
+    $GLOBALS['API_LOGS']['DB2']->close();
     die(json_encode($response));
 }
 

@@ -1,8 +1,8 @@
 <?php
 
 function debug(...$args) {
-    $ip = defined(DEV_IP) ? DEV_IP : '62.216.44.230';
-    if ($_SERVER['REMOTE_ADDR'] == $ip) {
+    $GLOBALS['API_LOGS']['IP'] = defined(DEV_IP) ? DEV_IP : '62.216.44.230';
+    if ($_SERVER['REMOTE_ADDR'] == $GLOBALS['API_LOGS']['IP']) {
         echo '<pre>', var_dump($args), '</pre>';
     }
 }
@@ -51,10 +51,9 @@ function timer($userId = false, $text = '') {
 }
 
 function saveLogsStatistics($action, $platform) {
-    global $db2;
     $beginOfDay = strtotime('midnight', time());
 
-    $db2->querySql("INSERT INTO logs_statistics (`action`, `platform`, `amount`, `date`) "
+    $GLOBALS['API_LOGS']['DB2']->querySql("INSERT INTO logs_statistics (`action`, `platform`, `amount`, `date`) "
             . "VALUES (?, ?, ?, ?) ON DUPLICATE KEY UPDATE amount = amount + 1", [$action, $platform, 1, $beginOfDay]);
 }
 
@@ -191,11 +190,10 @@ function createRandomVal($val, $type = false) {
 }
 
 function generateSession() {
-    global $db2;
     $newSession = false;
     while (!$newSession) {
         $sessionId = 'my' . createRandomVal(10) . createRandomVal(10);
-        $session = $db2->select('*', '`sessions`', 'sessionId=?', [$sessionId]);
+        $session = $GLOBALS['API_LOGS']['DB2']->select('*', '`sessions`', 'sessionId=?', [$sessionId]);
         if (empty($session)) {
             $newSession = $sessionId;
         }
@@ -269,8 +267,7 @@ function getCurrentProjectAppLink() {
 }
 
 function getTypeById($type, $id) {
-    global $db2;
-    $type = $db2->row('name', $type, '`id`=?', [$id]);
+    $type = $GLOBALS['API_LOGS']['DB2']->row('name', $type, '`id`=?', [$id]);
     $name = empty($type) ? '' : $type['name'];
     return $name;
 }
@@ -352,9 +349,9 @@ function getIp() {
     foreach ($keys as $key) {
         if (!empty($_SERVER[$key])) {
 			$serKey = explode(',', $_SERVER[$key]);
-            $ip = trim(end($serKey));
-            if (filter_var($ip, FILTER_VALIDATE_IP)) {
-                return $ip;
+            $GLOBALS['API_LOGS']['IP'] = trim(end($serKey));
+            if (filter_var($GLOBALS['API_LOGS']['IP'], FILTER_VALIDATE_IP)) {
+                return $GLOBALS['API_LOGS']['IP'];
             }
         }
     }
