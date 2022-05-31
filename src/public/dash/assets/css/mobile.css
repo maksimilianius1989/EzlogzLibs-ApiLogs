@@ -1,0 +1,1374 @@
+@media (max-width: 1199px) {
+	.modal_card .switch_body .info_box{
+		width: 33.333%;
+	}
+    .video #pg_pagin {
+		margin-top: 10px;
+	}
+    #not_statusesTypes {
+		margin-right: 0px;
+	}
+	#not_statusesTypes input {
+		width: 140px;
+	}
+	#searchBox .spaContentHeader.pg_pagin {
+		margin-left: 0px;
+	}
+    .search-block label {
+        margin-left: 0;
+    }
+    .map-place {
+        height: 500px;
+    }
+    .fin-round-icon {
+        width: 66px;
+        height: 66px;
+    }
+    .row-tariffs > [class*=col-] .item {
+        min-height: 140px;
+    }
+}
+@media (min-width: 992px) {
+    .dash_nav {
+        display: block !important
+    }
+    .logbookDiv #log_info.new_design .field.w60,
+	.logbookDiv #log_info.new_design .field.w40 {
+		border-left: 0px;
+		width: 100%;
+	}
+}
+@media (max-width: 991px) {
+    .payment-systems .payment-content .payment-text span{
+        display: block;
+        text-align: center;
+        margin:  auto;
+        padding-left: 0;
+    }
+    .modal_card_table .score_box{
+        height: 248px !important;
+        width: 100%;
+        display: block;
+        float: none;
+    }
+    #acc_settings.acc_settings_empoloyee {
+		width: 100%;
+		max-width: 500px;
+	}
+	#acc_settings .one_row input, #acc_settings .one_row select, .one_row > .one_row input, .one_row > .one_row select {
+		width: 200px;
+	}
+    #supportChatList {
+		left: 5px;
+	}
+	body.menu_bg #supportChatList {
+		transition: opacity 500ms ease-out, display 1s ease-out; 
+		opacity: 0;
+		display: none;
+	}
+    #nav_dis_con.new .nav_dis li:first-child a {
+		margin-left: 25px;
+	}
+    .modal_card .switch_body .info_box{
+            width: 50%;
+    }
+    #gifBox img {
+        margin-left: -25px;
+    }
+	.row-finance.row-flex {
+        display: block;
+    }
+    .payment_tab {
+        display: block;
+        width: 100%;
+        margin: 0;
+        text-align: center;
+    }
+    .payment_tab + .payment_tab {
+        margin-top: 5px;
+    }
+    .row-finance .block-finance {
+        min-height: 50px;
+    }
+	#toggleMobileMenu {
+        display: inline-block;
+        padding-left: 15px;
+        padding-top: 14px;
+        cursor: pointer;
+    }
+    a.dashlogo {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+    .dash_nav {
+        display: none;
+        z-index: 999;
+        width: 250px;
+        height: auto;
+        text-align: center;
+        border-bottom: 1px solid #ccc;
+    }
+    .dash_nav .dash_nav_logo {
+        display: none;
+    }
+	section.content {
+        left: 0;
+        width: 100% !important;
+        padding-left: 4px;
+        padding-right: 4px;
+		overflow-x: hidden;
+    }
+    #gifBox {
+        left: 0;
+        width: 100%;
+    }
+
+    #nav_dis_con{
+        display: block;
+        overflow: auto;
+        width: 100%;
+        padding-bottom: 2px;
+    }
+    a.dashlogo {
+        top: 0;
+        left: 48px;
+        right: auto;
+    }
+    .dash_nav {
+        top: 60px;
+		text-align: left;
+		background: none;
+	}
+	#menu_bg {
+		position: absolute;
+		z-index: 998;
+		width: 100%;
+		top: 0px;
+		left: 0px;
+		background: rgba(0, 0, 0, 0.3);
+		height: 100%;
+	}
+	.nav_scroll_container {
+            height: 100%;
+		max-width: 250px;
+		background: #fff;
+		border-bottom: 1px solid #ebebeb;
+	}
+    .fin-round-icon {
+        width: 86px;
+        height: 86px;
+    }
+    /* ezchat */
+	#section_1.ezchat  .left_sec{width: 100%;}
+	#section_1.ezchat  .right_sec{height: calc(100% - 105px);right: 0;position: fixed;z-index: 9; }
+	.ezchat .create_group_box{right: 30px;}
+	.ezchat #mob_toggle{
+		display:inline-block;
+		width: 30px;
+		height: 50px; 
+		position: fixed;
+		right: 0px; 
+		border: 2px solid #dde4ea;
+		top: 62px;
+		border-top-left-radius: 10px;
+		border-bottom-left-radius: 10px;
+		cursor: pointer;
+		background:white;
+	}
+	.ezchat .right_sec.display #mob_toggle{
+		right: 231px; 
+		transition: all .3s ease;
+	}
+	.ezchat #mob_toggle i{
+		color: #ccc;
+		font-size: 28px;
+		top: 8px;
+		left: 7px;
+	}
+	.ezchat .right_sec.display #mob_toggle i {
+		left: 10px;
+	}
+	#section_1.ezchat  .right_sec{
+		width: 232px;
+		right: -232px;
+		transition: all .3s ease;
+		top:60px;
+	}
+	.ezchat #main_image_holder,
+	.ezchat #main_chat_image_holder {
+		width: 232px;
+		height: 232px;
+	}
+    #section_1.ezchat  .right_sec.display{right: 0; overflow-y: auto;}
+	.ezchat #chat_box h3 .name{
+		text-overflow: ellipsis;
+		max-width: 162px;
+		overflow: hidden;
+		display: inline-block;
+		height: 32px;
+		white-space: nowrap;
+	}
+	.ezchat #roomParticipantsBox {left: -80px;}
+	.ezchat .chat_one_msg.to{    width: calc(100% - 59px);}
+	.ezchat .undeployedImg, .ezchat .undeployedVideo{    max-width: 100%;}
+	.ezchat .msg_box audio{min-width: 190px;}
+	.ezchat #mapBlock, 
+	.ezchat #sendLocBlock{
+		left: 3%;
+		width: 90%;
+		max-width: 500px;
+	} 
+	.ezchat #googleMapButtons{margin-left: 9px;}
+	/* ezchat */
+
+    .row-tariffs.row-eq {
+        display: block;
+    }
+    .row-tariffs .col-eq {
+        flex: unset;
+    }
+    .row-tariffs > [class*=col-] {
+        margin-left: 0;
+        margin-right: 0;
+        min-height: 100px;
+        margin-bottom: 10px;
+    }
+    .row-tariffs > [class*=col-],
+    .row-tariffs > [class*=col-]:first-child,
+    .row-tariffs > [class*=col-]:last-child {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .row-tariffs > [class*=col-] .item {
+        min-height: 110px;
+    }
+    .modal-order .modal-body .col-left,
+    .modal-order .modal-body .col-right {
+        height: auto;
+        overflow-y:auto;
+        border-bottom-left-radius: 0;
+    }
+}
+@media (max-width: 767px) {
+    .dvir-filter select,
+    .dvir-filter #datepicker {
+		width: calc(100% - 55px); 
+		margin-right: 0px;
+	}
+    #docs_sec .pg_pagin {
+		float: left;
+	}
+	#score_card_map  #locationHistorySearchDate {width: 100%;}
+    .signature_div .field {
+		width: 100%;
+	}
+    #not_statusesTypes input {
+		width: 100%; 
+	}
+    .switch_body .check_buttons_block.logbook_type,
+	.switch_body #log_s {
+		margin-top: 10px;
+		margin-left: 0px;
+	}
+	#support_comment{
+		max-height: 200px;
+	}
+	.switch_body .check_buttons_block.logbook_type{
+		right: 0px;
+	}
+	.switch_body #log_s {
+		right: 20px;
+		margin-left: 30px; 
+	}
+	.modal_card_table .form-group:nth-child(odd){ order: 1;}
+	.modal_card_table .form-group:nth-child(even){order: 2;}
+	.modal_card_table .form-group.password{order: 3;}
+	.modal_card .switch_body .info_box{
+		width: 100%;
+	}
+	.section-panel.logsDvirs input.hasDatepicker, 
+	.section-panel.logsHistory input.hasDatepicker { max-width: none! important; }
+	#suggest_box .check_buttons_block,
+	#suggest_box_old .check_buttons_block {
+		width: 100%!important;
+	}
+	#admin_filters {padding-left: 0px!important;}
+	#graph {width: 1000px!important;}
+	#admin_filters + svg {
+		padding: 0px !important;
+	}
+	.carrier-info {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+	.row-eq {
+        display: block;
+    }
+    .col-eq {
+        flex: unset;
+    }
+	.row-finance-head > [class*=col-] {
+        border-left: none;
+        border-top: 1px solid #DFE3E6;
+        padding: 10px;
+        text-align: center;
+    }
+    .depositDate {
+        text-align: left;
+    }
+	.payment-systems .payment-logo {
+        margin: 0 auto;
+        max-width: 160px;
+    }
+    .payment_info_box .form-group {
+        text-align: left;
+    }
+    .hide_mobile {
+        display: none!important
+    }
+    .mobile_table {
+        min-width: 900px;
+    }
+    #search_block #search_text {
+        margin-left: 0;
+    }
+    #user_nav {
+        padding-left: 15px;
+    }
+    #dash_head #dashHeaderUserName {
+        display: none;
+    }
+    .mob_margin_top_10 {
+        margin-top: 10px!important;
+    }
+    .mob_margin_top_15{
+        margin-top: 15px!important;
+    }
+    #logo {
+        display: none;
+    }
+    #logo_mob {
+        width: 55px;
+        margin-top: 2px;
+    }
+    .show_mob {
+        display: block;
+    }
+    label[for=radio_truck_name] {
+        margin-top: 15px;
+    }
+    #search_block label[for=radio_truck_name] input {
+        margin-left: 0px;
+    }
+    .content #trucksLocationsWrapBox, .content #driversLocationsWrapBox {
+        width: 100%;
+    }
+    .ez_button.add,
+	.btn.btn-default.add {
+        margin-left: 0;
+        width: 34px;
+        margin-right: 0;
+        margin-top: 8px;
+    }
+    .spaContentHeaderTitleBox {
+        display: block;
+    }
+    .spaContentHeaderAdditionalyBox, .spaContentHeader #pg_pagin, .spaContentHeaderAdditionalyPaginationBox #pg_displayBox, .spaContentHeaderAdditionalyBox .spaContentHeaderAdditionalyDownloadBox {
+        float: none
+    }
+    .spaContentHeaderAdditionalyPaginationBox #pg_pagin {position: relative;}
+    .spaContentHeaderAdditionalyPaginationBox #pg_displayResultBox {height: 35px;}
+    .spaContentHeaderAdditionalyPaginationBox #pg_displayBox {
+            position: absolute; 
+            top: 0px;
+            right: 0px;
+    }
+    .spaContentHeaderAdditionalyBox .spaContentHeaderAdditionalyDownloadBox button {
+        margin-left: 0;
+        float: none;
+    }
+    #search_blockSearchBox {
+        text-align: right;
+    }
+    .driver_log_search .dateFromButton, .driver_log_search .dateTillButton,
+    #search_blockSearchBox .dateFromButton, #search_blockSearchBox .dateTillButton {
+        position: absolute;
+        right: 6px;
+        top: 10px !important;
+    }
+    .spaContentHeader ~ #hs_nav #search_block {
+        padding: 20px 0px 10px 0px;
+    }
+    #log_box .left, #log_box .right {
+        width: 100%;
+    }
+    #log_book {
+        padding: 0;
+    }
+    .fluide .f_name {
+        width: 25%;
+    }
+    .dvirTruckSelectBox {
+        text-align: left
+    }
+    #section_1 .left {
+        width: auto;
+    }
+    .fleet_row, .fleet_row.sh {
+        width: 100%;
+    }
+    .fleet_row.sh {
+        border-right: none;
+        margin-right: 0;
+    }
+    .fleet_row.sh .lab, .lab {
+        width: 35%;
+        vertical-align: top;
+    }
+    .fleet_row.sh .te {
+        width: 61%;
+    }
+    #section_1.fleet_sec {
+        padding-bottom: 40px;
+    }
+    .fleet_subnav {
+        left: 0;
+        top: 189px;
+    }
+    .popup_box_panel .info_box {
+        width: 100%;
+    }
+    #manage_trucks .dvnld {
+        position: absolute;
+        top: 10px;
+        right: 6px;
+    }
+    #add_trailer .box_body .right, #add_truck .box_body .left, #add_truck .box_body .right {
+        width: 100%;
+        padding-right: 0px;
+    }
+    #eld_order_form .one_cable p {
+        display: none
+    }
+    #eld_order_form #eld_notes {
+        position: relative;
+        top: 17px;
+        margin-bottom: 15px;
+    }
+    /*driver*/
+    .dateTillText {
+        margin-left: 0;
+        width: 61px;
+        display: inline-block;
+    }
+    #search_block .drivers_log_pdf, #search_block .drivers_dvir_pdf {
+        float: none;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+	/* Site Management */
+	#suggest_box input, 
+	#suggest_box_old input,
+	#suggest_box select, 
+	#suggest_box_old select {
+		width: 100%!important;
+	}
+	#suggest_box  .scroll-wrapper, #suggest_box_old .scroll-wrapper {
+		height: 100%!important;
+	}
+	#suggest_box  .scrollbar-macosx, #suggest_box_old .scrollbar-macosx{
+		max-height: calc(100% - 30px)!important;
+		max-height: -webkit-calc(100% - 30px)!important;
+		max-height: -moz-calc(100% - 30px)!important;
+	}
+	#suggest_box .close_additional {
+		display: none;
+	} 
+	#suggest_box_old .close_additional {
+		right: 0px!important;
+	}
+	#suggest_box .no {
+		float: none;
+		display: block;
+		width: 100%;
+	}
+	/* Site Management */
+	.modal_card_table #fleetCurrentDueInfo{
+		width:100%;
+		display: block;
+	}
+    #update_employee_payment input,
+	#update_employee_payment select {
+		width: 100%;
+	}
+	#new_employee.modal  .modal-body,
+	#update_employee.modal  .modal-body{
+		padding-top: 0px;
+		padding-bottom: 0px;
+	}
+	#newEmployeeBox.modal .form-group ,
+	#update_employee.modal .form-group {
+		margin-bottom: 10px;
+	}
+	.right, .left {
+		width: 100%;
+	}
+	.body-panel-header.fixed-top {
+		margin-right: -4px;
+	}
+    #agroForm input{ 
+        width: calc(100% - 10px);
+        width: -webkit-calc(100% - 10px);
+        width: -moz-calc(100% - 10px); 
+        margin-right: 0px;
+    }
+    button.scanner-button.support-comment {
+		float: none;
+	}
+	#scannerModal .scanner-button {
+		width: 49%;
+		margin: 0px 0px 7px 0px;
+		margin-right: 2%;
+	}
+	#scannerModal .scanner-button:nth-child(2n){
+		margin-right: 0%;
+	}
+	.email_hint{
+		text-align:left;
+		padding:0px 15px;
+	}
+	.search_result_no_overflow {
+		height: calc(100% - 75px);
+		height: -webkit-calc(100% - 75px);
+		height: -moz-calc(100% - 75px);
+	}
+	#search_fleet_users .modal-dialog {
+		height: 100%;
+	}
+	.modal .modal-content .modal-body .modal-drop-panel {
+		width: 100%;
+		max-height:100%;
+		min-height: 200px;
+	}
+	button.update_delivery_info { margin-top: 2px;}
+	#manage_eld h2.subhead { margin-left: -20px;}
+	#scannerModal .btn-group button{
+		width: 49.5%;
+		margin-bottom:5px;
+		border-radius: 3px;
+		margin-left: 0px;
+	}
+	#scannerModal .btn-group button:nth-child(2n){
+		margin-left: 1%;
+	}
+	.dvir-filter  .dvirTitleSpace, .dvir-filter  .dvirDriverTitle {
+		width: 50px;
+		margin-right: 0px;
+		display: inline-block;
+	}
+	.dvir-filter select, .dvir-filter input, .dvir-filter  #datepicker{
+		width: calc(100% - 55px);
+		width: -webkit-calc(100% - 55px);
+		width: -moz-calc(100% - 55px);
+		display: inline-block;
+		margin-left: 0px;
+	}
+	#reports #filter select{ width: 100%;}
+	.subhead.video .right-addon,
+	.subhead.video #videoDatepicker {width: 100%;}
+    .btn.btn-default.create_ticket,
+	.ez_button.create_ticket {
+		top: 10px;
+		right: 0px; 
+		margin-right: 0px;
+	}
+	#eld_order_form .eqSave.save_edit {margin-top: 10px;}
+	#nactive_drivers .dvnld  { top: 10px;}
+	#search_block button {float: none!important;}
+	#pg_displayResultBox {width: 100%;}
+	.show_mob {
+        display: block;
+		width: 100%;
+		line-height: 0px;
+    }
+	#nav_dis_con {
+		white-space: nowrap;
+		overflow-x: auto;
+		overflow-y: visible;
+		-webkit-overflow-scrolling: touch;
+		-ms-overflow-style: -ms-autohiding-scrollbar;
+		padding-bottom: 10px;
+		z-index: 0;
+		margin-bottom: -10px;
+	}
+
+	.scroll::-webkit-scrollbar { display: none; }
+	#section_1.fleet_sec {  padding-bottom: 0px;}
+	.body-panel-header {border: 0;}
+	.fleet_subnav {position: relative; top: 0px;}
+	.fleet_subnav select {margin-bottom: 10px; margin-left: 10px;}
+	#search_block.fleetMapSearch {
+		height: auto!important; 
+		padding-top: 20px!important;
+		padding-right: 20px;
+	}
+	#locationHistorySearchBox .locationHistorySearchOneSelect select, 
+	#locationHistorySearchBox .locationHistorySearchOneSelect input {width: 160px; }
+	#poiWrapBox { padding-top: 10px!important; }
+	#fleetDtiversStatusesBox {
+		width: 100%
+	}
+	#fleetDtiversStatuses, select#driverOrTruck {
+		width: 100%;
+		margin-left: 0px!important;
+	}
+	.showAsList {margin-right: 0px!important; }
+	#search_block.fleetMapSearch input[name="search_text"] {width: 100%!important;}
+	#searchBox .form-inline {
+		width: calc(100% - 10px);
+		width: -webkit-calc(100% - 10px);
+		width: -moz-calc(100% - 10px);
+		padding: 10px;
+		padding-bottom: 0px;
+	}
+    #searchBox.drivers-search .form-inline {
+		padding: 0px;
+		width: 100%;
+	}
+	.dateFromText , .dateTillText  {display: inline-block;}
+	.dateFromText  {width: 35px;}
+	.dateTillText  {margin-left: 2%; width: 25px; }
+	.dvirsBox #search_blockSearchBox,
+	.dvirsBox .field.date input,
+	.driver_log_search .field.date input,
+	#search_blockInputBox,
+	#drivers_type,
+	#search_block #search_blockInputBox .field.name, 
+	#search_block #search_blockInputBox .field.name input {
+		width: 100%;
+	}
+	.section-panel.logsHistory #search_blockInputBox {margin-left: 0px;}
+	.dvirsBox #search_blockSearchBox {text-align: left!important;}
+	#search_blockSearchBox .field.date, .driver_log_search .field.date{ 
+		width: calc(49% - 35px);
+		width: -webkit-calc(49% - 35px);
+		width: -moz-calc(49% - 35px);
+		display: inline-block;
+		padding: 0px;
+	}
+	.dvirsBox #search_blockSearchBox .dateFromText , 
+	.dvirsBox #search_blockSearchBox  .dateTillText  { width: 35px; margin: 0%;}
+	.dvirsBox #search_blockSearchBox  .dateTillText  { padding-left: 15px;}
+	.dvirsBox #search_blockSearchBox .field.date {
+		width: calc(100% - 45px);
+		width: -webkit-calc(100% - 45px);
+		width: -moz-calc(100% - 45px);
+	}
+        #reports #save_pdf {
+		margin-right: 0px;
+	}
+	#reports .rep_label { 
+		width: 100%; 
+	}
+	#reports  #doc_select,
+	#reports  #select_eq, 
+	#reports  #truck_select, 
+	#reports  #trailer_select {
+		width: 100%;
+	}
+	#reports .rep_filter {
+		margin-right: 0px!important;
+		width: 100%;
+	}
+	#reports .field.date input,
+	#search_block #search_blockSearchBox .field.date input {
+		width: 100%;
+	}
+	#search_blockSearchBox {float: none; text-align: left; width: 100%;}
+	#searchedElementsBox {
+		width: calc(100% - 40px)!important;
+		width: -webkit-calc(100% - 40px)!important;
+		width: -moz-calc(100% - 40px)!important;
+		top: 54px!important;
+	}
+	.modal-dialog {
+		max-height: calc(100% - 20px);
+		max-height: -webkit-calc(100% - 20px);
+		max-height: -moz-calc(100% - 20px);
+		overflow-y: auto;
+	}
+    #search_fleet_users .modal-dialog {
+		width: 300px;
+		margin: 30px auto;
+	}
+	.spaContentHeader {
+		padding: 0px 10px; 
+		margin-left: 0px!important;
+		margin-right: 0px!important;
+	}
+	#pg_pagin {float: left; position: relative; top: 0px; right: 0px; }
+	#dash_sub_head {padding: 20px 20px 10px 20px}
+	#reports {padding: 10px 20px}
+	.popup_box_panel {max-width: 90%; margin-top: 20px;}
+	#attachments_modal .popup_box_panel {max-width: 100%;}
+	.driver-panel #chat_box {height: 200px!important; margin-bottom: 20px;}
+	.driver-panel #chat_el {height: 100%!important;}
+	.driver-panel #chat_el #chat_msgs { max-height: 150px;}
+	.container-fluid>.container-fluid {padding: 0px;}
+	.wrapper .container-fluid>.row-eq {margin-left: -15px; margin-right: -15px;}
+	#search_block.driver_log_search{padding-top: 0; }
+    .calendar_info  {position: relative!important; top: 10px!important; right: 0px; left: 10px;}
+	#one_dispatch_box.one_part_box, #one_equip_box.one_part_box {
+		min-height: auto;
+	}
+	 #one_doc_box .info_box, .popup_box_panel .info_box{
+		width: 100%!important;
+		margin: 8px 0px;
+    }
+	#add_user_box .invite, #manage_users .invite {margin-left: 35px;}
+	.look_eq_his_table , .eqSave  {float:right; margin-bottom: 10px;}
+	#one_equip_box .info_box_result {
+		width: calc(100% - 16px)!important;
+		width: -webkit-calc(100% - 16px)!important;
+		width: -moz-calc(100% - 16px)!important;
+		margin: 3px 8px!important;
+	}
+	#one_driver_box .oneDr.save_edit {left: -10px;}
+	.documents-page #search_block #search_text, 
+	.documents-page #search_block select, #search_block #doc_type,  
+	.documents-page #search_block .field.date {
+		width: 48%!important;
+		margin-left: 0px!important;
+		margin-right: 0px!important;
+		display: inline-block;
+	} 
+	.documents-page #search_block .field.date { 
+		padding: 0px;
+		border: none;
+	}
+	.documents-page #search_block {padding: 0px;}
+	.documents-page #search_block .field.date input { width: 100%; top: 0px!important;}
+	.documents-page #search_block .field.date i {position: absolute; top: 10px!important; right: 8px;}
+	#search_block #doc_type, 
+	.documents-page #search_block  #driverOrTruck {
+		float: right;
+	}
+	.documents-page.driver  #search_block  #search_text {
+		width:100%!important;
+	} 
+	.spaContentHeader ~ #hs_nav #search_block {height: auto;}
+	#eld_order_form .popup_box_panel > .row {
+		margin-left: -15px!important;
+		margin-right: -15px!important;
+	}
+	#order_type_box .order_type_one_box  h2{
+		max-width: 100px; 
+		margin: 0 auto; 
+		margin-top: 20px; 
+		margin-bottom:10px;
+	}
+	.buy_now_box button.agreement{
+		width: auto; 
+		padding: 0px 20px; 
+		display: inline-block;
+	}
+	.fast_move:not(.up) {
+		top: 100px;
+	}
+	.fast_move.up {
+		bottom: 120px;
+	}
+    button.btn.btn-default.showAsList,
+	button.ez_button.showAsList {margin-top: 15px; margin-left: 0px;}
+	#one_driver_box {min-height: 100%;}
+	#users_table .last button { 
+		margin-top: 5px; 
+		width: 170px;
+	}
+	#users_table .last button:nth-child(1) {margin-top: 0px;}
+	#foot_nav { 
+		display: none; 
+		width: 100%;
+		bottom: 45px;
+		height: auto;
+		position: absolute;
+		background: #fff;
+		left: 0px;
+		box-shadow: 0px -1px 2px 0px rgba(76, 76, 76, 0.09);
+                z-index: 1;
+	}
+	#foot_nav a{
+		display: block; 
+		border-bottom: solid 1px #ddd;
+		font-size: 16px;
+		margin-left: 20px;
+		margin-right: 20px;
+	}
+	#toggleFooterMobileMenu {
+		display: block; 
+		float: right;
+		margin-top: 10px;
+		cursor: pointer;
+	}
+	.dash_footer {
+		box-shadow: 0px -1px 2px 0px rgba(76, 76, 76, 0.09);
+	}
+    .simplePaginator {
+        clear: both;
+    }
+    .pagin_buttons{
+        padding-top: 5px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        clear: both;
+        margin-bottom: 5px;
+		text-align: center;
+		font-size: 0;
+    }
+	.pagin_numbers{
+		vertical-align: middle;
+	}
+	.pagin_leftButtonsBox, .pagin_numbers{
+		float:none;
+	}
+    .cardPaginator.pg_pagin{
+		width: 100%;
+	}
+	.modal_card .modal-body{
+		height: auto;
+		max-height: none;
+		overflow-y: auto;
+	}
+    .modal_card .modal-footer {
+		height: auto;
+		position: relative;
+		max-height: none;
+	}
+	#teams_table button {
+		margin-bottom: 5px;
+		width: 80px;
+	}
+	#create_team_box label {
+		width: 100%;
+	}
+	#create_team_box button {
+		margin-left: 5px;
+		margin-right: 0px;
+	}
+	#create_team_box .membs {
+		width: auto!important;
+	}
+	.get_carriers_list {
+		margin-left: 0;
+		margin-top: 5px;
+	}
+    /* tabs menu dropdown */
+		.dropDownTabs {
+		position: relative;
+		display: inline-block;
+		padding: 6px 10px;
+		border: 1px solid;
+		border-radius: 3px;
+		margin: 0px 20px 10px 20px;
+		width: calc(100% - 40px);
+		width: -webkit-calc(100% - 40px);
+		width: -moz-calc(100% - 40px);
+	}
+	.dropDownTabs:after{
+		/* content: '\25BC'; */
+		content: ' ';
+		position: relative;
+		float:right;
+		background: url(../img/select-arrow-down.svg) right 7px center no-repeat #fff;
+		padding-right: 20px;
+		height: 21px;
+	}
+	.dropDownTabs .select_tab {
+		padding: 10px;
+		position: absolute;
+		text-transform: uppercase;
+		color: #000;
+	}
+	.tableTabButtonsBox {
+		display: none!important;
+		position: absolute;
+		background-color: #f9f9f9;
+		width: inherit;
+		box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	    top: 34px;
+		left: 0;
+		width: 100%;
+		z-index: 1;
+	}
+	.dropDownTabs.active .tableTabButtonsBox {
+		display: block!important;
+		position: absolute;
+		top: 34px;
+	}
+	.tableTabOneButtonBox {
+		display: block;
+		width: 100%;
+	}
+	.tableTabOneButtonBox button {
+		width: 100%;
+	}
+	.modal_card #carrierUsersButtonsBox {
+		border-left: 0;
+		background: #fff;
+		max-height: 140px;
+		overflow-y: auto;
+	}
+	button.activeCarriersTableTab { 
+		background: #f9f9f9;
+	}
+	.table_wrap tr td{
+		word-wrap: break-word;
+	}
+	.all_devices_list td,
+	.table_wrap tr td:first-child {
+		max-width: 200px;
+	}
+	.table_wrap tr td input {
+		max-width: 100%;
+	}
+	#create_user_box input {
+		margin-bottom: 10px;
+		width: 100%;
+	}
+	#create_user_box select {
+		width: 100%;
+	}
+	#create_user_box  button.create_employee {
+		margin: 0px;
+	}
+	#tickets td.date {
+		max-width: 135px;
+	}
+	input.dateFilter  {
+		width: 135px!important;
+	}
+    .modal_card .modal-dialog {
+		height: auto; 
+		background: #fff;
+	}
+    .dvirPagination {text-align: left;}
+    .dvirPagination .pagin_buttons,
+	.dvirPagination .drivers_log_pdf {
+		float: left;
+		margin-right: 10px;
+	}
+    .tickets-support-header { padding-right: 15px;}
+	.modal_card .pupop_box_header .inner_status_color {
+		top: 3px;
+	}
+    .driver_settings_list .info_box.attachments button.btn.btn-default,
+	.driver_settings_list .info_box.attachments button.ez_button {
+		margin: 0px 5px 5px 0px;
+	}
+	#user_info_box #driverInfoMessages {
+		position: absolute;
+		top: 10px;
+	}
+	#user_info_box #driverInfoMessages .alert{
+		padding: 7px;
+	}
+    .map-place {
+        padding: 0 10px 10px 10px;
+        height: 400px;
+    }
+    #multi-step  .modal-dialog {
+		overflow-y: visible;
+	}
+    .modal-order .modal-body .col-right {
+        height: auto;
+    }
+}
+@media (max-width: 500px) {
+    .modal_card .switch_body .info_box .box_row_info.half {
+		width: 100%; 
+		padding: 0px!important; 
+		margin-top: 10px;
+	}
+	.half_control {
+		width: 100%!important;
+		margin-left: 0px!important;
+	}
+        #scannerModal .btn-group button{
+		width: 100%;
+	}
+	#scannerModal .btn-group button:nth-child(2n){
+		margin-left: 0px;
+	}
+	#order_type_box .order_type_one_box  h2{max-width: 100%; }
+	#order_type_box .order_type_one_box { 
+		width: 100%!important; 
+		margin-right: 0px; 
+		padding: 5px 0px!important;
+	}
+	#manage_eld .bulk_actions {
+		height: auto;
+	}
+	.modal-footer.full_mobile_buttons button,
+	#autorizenetModal .modal-footer button, 
+	#recurringModal .modal-footer button{
+		width: 100%!important;
+		margin: 0px!important;
+		margin-bottom: 5px!important;
+	}
+	.employee_info_box,
+	.employee_info_box .one_box,
+	.employee_info_box .one_box input,
+	.employee_info_box .one_box select,
+	.employee_history,
+	.employee_history .one_box,
+	.employee_history .one_box input,
+	.employee_history .one_box select { width: 100%!important;}
+	.only_managers_div {
+		position: relative!important;
+		float: right;
+		right: 20px!important;
+		top: 10px!important;
+	}
+	.schedule_buttons {
+		width: 100%;
+		position: relative!important;
+		margin-top: -5px!important;
+		right: 0px!important;
+	}
+    .modal_card .modal-footer .update_result {
+		left: 0px;
+		position: absolute;
+		top: 4px;
+		right: 0px;
+	}
+	.modal_card .modal-footer .update_result .alert {
+		text-align: left;
+		margin-top: 10px;
+		padding-top: 8px;
+		height: 36px;
+	}
+    #user_info_box .btn.btn-default.oneDr.save_edit,
+	#user_info_box .ez_button.oneDr.save_edit {
+		margin-right: 0px;
+	}
+	#user_info_box .check_buttons_block.modal_switcher {
+		margin-left: 10px!important;
+	}
+    #count_events {
+		margin-bottom: 5px;
+	}
+    #multi-step .nav-tabs {
+		top: 12px;
+		bottom: auto;
+		right: 40px;
+	}
+	#multi-step .modal-footer button {
+		font-size: 16px;
+	}
+    #multi-step .modal-body {
+		border-top: solid 30px #fff;
+		padding-top: 0px;
+	}
+	#multi-step .modal-body > p{
+		margin: 0px;
+	}
+    .stars-block .fa-star, .stars-block .fa-star.check {
+		font-size: 33px;
+		margin: 0px 10px;
+	}
+    .chat_el .chat_el-block .input-message-block .action-icon {
+		margin-right: 10px;
+	}
+	.chat_el .chat_el-block .input-message-block {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	.ezchat .chat_one_msg.to {
+		width: 100%;
+	}
+	.ezchat .chat_one_msg.to .msg_box {
+		max-width: 100%;
+	}
+}
+@media (max-width: 414px) {
+	#reports #filter button {
+		width: 100%;
+		margin-bottom: 5px;
+		text-align: center;
+	}
+	#log_info.new_design .field.w40,
+	#log_info.new_design .field.w60 {
+		width: 100% !important;
+		border-left: 0px!important;
+	}
+	#log_info.new_design .field .f_name {
+		padding-left: 5px!important;
+	}
+	#section_2.driver-panel.section-panel,
+	#section_1 .right_sec {padding: 20px 15px!important;}
+    #section_1.ezchat .right_sec {padding: 0px!important;}
+	#section_1 .right_sec #searchBox .form-inline  {
+		padding: 0px;
+		width: 100%;
+	}
+	#count_events {
+		width: 100%;
+	}
+	#count_events label {
+		max-width: 63px; 
+		padding-left: 5px!important;
+	}
+    .addReview { float: right; }
+	.subhead-badge { 
+		margin-right: 10px;
+	}
+	.subhead-badge + .subhead-badge { 
+		margin-left: 0px;
+		margin-right: 10px;
+	}
+	.map_show #addBtn {
+		margin-left: 0px;
+	}
+    #multi-step .modal-footer button.prev-step, 
+	#multi-step .modal-footer button.next-step {
+		padding: 0px 10px;
+	}
+	.button-triangle {display: none}
+	#multi-step .modal-footer {
+		padding: 10px 18px;
+	}
+}
+@media screen and (orientation:landscape) 
+	and (max-device-width: 667px) 
+	and (-webkit-min-device-pixel-ratio: 2) {
+	.modal-triangle {display: none;}
+	.multi-step-element {z-index: 0;}
+}
+@media (max-width: 360px) {
+    #user_info_box #driverInfoMessages {
+		position: relative;
+		width: 100%;
+	}
+	#user_info_box #driverInfoMessages .alert{
+		margin-bottom: 10px;
+	}
+    #user_info_box .btn.btn-default.oneDr.save_edit,
+	#user_info_box .ez_button.oneDr.save_edit {
+		margin-bottom: 10px;
+		margin-right: 0px;
+	}
+	.carriers_buttons_block {float: none;}
+	#pg_pagin.empty_header {float: left;}
+    .modal_card .control-buttons button{
+		width: 100%!important;
+		margin-left: 0px!important;
+	}
+    .edit_order_buttons_box {
+		margin-left: 0px!important;
+		border-left: none!important;
+	}
+	#task_card #contentBox {
+		height: auto;
+		padding-right: 0px;
+	}
+	#history_box #oneHistoryBox{ 
+		width: 100%;
+	}
+	#day_report_box .dateFromText {
+		width: 40px;
+	}
+	#day_report_box input.reportDay  {
+		width: calc(100% - 50px);
+		width: -webkit-calc(100% - 50px);
+		width: -moz-calc(100% - 50px);
+	}
+	#dayReport #vacation {
+		margin-left: 0;
+	}
+	#day_report_box #timeSpentDayReport {
+		width: 100%;
+	}
+	#day_report_box input.hours,
+	#day_report_box input.minutes{
+		margin-left: 0px;
+		width: 50%!important;
+	}
+	#dayReportInfoBox { 
+		padding: 0px;
+	}
+	#fullReportInfo {margin-bottom: 30px;}
+	#employeesWorkInfoLogbokGraf {
+		padding: 0px 10px 0px 10px!important;
+	}
+	#scannerModal #btnGenerateReplacementDevice,
+	#scannerModal #select_mac {
+		width: 100%!important;
+	}
+	#scannerStatus .label  {
+		display: block;
+		white-space: normal; 
+		padding: .4em .6em .3em;
+		word-break: normal;
+	}
+	.user_working_shedule ul li .days { margin-right: 40px!important;}
+	.attachmentsBox a {margin-bottom: 5px;}
+	.attachmentImg, .attachmentVideo { max-height: none!important; width: 100%; }
+	#scannerModal .modal-footer button { width: 100%; margin-bottom: 5px;}
+	#scannerModal .scanner-button {
+		width: 100%;
+	}
+	div.tickets-support-title{padding: 0px;}
+	#nactive_drivers .subhead { padding-left: 0px;}
+	#dash_head .data p button { padding: 0 15px 0 0; }
+	#user_nav {padding-left: 5px;}
+	#section_1.fleet_sec {padding-bottom: 0px;}
+	#tableTabOneButtonBox button{ padding: 0 15px;}
+	#log_list { min-height: 70px!important;}
+	.statusBoxBorder {
+		width: 105px; 
+		height: 105px;
+	}
+	.driverStatusBox .statusbox {
+		margin-top: 5px;
+		margin-bottom: 5px;
+	}
+	.driverStatusBox .statusbox .availabletoday, 
+	.driverStatusBox .statusbox .availabletomorrow, 
+	.driverStatusBox .statusbox .hoursrestart, 
+	.driverStatusBox .statusbox .hoursworked, 
+	.driverStatusBox .statusbox .workedtoday {
+		margin-top: 10px;
+		padding: 9px;
+	}
+	.draw-signature-block .canvas-block {max-width: 100%;}
+	.draw-signature-button-block .btn.btn-default,
+	.draw-signature-button-block .ez_button {margin: 0px!important;}
+	.draw-signature-block .canvas-block .btn.btn-default,
+	#add_truck .btn.btn-default,
+    .draw-signature-block .canvas-block .ez_button,
+	#add_truck .ez_button {margin: 0px 5px 0px 0px!important;}
+	.popup_box_panel #pg_per_page {width: 35px!important; padding-right: 0px!important; padding-left: 2px!important;}
+	.popup_box_panel #pg_pagin label {margin-left: 2px; margin-right: 2px;}
+	.popup_box_panel .pg_button {width: auto;}
+	.popup_box_panel #pg_right, 
+	.popup_box_panel #pg_left, 
+	.popup_box_panel #pg_left_end, 
+	.popup_box_panel  #pg_right_end {width: 15px!important; font-size: 20px;}  
+	.popup_box_panel #pg_pagin { 
+		max-width: 100%; 
+		overflow: hidden;
+		text-overflow: ellipsis; 
+		white-space: nowrap;
+		position: relative!important;
+		top: 0px!important;
+		line-height: normal;
+		line-height: 35px;
+	}
+	.info_box .box_row label, 
+	.info_box .box_row input, 
+	.info_box .box_row select,
+	.info_box .box_row .check_buttons_block {width: 100%!important; }
+	.info_box.attachments button {width: 65px!important}
+    .info_box .attachment_title {padding-right: 70px;}
+	.driver_log_search .dateFromButton, .driver_log_search .dateTillButton,
+	#search_blockSearchBox .dateFromButton, #search_blockSearchBox .dateTillButton {display: none;}
+	#pagin_rightButtonsBox {float: left;}
+	.info_box.one_box.cables_box {width: 320px!important;}
+	.fast_move:not(.up) {
+		top: 100px;
+	}
+	.fast_move.up {
+		bottom: 120px;
+	}
+	.draw-signature-block .prev-signature {
+		width: 320px!important;
+		height: 230px!important;
+	}
+	.draw-signature-block .canvas-block {
+		height: 230px!important;
+	}
+	#log_info #field_distance .edit_field {
+		width: 100%;
+	}
+	#one_driver_box .info_box.attachments .box_row label.attachment_title {
+		padding-right: 60px;
+	}
+	#violations_box {
+		width: 280px;
+	}
+	#create_team_box .membs {
+		width: auto!important;
+	}
+	#create_team_box .one_box input, 
+	#create_team_box .one_box select, 
+	#create_team_box .one_box textarea {
+		width: auto;
+	}
+	.ez_section.section-panel.ez_sectionlast .user_working_shedule,
+	.ez_section.section-panel.ez_sectionlast.working_shedule .sec_options{
+		padding: 0px;
+	}
+	#taskSection .subhead,
+	.working_shedule .subhead {padding: 20px 0px 10px 0px}
+	#taskSection .create_task {
+		font-size: 30px;
+		margin: 0px;
+		position: absolute;
+		right: 15px;
+		padding: 0px 10px;
+	}
+	#tickets td.name {
+		max-width: 150px;
+	}
+    #eld_popup.order_info {
+		width: 100%; 
+	}
+    #log_s #date_left, #log_s #date_right {
+		width: 34px!important;
+	}
+    .modal_card_table .form-group-label,
+	.modal_card_table .form-group-content {
+		width: 100%;
+		min-height: 28px;
+		padding: 2px 20px 2px 20px;
+	}
+	.modal_card_table .form-group {
+		display: block;
+	}
+	label.form-group-label {
+		float: none;
+	}
+	.form-group-label,
+	.form-group-content {
+		display: block;
+	}
+    .modal_card .pupop_box_header .inner_status_color {
+		position: relative;
+		top: 0px;
+	}
+    #acc_settings {
+		margin-right: 0px;
+		width: 100%;
+	}
+	#acc_settings .one_row input, #acc_settings .one_row select, .one_row > .one_row input, .one_row > .one_row select {
+		width: 100%;
+	}
+	#acc_settings .one_row select.select_employee {
+		width: calc(100% - 25px);
+		width: -webkit-calc(100% - 25px);
+		width: -moz-calc(100% - 25px);
+	}
+    .agriMap .H_ib_body {
+		width: 250px;
+    }
+    .check_buttons_block {
+		min-width: 100%;
+	}
+	#iftaDistances button.btn.btn-default:nth-child(1) ,
+	#iftaDistances button.btn.btn-default:nth-child(2) {
+		width: 50%;
+	}
+}

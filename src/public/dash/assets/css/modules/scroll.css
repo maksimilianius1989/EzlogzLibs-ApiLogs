@@ -1,0 +1,36 @@
+.scrollbar-inner > .scroll-element.scroll-y{
+    width: 10px;
+}
+.scrollbar-inner > .scroll-element .scroll-bar,
+.scrollbar-inner > .scroll-element .scroll-element_track{
+    left: auto;
+    right: 0;
+    transition: width .3s ease;
+}
+.scrollbar-inner > .scroll-element.scroll-y{
+    transition: width .3s ease;
+    width: 4px;
+}
+.scrollbar-inner > .scroll-element.scroll-y.scroll-draggable,
+.scrollbar-inner > .scroll-element.scroll-y:hover{
+    width: 10px;
+}
+.scrollbar-inner > .scroll-element.scroll-x{
+    transition: width .3s ease;
+    height: 4px;
+}
+.scrollbar-inner > .scroll-element.scroll-x.scroll-draggable,
+.scrollbar-inner > .scroll-element.scroll-x:hover{
+    height: 10px;
+}
+.scrollbar-inner > .scroll-element:active .scroll-bar,
+.scrollbar-inner > .scroll-element:active .scroll-element_track,
+.scrollbar-inner > .scroll-element:focus .scroll-bar,
+.scrollbar-inner > .scroll-element:focus .scroll-element_track,
+.scrollbar-inner > .scroll-element:hover .scroll-bar,
+.scrollbar-inner > .scroll-element:hover .scroll-element_track{
+    width: 100%;
+}
+.scrollbar-inner > .scroll-element .scroll-bar{
+    cursor: pointer;
+}

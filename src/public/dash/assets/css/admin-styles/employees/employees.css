@@ -1,0 +1,403 @@
+.totally_unpaid_container {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 14px;
+    color: var(--text);
+}
+
+.totally_unpaid-type {
+    text-transform: uppercase;
+}
+
+.totally_unpaid-type::after {
+    content: '|';
+    padding-left: 16px;
+}
+
+.totally_unpaid-content {
+    padding-left: 16px;
+}
+
+#totally_unpaid {
+    font-weight: normal;
+}
+
+/* reports tab */
+
+.filter_item {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: 20px;
+}
+
+
+#report_result_box .item {
+    display: flex;
+    align-items: center;
+    padding-right: 30px;
+}
+
+#report_result_box .item::after {
+    content: '';
+    width: 1px;
+    height: 30px;
+    background-color: var(--silver);
+    margin-left: 30px;
+}
+
+#report_result_box .item:last-child::after {
+    display: none;
+} 
+
+#report_result_box .result_box_header {
+    padding: 24px;
+    border-bottom: 1px solid var(--silver);
+}
+
+.tot_worded_hours_box {
+    text-transform: uppercase;
+    border: 1px solid var(--primary);
+    border-radius: 4px;
+    padding: 0 4px;
+    font-size: 10px;
+    margin-right: 12px;
+    margin-left: 8px;
+}
+
+#tot_label {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.hint_show {
+    cursor: pointer;
+}
+
+.hint_show:hover + #tot_hint{
+    display: block;
+}
+
+#tot_hint {
+    display: none;
+    width: auto!important;
+    top: -30px!important;
+    right: -50px!important;
+    bottom: auto!important;
+    font-size: 12px!important;
+    color: #fff;
+    background-color: var(--primary);
+    border-radius: 2px;
+    padding: 4px 8px;
+    transition: 0.3s;
+}
+
+.item-salary {
+    border: 1px solid var(--coral);
+    border-radius: 4px;
+    padding: 0 4px;
+    margin-left: 8px;
+    font-size: 10px;
+}
+.day__head{
+    width: 100%;
+    background-color: #d6dce2;
+}
+.worked .day__head{
+    background-color: var(--success-bg);
+}
+.date:first-child .day__head{
+    border-radius: 4px 0 0 4px;
+}
+.date:last-child .day__head{
+    border-radius: 0 4px 4px 0;
+}
+.result_box_content {
+    padding: 24px;
+    color: var(--bluish-grey)!important ;
+}
+
+#days_table_head {
+    width: 100%!important;
+}
+
+.week_box:nth-child(2n-1) {
+    color: var(--text)!important;
+}
+
+#days_table_head .date {
+    background-color: var(--silver);
+}
+
+#days_table {
+    width: 100%!important;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.week_box {
+    min-width: auto!important;
+    width: 20%!important;
+}
+
+.week_box .date {
+    min-width: auto!important;
+    width: calc(100% / 7)!important;
+}
+
+#days_table .date {
+    width: calc(100% / 31);
+    text-align: center;
+    cursor: pointer;
+    min-width: 45px;
+}
+
+#days_table .date.Mon:nth-child(2n-1) .weekDate,
+#days_table .date.Tue:nth-child(2n-1) .weekDate,
+#days_table .date.Wed:nth-child(2n-1) .weekDate,
+#days_table .date.Thu:nth-child(2n-1) .weekDate,
+#days_table .date.Fri:nth-child(2n-1) .weekDate,
+#days_table .date.Sat:nth-child(2n-1) .weekDate,
+#days_table .date.Sun:nth-child(2n-1) .weekDate{
+    color: var(--text)!important;
+}
+
+#days_table .date.active:not(.worked) .worked_time {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+#days_table .date.active.worked {
+    background-color: var(--asparagus);
+}
+
+#days_table .date .worked_time {
+    display: block;
+    width: auto;
+    font-size: 12px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    padding: 0;
+    margin: 0 4px;
+}
+
+#days_table .date:first-child .weekDate {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+.admin__carriers .table_wrap #carriersAdminTable .carrier-info{
+    width: auto;
+    min-width: 130px !important;
+}
+#days_table .date:last-child .weekDate {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+.carrier-info{
+    white-space: nowrap;
+}
+.table button[type="button"] {
+    white-space: nowrap;
+}
+.table .dropdown{
+    text-align: right;
+}
+.weekDate {
+    width: 100%;
+    display: block;
+    background-color: var(--silver);
+    padding: 8px;
+    letter-spacing: 0.2px;
+}
+.day_of_week{
+    font-size: 12px;
+    padding: 4px 0;
+}
+.day_of_month {
+    padding: 8px 8px 4px;
+    color: var(--bluish-grey);
+}
+.worked .worked_time{
+    color: var(--success);
+}
+
+svg#logBook, svg.svgLogBook {
+    display: block;
+    width: 100%;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.tot_worked_box {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    font-weight: 500;
+    margin-right: 30px;
+}
+
+.tot_worked_box::after {
+    content: '';
+    width: 1px;
+    height: 30px;
+    background-color: var(--silver);
+    margin-left: 30px;
+}
+
+#tot_worked {
+    border: 1px solid var(--asparagus);
+    letter-spacing: -0.2px;
+    border-radius: 3px;
+    padding: 2px 4px;
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+
+.full_report_day {
+    font-weight: 500;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.full_report_day i {
+    font-size: 20px;
+}
+
+/* working_schedule tab */
+
+.sec_options.nav_eld_buttons {
+    width: 100%!important;
+    display: flex!important;
+}
+
+.working_shedule .select-wrap {
+    width: 20%!important;
+    margin-right: 8px;
+}
+
+.user_working_shedule {
+    padding: 24px;
+}
+
+.days {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    padding: 24px;
+}
+
+.oneDay {
+    display: inline-block;
+    text-align: center;
+    width: calc(100% / 31);
+    min-width: 45px;
+}
+
+.oneDay:first-child .dayWeek .week {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.oneDay:last-child .dayWeek .week {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.oneDay .days .day {
+    border: none!important;
+    background-color: transparent!important;
+    height: auto!important;
+    width: auto!important;
+}
+
+.user_table_item {
+    background-color: var(--pale-grey);
+    margin-top: 16px;
+}
+
+.user {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px;
+    border-bottom: 1px solid var(--silver);
+}
+
+.day_of_month, .worked_time {
+    display: flex;
+    flex-flow: column wrap;
+    width: 100%;
+    position: relative!important;
+    text-align: center;
+    letter-spacing: -0.4px;
+}
+
+.dayWeek .week {
+    background-color: var(--silver);
+    color: var(--text)!important;
+    letter-spacing: 0.2px;
+    font-weight: normal;
+    padding: 8px;
+    font-size: 14px;
+}
+
+.dayWeek.Sat .week, .dayWeek.Sun .week {
+    background-color: rgba(52, 152, 219, 0.25)!important;
+}
+
+.dayWeek .day {
+    color: var(--bluish-grey);
+    font-weight: 300;
+    letter-spacing: 0.2px;
+    padding-top: 12px;
+    font-size: 14px;
+}
+
+.schedule_buttons {
+    display: none;
+}
+
+#weeks, #task_card, #create_task_box, #create_user_box {
+    display: none;
+}
+
+.work-time {
+    position: relative!important;
+    font-size: 8px!important;
+    line-height: normal!important;
+    max-width: auto!important;
+}
+
+.schedule_buttons button {
+    display: inline-block;
+    margin-left: 12px;
+    padding: 0px 12px;
+    line-height: 1;
+    height: 25px;
+    float: right; 
+    width: 85px;
+    font-size: 12px;
+}
+
+.edit_btn {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.totalUserPaymentBox {
+    margin-left: 12px;
+}

@@ -1,0 +1,656 @@
+/* dashcam-map__content */
+.dashcam-map {
+    height: 100%;
+}
+
+.dashcam-map__content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+    font-family: "Roboto", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.dashcam-map__list {
+    width: 305px;
+    height: 100%;
+    transition: 0.3s;
+}
+
+.dashcam-map__content.hide-bar .dashcam-map__list {
+    width: 0;
+}
+
+/* left-bar block */
+.dashcam-map__left-bar {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: var(--white);
+    position: relative;
+    transition: all 0.3s linear;
+}
+
+.dashcam-map__content.hide-bar .dashcam-map__left-bar {
+    margin-left: -305px;
+}
+
+.dashcam-map__left-bar .bar-hide {
+    position: absolute;
+    display: inline-block;
+    left: 304px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 135px;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.dashcam-map__left-bar .bar-hide::after {
+    content: url('/dash/assets/img/dashCamMap/arrow-left.svg');
+    width: 9px;
+    height: 15px;
+    left: 6px;
+    top: 50%;
+    z-index: 1;
+    position: absolute;
+    transform: translateY(-50%);
+}
+
+.dashcam-map__content.hide-bar .dashcam-map__left-bar .bar-hide::after {
+    transform: translateY(-50%) rotateZ(180deg);
+}
+
+.dashcam-map__left-bar .bar-head {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 22px 20px;
+    color: #354A5E;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.dashcam-map__left-bar .bar-search {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 22px;
+    border-bottom: 1px solid #F2F2F2;
+    color: var(--text-main);
+}
+
+.dashcam-map__left-bar .search-box {
+    width: 100%;
+}
+
+.dashcam-map__left-bar .search-box input {
+    width: calc(100% - 24px);
+    color: var(--text-main);
+    border: none;
+    padding: 0;
+}
+
+.dashcam-map__left-bar .bar-list {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 0 22px;
+}
+
+.dashcam-map__left-bar .item {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 16px 2px 16px 4px;
+    border-bottom: 1px solid #e8e8e8;
+    color: var(--text-main);
+    transition: 0.3s;
+}
+
+.dashcam-map__left-bar > .item:last-child {
+    border-bottom: none;
+}
+
+.dashcam-map__left-bar .item-row {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+}
+
+.dashcam-map__left-bar .item-row:first-child {
+    margin-top: 0;
+}
+
+.dashcam-map__left-bar .item-hide .item-row:first-child {
+    margin-top: 16px;
+}
+
+.dashcam-map__left-bar .item-column {
+    display: flex;
+    align-items: center;
+}
+
+.dashcam-map__left-bar .item-hide {
+    display: block;
+    opacity: 0;
+    transition: all .3s cubic-bezier(.13,.43,.57,.5);
+    pointer-events: none;
+    width: 100%;
+    /* margin-top: -80px; */
+    margin-top: -40px;
+}
+
+.dashcam-map__left-bar .item:hover > .item-hide {
+    pointer-events: all;
+    margin-top: 0;
+    opacity: 1;
+}
+
+.dashcam-map__left-bar .item-icon {
+    margin-right: 14px;
+    width: 24px;
+    height: 24px;
+    overflow: hidden;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashcam-map__left-bar .item-icon img {
+    max-width: 100%;
+}
+
+.dashcam-map__left-bar .item-icon.name-icon img {
+    width: 100%;
+}
+
+.dashcam-map__left-bar .item-view {
+    width: 100%;
+    flex-grow: 1;
+}
+
+.dashcam-map__left-bar .item-btn {
+    color: var(--text-link);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.dashcam-map__left-bar .item-btn.item-icon {
+    margin: 0 0 0 14px;
+}
+
+.dashcam-map__left-bar .item-btn:not(.item-icon) {
+    border: 1px solid var(--text-link);
+    border-radius: 3px;
+    text-align: center;
+}
+
+.dashcam-map__left-bar .item-btn:not(.item-icon):hover {
+    background-color: var(--text-link);
+    color: var(--white);
+}
+
+.dashcam-map__left-bar .item-btn.full-btn {
+    width: 100%;
+}
+
+.dashcam-map__left-bar .item-upgrade {
+    color: var(--text-link);
+    text-decoration: underline;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.dashcam-map__left-bar .item-upgrade:hover {
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.dashcam-map__content .dashcam-map__left-bar .btn-switcher {
+    padding: 0;
+}
+
+.dashcam-map__content .dashcam-map__left-bar .btn-switcher .sw-label {
+    margin-right: 10px;
+}
+
+/* sort block */
+.dashcam-map__left-bar .bar-sort {
+    width: 100%;
+    display: none;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 24px 22px 20px;
+    position: absolute;
+    background-color: #fff;
+    z-index: 2;
+    height: 100%;
+    transition: 0.3s;
+}
+.dashcam-map__left-bar .bar-sort.active {
+    display: flex;
+    transition: 0.3s;
+}
+
+.dashcam-map__left-bar .bar-sort .bar-head {
+    padding: 0;
+}
+
+.dashcam-map__left-bar .bar-sort .sort-btn {
+    margin-right: -4px;
+}
+
+.dashcam-map__left-bar .sort-btn {
+    cursor: pointer;
+}
+
+.dashcam-map__left-bar .bar-sort .desc {
+    margin-top: 24px;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-main);
+}
+
+.dashcam-map__left-bar .sort-container {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-bottom: 50px;
+}
+
+.dashcam-map__left-bar .sort-container .item {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    border: none;
+    padding: 0;
+    margin-top: 24px;
+}
+
+.dashcam-map__left-bar .sort-container .item-input {
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+.dashcam-map__left-bar .sort-container .item-label {
+    margin: 0 0 0 15px;
+    padding: 0;
+    min-height: auto;
+    cursor: pointer;
+}
+
+.dashcam-map__left-bar .sort-apply {
+    height: 35px;
+    min-width: 112px;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--white);
+    background-color: var(--text-link);
+    border-radius: 3px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.dashcam-map__left-bar .sort-apply:hover {
+    background-color: var(--primary);
+}
+
+/* view mode block */
+.dashcam-map__view-mode {
+    position: absolute;
+    top: 12px;
+    left: 317px;
+    background-color: var(--white);
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.12);
+    z-index: 1;
+    transition: 0.3s;
+}
+
+.dashcam-map__content.hide-bar .dashcam-map__view-mode {
+    left: 12px;
+}
+
+.dashcam-map__view-mode .item {
+    padding: 12px 14px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dashcam-map__view-mode .item-title {
+    font-size: 13px;
+    font-weight: 400;
+    margin-right: 22px;
+    color: #354A5E;
+}
+
+.dashcam-map__view-mode .item-modes {
+    display: flex;
+    flex-grow: 1;
+    border: 1px solid var(--text-main);
+    border-radius: 3px;
+}
+
+.dashcam-map__view-mode .item-mode {
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid var(--text-main);
+    color: var(--text-main);
+    font-size: 13px;
+    font-weight: 400;
+    padding: 0 20px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.dashcam-map__view-mode .item-mode:last-child {
+    border-right: none;
+}
+
+.dashcam-map__view-mode .item-mode.active {
+    background-color: var(--text-main);
+    color: var(--white);
+}
+
+.dashcam-map__view-mode .item-mode:hover {
+    background-color: var(--text-main);
+    color: var(--white);
+    transition: 0.3s;
+}
+
+.dashcam-map__content .btn-switcher {
+    height: 100%;
+    padding: 0 12px 0 16px;
+}
+
+.dashcam-map__content .btn-switcher .sw-label {
+    margin-right: 0;
+}
+
+.dashcam-map__content .btn-switcher .sw-switcher {
+    width: 20px;
+    height: 10px;
+}
+
+.dashcam-map__content .btn-switcher .sw-switcher:before {
+    width: 6px;
+    height: 6px;
+    left: 2px;
+}
+
+.dashcam-map__content .btn-switcher.active .sw-switcher:before {
+    left: 12px;
+}
+
+.dashcam-map__content .btn-switcher .sw-switcher:after {
+    height: 10px;
+    border-radius: 10px;
+}
+
+.dashcam-map__content .btn-switcher.double .sw-double {
+    grid-gap: 6px;
+    grid-template-columns: 1fr 20px 1fr;
+}
+
+.dashcam-map__content .btn-switcher.double .sw-switcher:after {
+    background-color: #354a5e;
+}
+
+/* events block */
+.dashcam-map__events {
+    width: 178px;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    z-index: 1;
+    display: none;
+}
+.dashcam-map__events .events-list {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    transition: 0.3s;
+}
+
+.dashcam-map__events .events-list.more-list {
+    margin-top: 6px;
+    transition: 0.3s;
+}
+
+.dashcam-map__events .events-list.hide-list {
+    display: none;
+}
+
+.dashcam-map__events .item {
+    width: 100%;
+    height: 48px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--white);
+    border-radius: 3px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.12);
+    margin-bottom: 6px;
+}
+
+.dashcam-map__events .item:last-child {
+    margin-bottom: 0;
+}
+
+.dashcam-map__events .item-text {
+    width: calc(100% - 48px);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.dashcam-map__events .item-icon {
+    margin: 0 16px;
+}
+
+.dashcam-map__events .item-name {
+    color: #3C4E59;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.dashcam-map__events .item-count {
+    width: 48px;
+    height: 100%;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.12);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 500;
+    color: #3C4E59;
+}
+
+.dashcam-map__events .item-count.alert-color {
+    color: #B00808;
+}
+
+.dashcam-map__events .events-more {
+    width: 100%;
+    height: 28px;
+    color: #354A5E;
+    background-color: var(--white);
+    margin-top: 6px;
+    border-radius: 3px;
+}
+
+.dashcam-map__events .events-btn {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    cursor: pointer;
+}
+
+.dashcam-map__events .btn-text {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashcam-map__events .btn-icon {
+    width: 48px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.54);
+    transition: 0.3s;
+}
+
+.dashcam-map__events .btn-icon.active {
+    transform: rotateZ(180deg);
+    margin-top: 2px;
+    transition: 0.3s;
+}
+
+/* map block */
+.dashcam-map__map {
+    width: calc(100% - 305px);
+    height: 100%;
+    padding: 0;
+    transition: 0.3s;
+}
+
+.dashcam-map__content.hide-bar .dashcam-map__map {
+    width: 100%;
+}
+
+.dashcam-map__driver-marker {
+    border-radius: 4px;
+    background: #FFFFFF;
+    border: 1px solid #6A6C67;
+    border-bottom-left-radius: initial;
+    /* cursor: pointer; */
+    margin-top: -40px;
+    margin-left: -2px;
+}
+
+.driver-marker__item {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 4px 8px;
+    position: relative;
+}
+.driver-marker__item::after {
+    content: '';
+    border: solid transparent;
+    position: absolute;
+    border-top-color: white;
+    border-left-color: white;
+    border-width: 4px;
+    bottom: -8px;
+    left: 0;
+}
+.driver-marker__item::before {
+    content: '';
+    border: solid transparent;
+    position: absolute;
+    border-top-color: #6A6C67;
+    border-left-color: #6A6C67;
+    border-width: 5px;
+    bottom: -10px;
+    left: -1px;
+}
+.driver-marker__item .item-icon {
+    margin-right: 8px;
+}
+
+.driver-marker__item .item-name {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-main);
+}
+
+.dashcam-map__location-marker {
+    width: 24px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -36px;
+    margin-left: -12px;
+}
+
+.dashcam-map__location-marker img {
+    max-width: 100%;
+    object-fit: cover;
+}
+
+.location__marker-name {
+    position: absolute;
+    top: 2px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.dashcam-map__location-marker.online-status .location__marker-name {
+    color: var(--text-green);
+}
+
+.dashcam-map__location-marker.offline-status .location__marker-name {
+    color: var(--text-grey);
+}
+
+.dashcam-map__location-marker.standby-status .location__marker-name {
+    color: var(--text-yellow);
+}

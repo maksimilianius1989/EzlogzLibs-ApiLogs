@@ -1,0 +1,1068 @@
+
+@import 'newOrderForm.css';
+.modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background-color: rgba(0,0,0,0.7);
+    display: none;
+    overflow: auto;
+}
+#multi-step.modal{
+    background-color: rgba(0,0,0,0.4);
+}
+.modal .modal-dialog, .modal-white .modal-dialog, .modal-bs-basic .modal-dialog {
+    position: relative;
+    z-index: 1051;
+    margin: 10vh auto;
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.36);
+    z-index: 99999;
+}
+.modal-content{
+    border-radius: 4px;
+    background: #fff;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+.modal-header{
+    position: relative;
+    padding: 16px 24px;
+    border-bottom: 1px solid #d6dce2;
+}
+.modal-body{
+    padding: 24px;
+    max-height: 70vh;
+    min-height: 100px;
+    overflow: auto;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+}
+.modal-body.scroll--content{
+    padding: 0;
+}
+.modal-scroll{
+    max-height: 50vh;
+    min-height: 400px;
+    overflow: auto;
+}
+.modal .close {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-55%);
+    font-size: 24px;
+    color: var(--primary);
+}
+.modal .modal-title{
+    margin: 0;
+    text-transform: unset;
+    font-size: 16px;
+    line-height: 1;
+    font-weight: 500;
+    color: var(--text);
+}
+.modal .control-buttons:empty{
+    display: none !important;
+}
+.modal-backdrop{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    cursor: pointer;
+}
+
+#eld_device_card .modal-dialog{
+    width: 90%;
+    height: 90vh;
+    max-height: 650px;
+    max-width: 1000px;
+}
+#eld_device_card .modal-body{
+    max-height: 100%;
+}
+#eld_device_card .table{
+    border: none;
+}
+#eld_device_card .table td{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 300px;
+    overflow: hidden;
+}
+
+
+/* HALP & TRAINING VIDEO POPUP */
+#validatePhone .validatePhone{
+    width: 90%;
+    max-width: 400px;
+}
+#video-tutorial-modal .modal-content{
+    display: flex;
+    flex-direction: column;
+}
+#video-tutorial-modal .modal-dialog {
+    width: 90%;
+    height: 90vh;
+    max-height: 650px;
+    max-width: 1000px;
+}
+#video-tutorial-modal .modal-body{
+    flex-grow: 1;
+    max-height: 100%;
+}
+#video-tutorial-modal .modal-footer{
+    display: none;
+}
+#video-tutorial-modal .modal-dialog p{
+    height: 100%;
+}
+#video-tutorial-modal .modal-message-wrap{
+    height: 100%;
+}
+#video-tutorial-modal .modal-message-wrap iframe{
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* CREATE TICKET POPUP */
+#create_cliend_ticket .modal-dialog{
+    width: 90%;
+    max-width: 480px;
+}
+#create_cliend_ticket .form-group{
+    width: 100%;
+}
+.uploadImg{
+    display: block;
+}
+.uploadImg img{
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+
+/* UPDATE TICKET POPUP */
+
+#client_ticket_card .modal-dialog{
+    width: 90%;
+    max-width: 612px;
+}
+#client_ticket_card #history_box{
+    margin-top: 0;
+}
+#client_ticket_card .attachmentsBox{
+    min-height: unset;
+    margin-bottom: 0;
+
+}
+#client_ticket_card .form-horizontal{
+    padding: 24px;
+}
+#client_ticket_card .scrollbar-inner{
+    max-height: 60vh;
+}
+.ticket-history--once{
+    width: calc(100% + 48px);
+    margin-left: -24px;
+    padding: 24px;
+    margin-top: 24px;
+    border-top: 1px solid var(--silver);
+}
+.ticket-history--once>*{
+    margin-bottom: 16px;
+}
+.ticket-history--once>*:last-child{
+    margin-bottom: 0;
+}
+.ticket-history--user-name span,
+.ticket-history--status span{
+    display: inline-block;
+    min-width: 80px;
+}
+.ticket-history--message{
+    padding: 16px 24px;
+    background-color: var(--pale-grey);
+    border-radius: 10px;
+}
+.ticket-history--attachment .attachmentsBox a{
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    background-color: var(--pale-grey);
+    border-radius: 4px;
+    color: var(--primary);
+}
+.ticket-history--attachment .attachmentsBox a i{
+    font-size: 22px;
+}
+.ticket-history--attachment img{
+    display: block;
+    width: 60px;
+    height: 40px;
+    border-radius: 4px;
+    object-fit: cover;
+    -o-object-fit: cover;
+    border-radius: 4px;
+}
+.ticket-history--date{
+    margin-top: 12px;
+    font-size: 12px;
+    opacity: .5;
+}
+.client_ticket_card .uploadImg_updateTask {
+    flex: 0 0 50%;
+    margin: 0;
+}
+.client_ticket_card .uploadImg_updateTask img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    -o-object-fit: cover;
+    border-radius: 4px;
+}
+
+
+/* createReview */
+#createReview .modal-dialog{
+    width: 90%;
+    max-width: 480px;
+}
+
+
+.file_upload{
+    color: var(--primary);
+}
+.file_upload i{
+    font-size: 24px;
+    display: inline-block;
+    vertical-align: middle;
+    transition: transform .3s ease;
+}
+.file_upload:hover i{
+    transform: rotate(90deg);
+}
+
+
+/* share_old_logs_with_fleet */
+
+#share_old_logs_with_fleet .modal-dialog{
+    width: 90%;
+    max-width: 396px;
+}
+#share_old_logs_with_fleet .modal-title{
+    text-transform: inherit;
+}
+.ui-widget.ui-widget-content{
+    z-index: 9999 !important;
+}
+
+/* leaveFleet */
+
+#leaveFleet .modal-dialog{
+    width: 90%;
+    max-width: 612px;
+}
+#leaveFleet .modal-title{
+    text-transform: inherit;
+}
+
+/* modalCreateFleet */
+
+#modalCreateFleet .modal-dialog{
+    width: 90%;
+    max-width: 612px;
+}
+
+/* modalActivateEldAccount */
+
+#modalActivateEldAccount .modal-dialog{
+    width: 90%;
+    max-width: 612px;
+}
+
+
+
+/* create-document--popup */
+
+.create-document--popup{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.close-document-edit--overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    cursor: pointer;
+}
+.create-document--header{
+    position: relative;
+}
+.create-document--content{
+    position: relative;
+    width: 90%;
+    max-width: 480px;
+    background-color: white;
+    border-radius: 4px;
+    overflow: hidden;
+    height: auto;
+    z-index: 2;
+}
+.create-document--body{
+    min-height: 300px;
+    max-height: 600px;
+}
+.save_edit_result{
+    width: 100%;
+}
+
+/* attachments_modal */
+
+.attachment-item--container{
+    display: block;
+    width: 100%;
+    position: relative;
+    background-color: var(--pale-grey);
+    border-bottom: 1px solid var(--cloudy-blue);
+}
+.attachment-item--title{
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+.attachment-item--title-text{
+    padding: 16px 24px;
+    font-size: 12px;
+}
+.attachment-item--title-text > *{
+    padding: 0 20px;
+}
+.attachment-item--checkbox{
+    position: relative;
+    width: 14px;
+    height: 14px;
+    box-sizing: border-box;
+    border: 1px solid var(--bluish-grey);
+    border-radius: 4px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .3s ease;
+    transition-property: background-color, border-color;
+}
+.attachment-item--checkbox:before {
+    content: '';
+    width: 7px;
+    height: 4px;
+    border-left: 1px solid white;
+    border-bottom: 1px solid white;
+    transform: rotate(-45deg) scale(0);
+    transition: transform .3s .1s ease;
+    margin-top: -3px;
+}
+.checked .attachment-item--checkbox{
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+.checked .attachment-item--checkbox:before{
+    transform: rotate(-45deg) scale(1);
+}
+.attachment-item--arrow{
+    min-width: 53px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .3s ease;
+    transition-property: transform;
+    transform: rotateX(0deg);
+    padding-right: 24px;
+}
+.visible.attachment-item--arrow{
+    transform: rotateX(180deg);
+}
+.attachment-item--dropdown{
+    display: none;
+}
+.attachment-desc-item{
+    flex: 0 0 50%;
+    display: flex;
+    font-size: 12px;
+}
+.attachment-desc-item .attachment--label{
+    flex: 0 0 50%;
+    text-align: right;
+    padding-right: 24px;
+}
+.attachment-item--name{
+    font-weight: 600;
+}
+
+
+/* attachments_modal */
+#attachments_modal .modal-dialog{
+    width: 90%;
+    max-width: 600px;
+}
+.attachment_tab{
+    padding: 16px 24px;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+}
+.attachment_tab.active{
+    border-color: var(--primary);
+}
+
+/* user_info_box */
+#savePasswordInfoMessages{
+    margin-top: 8px;
+}
+#user_info_box .modal-dialog{
+    width: 90%;
+    max-width: 1144px;
+}
+#fleet_truck_card .popup_box_body,
+#user_info_box .popup_box_body{
+    min-height: 390px;
+    padding-bottom: 0 !important;
+}
+#user_info_box .modal-footer{
+    padding: 16px 24px;
+}
+.ez_range_field_valuelist{
+    position: relative;
+}
+.ez_range_field_valuelist input{
+    width: 100%;
+    height: 30px;
+    margin-bottom: 10px;
+}
+.ez_range_field_valuelist .thumb{
+    position: absolute;
+    font-size: 14px;
+    top: 70%;
+}
+
+/* equipment_pdf_report_popap */
+
+#equipment_pdf_report_popap .modal-dialog{
+    width: 90%;
+    max-width: 600px;
+}
+
+/* driver_pdf_report_popap */
+#driver_pdf_report_popap .modal-dialog{
+    width: 90%;
+    max-width: 600px;
+}
+#driver_pdf_report_popap .modal-footer{
+    padding: 0;
+}
+
+/* signLast30Days */
+#signLast30Days .modal-dialog{
+    width: 90%;
+    max-width: 600px;
+}
+/* 6month_pdf_report_popap */
+#six_month_pdf_report_popap .modal-dialog{
+    width: 90%;
+    max-width: 600px;
+}
+#six_month_pdf_report_popap .modal-footer{
+    padding: 0;
+}
+/* time_modal */
+#time_modal .modal-dialog{
+    width: 90%;
+    max-width: 500px;
+}
+
+#time_modal label[for="time_control"]{
+    min-width: 15%;
+    padding-right: 16px;
+}
+#time_modal .timeEntry-control{
+    display: block;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+    background-image: url('../../img/icon/ic-arrow-top-down.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 30px;
+}
+
+
+/* validateCode */
+#validateCode .modal-dialog{
+    width: 90%;
+    max-width: 500px;
+}
+
+
+
+
+/* new_notifications */
+
+#new_alerts_box .modal-dialog,
+#notifications_info_box .modal-dialog{
+    width: 90%;
+    max-width: 800px;
+}
+/* #new_alerts_box .table_wrap,
+#notifications_info_box .table_wrap{
+    height: 60vh;
+} */
+#new_alerts_box .modal-card__labels + .control-buttons{
+    display: none;
+} 
+#new_alerts_box .modal-footer .control-buttons{
+    padding: 0;
+}
+#new_alerts_box .modal-footer .control-buttons button{
+    margin: 0;
+    margin-left: 16px;
+}
+#new_alerts_box .modal-header,
+#notifications_info_box .modal-header{
+    padding-bottom: 24px;
+    margin-top: 0;
+    padding-top: 24px;
+}
+#new_alerts_box .modal-body,
+#notifications_info_box .modal-body{
+    padding: 0;
+}
+#new_alerts_box .modal-footer,
+#notifications_info_box .modal-footer{
+    padding: 16px 24px;
+}
+.dropdown{
+    position: relative;
+    transition: .3s ease;
+}
+.dropdown-menu{
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2), 0 1px 10px 0 rgba(0, 0, 0, 0.07);
+    z-index: 1;
+    opacity: 0;
+    width: 150px;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: .3s ease;
+    transition-property: transform, opacity;
+}
+.dash_sub_head  .dropdown .btn{
+    padding: 0 8px;
+    padding-right: 12px;
+}
+.dropdown:hover [data-toggle="dropdown"]:not(.btn-transparent){
+    color: var(--primary);
+}
+.dropdown:hover .dropdown-menu{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0px);
+}
+.dropdown-menu li button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 100%;
+    padding: 12px 0;
+    transition: background-color .3s ease;
+    font-size: 12px;
+}
+.dropdown-menu li button:hover{
+    background-color: var(--pale-grey);
+}
+.dropdown-menu li.bottom.dropdown-arrow{
+    display: none;
+}
+/*.dropDownTabs{*/
+/*    display: none;*/
+/*}*/
+
+
+/* fleet_truck_card */
+
+
+#fleet_truck_card .modal-dialog {
+    max-width: 1144px;
+}
+#fleet_truck_card .modal-footer{
+    padding: 24px;
+    padding-top: 0;
+}
+
+/* history_changes_modal */
+
+#history_changes_modal .close{
+    display: none;
+}
+#history_changes_modal .modal-header{
+    margin-top: 0;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--silver);
+    color: var(--primary);
+}
+#history_changes_modal .modal-header .data_time__container{
+    display: inline-block;
+    margin: 0 5px;
+    font-size: 14px;
+}
+#history_changes_modal .modal-header .time__item,
+#history_changes_modal .modal-header .date__item{
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+}
+#fleet_truck_card .modal-body,
+#history_changes_modal .modal-body{
+    padding: 0;
+}
+#history_changes_modal .modal-dialog {
+    width: 100%;
+    max-width: 1000px;
+}
+#history_changes_modal #one_eqhis_notes{
+    width: 100%;
+}
+#history_changes_modal .history-nav_btns{
+    font-size: 24px;
+    color: var(--primary);
+}
+#history_changes_modal .info_box{
+}
+#history_changes_modal .info_row{
+    display: flex;
+    align-items: center;
+    padding: 8px 24px;
+}
+#history_changes_modal .info_row>*{
+    flex: 0 0 33.3333%;
+    max-width: 33.3333%;
+}
+#history_changes_modal .info_row{
+    border-bottom: 1px solid var(--pale-grey);
+}
+#history_changes_modal .info_row .info_row__item{
+    padding: 8px 0px;
+    display: flex;
+}
+#history_changes_modal .info_row .info_row__item p{
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#history_changes_modal .info_row .info_row__item label{
+    padding-right: 8px;
+    font-weight: 500;
+}
+
+/* fleet_truck_card */
+
+#fleet_truck_card .modal-header{
+    padding: 16px 24px;
+    margin-top: 0;
+}
+#fleet_truck_card .modal-footer{
+    padding-top: 16px;
+}
+
+/* ADD USER  SAFETY DASHBOARD */
+
+.middle_modal__container{
+    width: 90%;
+    max-width: 600px;
+}
+.large_modal__container{
+    width: 90%;
+    max-width: 1100px;
+}
+
+#addVehicle .modal-body{
+    height: 100vh;
+    max-height: 73vh;
+}
+
+#basicModal .modal-body .modal-message-wrap,
+#addVehicle .modal-body .modal-message-wrap{
+    height: 100%;
+    padding: 0 24px;
+    box-sizing: border-box;
+}
+
+.modal-dialog {
+    width: calc(100% - 30px);
+    max-width: 624px;
+}
+.modal-footer{
+    padding: 24px 32px;
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid #d6dce2;
+}
+.modal-footer:is(empty){
+    display: none;
+}
+.modal-footer .btn + .btn{
+    margin-left: 16px;
+}
+
+@media screen and (max-width: 550px) {
+    .modal-header {
+        padding: 16px 16px 11px 16px;
+    }
+
+    .modal-body {
+        padding: 16px;
+    }
+
+    .modal-footer {
+        padding: 16px;
+    }
+
+}
+
+.driver_settings_list{
+    /*max-height: 700px;*/
+    /*overflow: auto;*/
+    border-top: 1px solid var(--silver);
+}
+.driver_settings_list .info_box{
+    padding: 0 16px;
+}
+.driver_settings_list .box_row_info{
+    flex: 0 0 33.3333%;
+}
+
+
+
+
+/* user_trips_box */
+
+#user_trips_box .modal-dialog {
+    width: calc(100% - 30px);
+    max-width: 1000px;
+}
+.tripsListTable.table.table-dashboard.table-sm>tbody>tr>td:nth-child(5){
+    font-size: 12px;
+    width: 250px;
+}
+#createTripModal .modal-dialog {
+    width: calc(100% - 30px);
+    max-width: 800px;
+}
+
+
+
+/* one_doc_box */
+
+#one_doc_box .modal-dialog{
+    width: calc(100% - 30px);
+    max-width: 480px;
+}
+
+
+
+/* paymentModal */
+
+#paymentModal .modal-dialog{
+    width: calc(100% - 30px);
+    max-width: 830px;
+}
+
+/* autorizenetModal */
+
+#autorizenetModal .modal-dialog{
+    width: calc(100% - 30px);
+    max-width: 950px;
+}
+
+/* authorizeAddCardModal */
+
+#authorizeAddCardModal .modal-dialog{
+    width: calc(100% - 30px);
+    max-width: 620px;
+}
+
+/* addAddressOrdersModal */
+
+#addAddressOrdersModal .modal-dialog{
+    width: calc(100% - 30px);
+    max-width: 400px;
+}
+
+
+/* permitDocsForm */
+
+.fileinput-exists .fileinput-new,
+.fileinput-new .fileinput-exists{
+    display: none;
+}
+.fileinput-new .file_name{
+    display: none;
+}
+.file_name{
+    display: block;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    border-top: 1px solid var(--cloudy-blue);
+}
+.btn-file{
+    position: relative;
+}
+.fileinput i{
+    font-size: 20px;
+}
+.file_name i{
+    font-size: 18px;
+    line-height: 1;
+    color: var(--primary);
+}
+.fileinput input[type="file"]{
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+/* showMaintanceDocsBox */
+
+#showMaintanceDocsBox .modal-body{
+    height: auto;
+    max-height: 70vh;
+}
+.pdf_icon_document{
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 24px 4px 16px;
+    border-radius: 30px;
+    background-color: var(--primary);
+    margin-top: 8px;
+    line-height: 1;
+    color: white;
+}
+.pdf_icon_document i {
+    color: white;
+}
+#box_for_images{
+    text-align: center;
+}
+
+
+
+/* multi-step */
+
+
+
+#multi-step .modal-dialog{
+    position: absolute;
+    margin: 0;
+    max-width: 540px;
+}
+#multi-step .modal-dialog.center{
+    position: relative;
+    margin: 10vh auto;
+}
+#multi-step .modal-footer{
+    padding: 16px 24px;
+}
+#multi-step .modal-triangle{
+    position: absolute;
+    border: 15px solid transparent;
+    border-top: 0;
+    border-bottom: 15px solid white;
+    transform: translateX(11px);
+}
+#multi-step .tab-pane{
+    display: none;
+    padding: 24px;
+    box-sizing: border-box;
+}
+#multi-step .tab-pane.active{
+    display: flex;
+    align-items: center;
+}
+#multi-step .tab__image{
+    flex: 0 0 40%;
+    max-width: 40%;
+}
+#multi-step .tab__image img{
+    display: block;
+}
+#multi-step .tab__description{
+    flex: 0 0 60%;
+    max-width: 60%;
+
+}
+#multi-step .tab__description h3{
+    margin-top: 0;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+#multi-step .nav-tabs{
+    display: flex;
+}
+#multi-step .nav-tabs li{
+    margin-right: 8px;
+}
+#multi-step .nav-tabs li a{
+    display: block;
+    font-size: 0;
+    background-color: var(--ice-blue);
+    width: 12px;
+    height: 12px;
+    border-radius: 12px;
+    transition: width .3s ease;
+}
+#multi-step .nav-tabs li.active a{
+    pointer-events: none;
+    width: 24px;
+}
+.multi-step-element{
+    position: absolute;
+    z-index: 9999;
+}
+.multi-step-element .btn-default,
+.multi-step-element .btn-transparent{
+    background-color: white;
+}
+
+
+
+#lease-and-agreement-popup .modal-body{
+    padding: 0 !important;
+}
+.manager_order_agreement .modal-body,
+#lease-and-agreement-popup .modal-body{
+    padding: 0;
+}
+.manager_order_agreement .modal-body .new-order-agreemens,
+#lease-and-agreement-popup .modal-body .lease-and-agreement-popup{
+    padding: 32px;
+}
+.modal .modal-dialog.modal-large.manager_order_agreement .modal-header{
+    background-color: transparent;
+    border-bottom: 1px solid var(--ice-blue);
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2), 0 1px 10px 0 rgba(0, 0, 0, 0.07);
+}
+.modal .modal-dialog.modal-large.manager_order_agreement .modal-header h4{
+    color: var(--text);
+}
+.modal-dialog.camera_card__large {
+    max-width: 1144px;
+}
+.camera_card__large .cameraInfo {
+    display: flex;
+    flex-wrap: wrap;
+}
+.camera_card__large .item {
+    display: flex;
+    align-items: center;
+    color: #374e5a;
+    border-right: 1px solid var(--silver);
+    padding-right: 32px;
+    margin-right: 32px;
+}
+.camera_card__large .item:last-child{
+    border-right: 0
+}
+.camera_card__large .item-label {
+    margin-right: 3px;
+    text-transform: uppercase;
+    cursor: auto;
+    font-weight: 700;
+}
+.camera_card__large .item-content {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+.camera_card__large .modal-body{
+    padding: 0
+}
+.modal_card_videos{
+    padding: 24px;
+}
+.modal_card_videos .video_block{
+    position: relative;
+    border-radius: 4px;
+    background-color: var(--ice-blue);
+    height: 300px;
+    width: 100%;
+    overflow: hidden;
+}
+.modal_card_videos .video_block video{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.modal_card_videos .video_block .btn{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+}
+.modal_card_videos .video_block .btn i{
+    font-size: 22px;
+    margin-left: 12px;
+}
+.modal .modal-dialog.modal-large.modal-large--white .modal-header{
+    background-color: #fff;
+    border-bottom: 1px solid var(--silver);
+}
+.modal .modal-dialog.modal-large.modal-large--white .modal-header .modal-title{
+    color: var(--text);
+}
+#basicModal .modal-body{
+    padding: 0;
+}

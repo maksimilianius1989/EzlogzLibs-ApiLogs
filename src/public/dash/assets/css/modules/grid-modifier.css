@@ -1,0 +1,175 @@
+.col-xs-1,
+.col-sm-1,
+.col-md-1,
+.col-lg-1,
+.col-xs-2,
+.col-sm-2,
+.col-md-2,
+.col-lg-2,
+.col-xs-3,
+.col-sm-3,
+.col-md-3,
+.col-lg-3,
+.col-xs-4,
+.col-sm-4,
+.col-md-4,
+.col-lg-4,
+.col-xs-5,
+.col-sm-5,
+.col-md-5,
+.col-lg-5,
+.col-xs-6,
+.col-sm-6,
+.col-md-6,
+.col-lg-6,
+.col-xs-7,
+.col-sm-7,
+.col-md-7,
+.col-lg-7,
+.col-xs-8,
+.col-sm-8,
+.col-md-8,
+.col-lg-8,
+.col-xs-9,
+.col-sm-9,
+.col-md-9,
+.col-lg-9,
+.col-xs-10,
+.col-sm-10,
+.col-md-10,
+.col-lg-10,
+.col-xs-11,
+.col-sm-11,
+.col-md-11,
+.col-lg-11,
+.col-xs-12,
+.col-sm-12,
+.col-md-12,
+.col-lg-12 {
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.relative-box {
+    position: relative;
+}
+
+.container,
+.container-fluid {
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.row {
+    margin-left: -12px;
+    margin-right: -12px;
+}
+
+.flex-box {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex!important;
+}
+
+.flex-box--inline {
+    display: inline-flex;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.flex-full {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+}
+
+.flex-half {
+    flex: 0 0 50%;
+}
+
+.flex-grow--initial {
+    -webkit-box-flex: initial;
+    -ms-flex-positive: initial;
+    flex-grow: initial;
+}
+
+.flex-box--column {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+.flex-grow--unset{
+    flex-grow: unset !important;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+.justify-content-end {
+    justify-content: flex-end;
+}
+
+.justify-content-around {
+    justify-content: space-around;
+}
+
+.justify-content-between {
+    justify-content: space-between;
+}
+
+.justify-content-start {
+    justify-content: flex-start;
+}
+
+.justify-content-end {
+    justify-content: flex-end   ;
+}
+
+.childrens-half {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.childrens-half>* {
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+
+.childrens-30p>* {
+    flex: 0 0 33.3333%;
+    max-width: 33.3333%;
+}
+
+.height-100p {
+    height: 100%;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.col-30p {
+    flex: 0 0 33.3333%;
+    max-width: 33.3333%;
+}
+
+.col-25p {
+    flex: 0 0 25%;
+    max-width: 25%;
+}
+
+.col-50p {
+    flex: 0 0 50%;
+    max-width: 50%;
+}

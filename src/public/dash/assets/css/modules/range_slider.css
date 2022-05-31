@@ -1,0 +1,54 @@
+.irs.irs--round.irs-with-grid {
+    width: calc(100% - 48px);
+    margin: 0 auto;
+}
+
+.irs-min,
+.irs-max,
+.irs-single,
+.irs-grid-pol.small,
+.irs-grid-pol.hidden {
+    display: none!important;
+}
+
+.irs-grid {
+    width: 100%!important;
+    left: 0!important;
+}
+
+.irs-line {
+    background-color: #fff!important;
+    height: 4px!important;
+    border-radius: 2px!important;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2), 0 1px 10px 0 rgba(0, 0, 0, 0.07);
+    cursor: pointer;
+}
+
+.irs-bar {
+    background-color: #fff!important;
+    display: none!important;
+}
+
+.irs-handle {
+    border: 6px solid var(--primary)!important;
+    cursor: pointer;
+}
+
+.irs-grid-text {
+    font-family: Roboto!important;
+    font-size: 12px!important;
+    font-weight: 300!important;
+    color: var(--text)!important;
+    bottom: -4px;
+}
+
+.irs-grid-text.js-grid-text-0,
+.irs-grid-text.js-grid-text-3 {
+    padding: 0!important;
+    margin-left: 0!important;
+}
+
+.irs-grid-text.js-grid-text-3 {
+    left: auto!important;
+    right: 0!important;
+}

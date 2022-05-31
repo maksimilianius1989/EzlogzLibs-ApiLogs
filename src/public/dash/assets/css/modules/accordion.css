@@ -1,0 +1,97 @@
+.accordion-item--title{
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: normal;
+    cursor: pointer;
+    margin: 0;
+    border-bottom: 1px solid var(--ice-blue);
+    padding: 16px 24px;
+}
+.accordion-item--title i {
+    font-size: 30px;
+    color: var(--primary);
+    transition: color .3s ease;
+}
+.accordion-item--title{
+    background-color: var(--pale-grey);
+}
+.accordion-item--title.collapsed{
+    background-color: white;
+}
+.accordion-item--title.collapsed i{
+    color: inherit;
+}
+.accordion-item--title .accordion-item--arrow i{
+    display: inline-block;
+    font-size: 20px;
+    transform: rotateX(180deg);
+    transition: .3s ease;
+    transition-property: transform, opacity;
+    color: inherit;
+    opacity: 1;
+}
+.accordion-item--title.collapsed .accordion-item--arrow i{
+    transform: rotateX(0deg);
+    opacity: .5;
+}
+.accordion-item--content{
+    overflow: hidden;
+    transition: height .3s ease-in;
+}
+.accordion-item--content.collapse{
+    height: 0;
+}
+.accordion-item--content.collapse.in{
+    height: auto;
+}
+.accordion-item--child-title{
+    font-size: 12px;
+    padding: 10px 24px;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--ice-blue);
+    cursor: pointer;
+    font-weight: bold;
+}
+.accordion-item--child-title .accordion-item--arrow i{
+    display: inline-block;
+    font-size: 20px;
+    transform: rotateX(180deg);
+    transition: .3s ease;
+    transition-property: transform, opacity;
+    opacity: 1;
+}
+.accordion-item--child-title.collapsed{
+    font-weight: normal;
+}
+.accordion-item--child-title.collapsed .accordion-item--arrow i{
+    transform: rotateX(0deg);
+    opacity: .5;
+}
+.accordion-item--child-dot{
+    width: 42px;
+    flex: 0 0 42px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.accordion-item--child-dot:before{
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--primary);
+    transition: .3s ease;
+    transition-property: background;
+}
+.accordion-item--child-title.collapsed .accordion-item--child-dot:before{
+    background-color: var(--silver);
+}
+.accordion-item--description{
+    background-color: var(--pale-grey);
+    padding: 16px 66px;
+    padding-right: 52px;
+    font-size: 12px;
+    line-height: 1.5;
+}

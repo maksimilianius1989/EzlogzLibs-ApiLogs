@@ -1,0 +1,74 @@
+.table_row:last-of-type .manager_zone {
+    top: auto;
+    bottom: 0;
+}
+
+.table_item {
+    position: relative;
+}
+
+.manager_zone {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 36px;
+    z-index: 1;
+    background-color: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2), 0 1px 10px 0 rgba(0, 0, 0, 0.07);
+    transition: 0.3s;
+}
+
+.manager_zone:hover {
+    display: block;
+}
+
+.manager_zone .item {
+    padding: 12px 24px;
+    cursor: pointer;
+    color: var(--text);
+    transition: 0.3s;
+}
+
+.manager_zone .item:hover {
+    background-color: var(--primary);
+    color: #fff;
+}
+
+.manager_zone .item.selected {
+    background-color: var(--primary);
+    color: #fff;
+}
+
+.manager_zone-toggle {
+    display: inline-block;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.manager_zone-toggle:hover+.manager_zone {
+    display: block;
+}
+
+.table_item {
+    color: var(--primary)!important;
+}
+
+.table_item.user-id {
+    color: var(--text)!important;
+}
+
+.table_title {
+    padding: 32px 8px 24px;
+    text-align: left;
+}
+
+.table_title:first-of-type {
+    padding-left: 24px;
+}
+
+.table.table-dashboard.table-sm>thead>tr>th,
+.table.table-dashboard.table-sm>tbody>tr>td {
+    padding: 16px 8px;
+}

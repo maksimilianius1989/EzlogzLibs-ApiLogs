@@ -1,0 +1,444 @@
+.device_mac{
+    display: inline-block;
+    width: 96px;
+}
+.popup_box_panel{
+        height: auto;
+    }
+    .popup_box_panel.small-popup{
+        max-width: 700px;
+    }
+    #manage_eld{
+        overflow: hidden;
+    }
+    .info_box.one_box{
+        width: calc(100% - 16px);
+        border-bottom: none;
+        padding: 0;
+        margin: 0;
+        height: auto;
+		overflow: visible;
+    }
+    .info_box.two_box{
+        width: calc(50% - 16px);
+    }
+	
+    .box_row{
+        display: block !important;
+        width: 100%;
+    }
+	.box_row.hide{
+		display: none !important;
+	}
+    .info_box .box_row label{
+        width: 30%;
+    }
+    .btn_group{
+        position: relative;
+        width: 100%;
+        text-align: center;
+        margin-top: 20px;
+    }
+    .btn_group .ez_button{
+        margin: 0 10px;
+    }
+    .ez_button{
+        margin: 0 10px;
+    }
+    #eld_table tbody td:last-child{
+        /*width: 250px;*/
+    }
+    .ez_input.inpurError{
+        border: 1px solid #F44336;
+    }
+    .inpurError{
+        border: 1px solid #F44336;
+    }
+    .box_row .error_mes{
+        color: #F44336;
+    }
+    
+	
+	.popup_box_panel.small-popup{
+        max-width: 700px;
+    }
+    #manage_eld{
+        overflow: hidden;
+    }
+    .info_box.one_box{
+        width: calc(100% - 16px);
+        border-bottom: none;
+        padding: 0;
+        margin: 0;
+    }
+    .info_box.two_box{
+        width: calc(50% - 16px);
+    }
+    .info_box.three_box{
+        width: calc(33.33% - 16px);
+    }
+    .one_box:nth-child(even){
+        background: #ffffff;
+    }
+    .box_row{
+        display: block !important;
+        width: 100%;
+    }
+    .info_box .box_row label{
+        width: 30%;
+    }
+    .eld_warning {
+        height: 200px;
+        border: 1px solid;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+    }
+    .eld_warning {
+        position: fixed;
+        width: 440px;
+        background-color: #fff;
+        margin: auto;
+        font-size: 20px;
+        padding: 30px;
+        display: none;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
+    .btn_group{
+        position: relative;
+        width: 100%;
+        text-align: center;
+        margin-top: 20px;
+    }
+    .btn_group .ez_button{
+        margin: 0 10px;
+    }
+    .ez_button{
+        margin: 0 10px;
+    }
+    #eld_table .ez_button{
+        width: 95px;
+        margin: 1px;
+    }
+    .ez_input.inpurError{
+        border: 1px solid #F44336;
+    }
+    .inpurError{
+        border: 1px solid #F44336;
+    }
+    .box_row .error_mes{
+        color: #F44336;
+    }
+	.one_box div.one_cable{
+		display: block;
+		position: relative;
+	}
+	.out_of_stock{
+		display:none;
+		color: red !important;
+		font-size: 11px;
+		text-transform: initial;
+	}
+	.one_box div.one_cable[data-id="2"] .out_of_stock{
+		display:inline;
+	}
+	.one_cable a{
+		
+	}
+	.one_cable img{
+		cursor:pointer;
+		width: 30px;
+		max-height: 30px;
+		margin-right: 10px;
+	}
+	.one_cable h3{
+		cursor: pointer;
+		display: inline-block;
+		margin: 0;
+		position: relative;
+		font-size: 15px;
+		bottom: 5px;
+		text-transform: capitalize;
+		color: #354A5F;
+		font-weight: bold;
+	}
+	.one_cable h3 span{
+		color: black;
+		font-weight: bold;
+	}
+	.one_cable p{
+		cursor: pointer;
+		display: inline-block;
+		position: absolute;
+		top: 26px;
+		left: 54px;
+		text-transform: capitalize;
+		color: #888888;
+		font-size: 13px;
+	}
+	.one_box .one_cable input{
+		width: 100%;
+		text-align: center;
+	}
+	#one_cable_popup img{
+		float: left;
+		max-width: 500px;
+		margin-right:20px;
+	}
+	#one_cable_popup p{
+		
+	}
+	.info_box.one_box.cables_box{
+		
+	}
+	.one_box div.cable_box{
+		font-size: 0;
+		width: 100%;
+	}
+	.one_box div.cable_box > div{
+		display: inline-block;
+		font-size: 15px;
+		text-transform: uppercase;
+		border-bottom: 1px solid #D7D7D7;
+		height: 55px;
+		vertical-align: top;
+		overflow: hidden;
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+	.one_box div.cable_box.cable_box_head > div{
+		height: 33px;
+		border-top: 1px solid #D7D7D7;
+		font-size: 12px;
+		line-height: 1;
+	}
+	.one_box div div.cable_name{
+		width: 58%;
+		border-left: 1px solid #D7D7D7;
+		padding-left: 10px;
+		position: relative;
+	}
+    .one_box div div.cable_name p{
+		word-break: normal;
+	}
+	.one_box div div.cable_quantity{
+		width: 15%;
+		text-align: center;
+	}
+	.one_box div div.cable_price{
+		width: 15%;
+		text-align: center;
+	}
+	.one_box div div.cable_clear{
+		width: 12%;
+		text-align: center;
+		border-left: 1px solid #D7D7D7;
+		border-right: 1px solid #D7D7D7;
+	}
+	.cable_clear button{
+		cursor:pointer;
+		background:transparent;
+		
+	}
+	
+	.info_box.fleets_box{
+        width: 100%;
+		position: relative;
+    }
+	.info_box.fleets_box button{
+		font-size: 10px;
+		width: 12%;
+	}
+	.fleets_box .drop_list, .manager_payment_box_users.drop_list {
+		position: absolute;
+		top: 35px;
+		left: 10.5%;
+		background: white;
+		border: 1px solid #ccc;
+		border-radius: 5px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		z-index: 99999;
+		min-width: 300px;
+	}
+	.fleets_box .drop_list p, .manager_payment_box_users.drop_list p{
+		cursor:pointer;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	.fleets_box .order-eld p:hover, .manager_payment_box_users.drop_list p:hover{
+		background: lightcyan;
+	}
+	.fleets_box.info_box .box_row label{
+		width: 10%;
+	}
+	.fleets_box.info_box .box_row input{
+		width: 50%;
+	}
+	.popup_box_panel .fleets_box .box_row{
+		position:relative;
+	}
+	/*.order-eld label {*/
+	/*	margin-bottom: 0;*/
+	/*	min-height: auto;*/
+	/*}*/
+	.form-group-sm select.form-control{
+		line-height: normal;
+	}
+	/*.order-eld input[type=checkbox], .order-eld input[type=radio] {*/
+	/*	margin-top: 4px;*/
+	/*}*/
+	.order-form .dropdown-menu {
+		width: calc(100% - 30px);
+		margin-left: 15px;
+		max-height: 400px;
+		overflow-x: auto;
+	}
+	.order-form .dropdown-menu>li>a {
+		white-space: normal;
+	}
+	/*.order-eld .dropdown-menu a{*/
+	/*	overflow: hidden;*/
+	/*}*/
+	/*.order-eld .error-handler {*/
+	/*	margin-bottom: 0;*/
+	/*}*/
+	.form-style-background {
+		background: #f2f3f5;
+		padding: 15px 15px 1px 15px;
+		margin-bottom: 10px;
+	}
+	.margin-bottom-10px {
+		margin-bottom: 10px;
+	}
+
+	.order_info .one_box span{
+		display:inline;
+	}
+	#scanners_info span{
+		padding-left:10px;
+		vertical-align: inherit;
+	}
+	.order_info .one_box label{
+		margin:0;
+	}
+	.inp_error{
+		border: 1px solid #f80415 !important;
+	}
+	.log_error{
+		color:#f80415;
+	}
+	#is_demo_box{
+		position: absolute;
+		top: 27px;
+	}
+	#is_demo_box input{
+		margin-top: 10px;
+		position: relative;
+		top: 2px;
+	}
+	.order_box button{
+		float: right;
+		top: 10px;
+	}
+	.order_box .agreement_box{
+		display: block;
+		margin-right: 25px;
+	}
+	.order_box .agreement_box a.error{
+		color:red;
+	}
+	.order_box .agreement_box a{
+		
+	}
+	.order_box .agreement_box input{
+		position: relative;
+		top: 3px;
+		margin-right: 10px;
+	}
+	.order_info .one_box .fa-pencil{
+		color: #3598db;
+		font-size: 15px;
+		position: relative;
+		left: 4px;
+		cursor: pointer;
+	}
+	#select_mac{
+		position: absolute;
+		top: 35px;
+		right: 0;
+		background: white;
+		border: 1px solid #ccc;
+		border-radius: 5px;
+		z-index: 999;
+		width: 240px;
+	}
+	#select_mac input{
+		width: 100%;
+		margin-top: 5px;
+	}
+	#select_mac_list{
+		width: 100%;
+	}
+	#select_mac_list p{
+		margin: 0;
+		padding: 5px;
+	}
+	#select_mac_list p:hover{
+		background:#ccc;
+	}
+.nav_eld_buttons {
+	top: 7px;
+	right: 5px;
+    margin-bottom: 10px;
+}
+.nav_eld_buttons button{
+	margin-left: 0px;
+}
+.new_mac_block  {
+	clear: both;
+    float: right;
+}
+.new_mac_block input{
+	border: solid 1px #91a4b0;
+	border-radius: 4px;
+}
+.new_mac_block button{
+	margin: -4px 0px 0px 10px;
+}
+#admin_manage_eld .subhead{
+	padding: 20px 20px 10px 0px;
+}
+#admin_manage_eld  #pg_pagin{
+	top: 20px;
+}
+@media (min-width: 992px) {
+	.nav_eld_buttons {
+		right: 20px;
+	}
+}
+@media (max-width: 768px) {
+	#admin_manage_eld .subhead {
+		padding: 20px 20px 10px 0px;
+	}
+	#admin_manage_eld  #pg_pagin{
+		top: 0px;
+	}
+}
+@media (max-width: 450px) {
+	.new_mac_block { width: 100%; margin-top:10px;}
+	.new_mac_block input#new_mac {
+		width: calc(100% - 70px);
+		width: -webkit-calc(100% - 70px);
+		width: -moz-calc(100% - 70px);
+	}
+	.ez_button.search_resseler_b, .ez_button.new_order {
+		width: 48%;
+		margin-left: 0;
+		margin-right: 3%;
+	}
+	.ez_button.new_order {margin-right: 0%;} 
+}

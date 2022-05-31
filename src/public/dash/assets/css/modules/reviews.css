@@ -1,0 +1,30 @@
+.stars-block{
+    display: flex;
+    align-items: center;
+}
+.stars-block i{
+    cursor: pointer;
+}
+.stars-block i,
+#userReviewsOffersTable i{
+    color: var(--silver);
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+.stars-block i.check,
+#userReviewsOffersTable i.check{
+    color: var(--orangey-yellow);
+}
+.textarea-with-count{
+    position: relative;
+}
+.textarea-with-count .text-count{
+    position: absolute;
+    top: 24px;
+    right: 24px;
+}
+.stars-line{
+    white-space: nowrap;
+    font-size: 0;
+    letter-spacing: 0;
+}

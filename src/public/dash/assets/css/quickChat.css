@@ -1,0 +1,789 @@
+#collectionQuickChatsBox
+{
+    position: fixed;
+    bottom: 45px;
+    right: 0px;
+    width: 324px;
+}
+#quickChatContactsListHeader
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    height: 100%;
+    cursor: pointer;
+    background-color: white;
+    box-shadow: 0px 6px 34px 0px rgba(0,0,0,0.15);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+#quickChatContactsList
+{
+    display: none;
+    box-shadow: -5px 0px 15px -5px rgba(0,0,0,0.15);
+    border-top: 1px solid #eef2f5;
+    background-color: #f8f9fd;
+    padding: 10px 0;
+}
+#quickChatContactsListHeaderName
+{
+    display: inline-block;
+    height: 100%;
+    padding-left: 20px;
+    text-transform: uppercase;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: normal;
+    line-height: 3;
+    text-align: left;
+    color: #14171a;
+}
+#quickChatContactsListShowHideButton
+{
+    float: right;
+    padding-right: 20px;
+    font-size: 30px;
+    color: #dee2ed;
+}
+.oneQuickChatBoxContactList
+{
+    position: relative;
+    margin: 10px 20px 10px 15px;
+    width: calc(324px - 40px);
+    height: 74px;
+    cursor: pointer;
+    background-color: white;
+}
+.quickChatUserLastVisit 
+{
+    position: absolute;
+    top: 7px;
+    right: 30px;
+    font-family: Roboto;
+    font-size: 10px;
+    color: #B5B7BF;
+    line-height: initial;
+}
+.oneQuickChatBoxContactListLeftBox, .oneQuickChatBoxContactListRightBox 
+{
+    display: inline-block;
+}
+.oneQuickChatBoxContactListLeftBox 
+{
+    float: left;
+    height: 74px;
+    width: 75px;
+    padding: 8px 10px;
+}
+.oneQuickChatBoxContactListRightBox
+{
+    width: calc(100% - 90px);
+    height: 100%;
+}
+.oneQuickChatBoxContactList img
+{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.visibleQuickChatsBox
+{
+    height: 40px;
+    line-height: 55px;
+}
+.visibleChatContactsList
+{
+    display: block;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.hiddenChatContactsList, .hiddenOneQuickChatRoom
+{
+    height: 40px;
+    line-height: 35px;
+    margin-bottom: 0px !important;
+}
+.oneQuickChatname
+{
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 15px;
+    line-height: initial;
+    max-width: 160px;
+}
+.quickChatUserStatus  
+{
+    width: 11px !important;
+    height: 11px;
+    border-radius: 10px 10px 10px 10px;
+    position: absolute;
+    padding: 0;
+    display: block;
+    font-size: 10px;
+    text-align: center;
+    color: white;
+    left: 46px;
+    top: 52px;
+    border: 2px solid white;
+}
+.online {
+	background-color: #7fba00 !important;
+}
+.away {
+	background-color: #fcd346 !important;
+}
+.not_disturb {
+	background-color: #d71920 !important;
+}
+.invisiblee {
+	border: 2px solid #7fba00;
+	color: white;
+}
+.offline {
+	background-color: white;
+	border: 2px solid #7fba00;
+}
+.lastQuickChatMessage
+{
+    overflow: hidden;
+    font-family: Roboto;
+    font-size: 12px;
+    line-height: 1.17;
+    letter-spacing: 0.4px;
+    text-align: left;
+    color: #7c8691;
+    width: 185px;
+    height: 30px;
+    margin-top: 2px;
+}
+.oneQuickChatBoxContactList:hover
+{
+    background-color: #e1effa;
+}
+#oneQuickChatRoom
+{
+    width: 324px;
+    height: 60px;
+    background-color: white;
+    position: fixed;
+    right: 335px;
+    bottom: 119px;
+    display: none;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom: 1px solid #eef2f5;
+    z-index: 2;
+}
+#oneQuickChatRoomControlsBox
+{
+    display: none;
+}
+#oneQuickChatRoomHeader
+{
+    cursor: pointer;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+#oneQuickChatRoomHeaderClose
+{
+    float: right; 
+    padding-right: 15px; 
+    font-size: 30px;
+    color: #dee2ed;
+}
+.visibleOneQuickChatRoom
+{
+    margin-bottom: 310px;
+    height: 50px;
+    line-height: 50px;
+}
+#oneQuickChatRoomMessageBox
+{
+    display: none;
+    background-color: white;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
+}
+#oneQuickChatRoomControlsBox, #oneQuickChatRoomAttachmentFile
+{
+    height: 63px;
+    background-color: white;
+    position: relative;
+    border-top: 1px solid #eef2f5;
+}
+#oneQuickChatRoomAttachmentFile 
+{
+    display: none;
+    color: rgb(52, 73, 94);
+}
+#oneQuickChatRoomAttachmentFileName
+{
+    display: inline-block;
+    padding-left: 10px;
+    height: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    line-height: 48px;
+    overflow: hidden;
+    width: 135px;
+    color: #75787d;
+}
+#oneQuickChatRoomAddFile:before
+{
+    font-family: "ezlogz" !important;
+    text-transform: lowercase;
+    font-size: 25px;
+    position: relative;
+    top: 0;
+    color: #adadad;
+    left: 0px;
+    content: 'n';
+}
+#oneQuickChatRoomSmiles
+{
+    top: 13px;
+    padding: 0;
+    right: 47px;
+    font-size: 25px;
+    background-color: white;
+    color: #adadad;
+    position: absolute;
+    cursor: pointer;
+}
+#oneQuickChatRoomAddFile
+{
+    top: 13px;
+    padding: 0;
+    right: 10px;
+    font-size: 20px;
+    background-color: white;
+    position: absolute;
+    cursor: pointer;
+    cursor: pointer;
+}
+#oneQuickChatRoomInputField
+{
+    overflow: auto;
+    padding: 5px;
+    line-height: 17px;
+    font-size: 12px;
+    width: 250px;
+    height: 100%;
+    display: inline-block;
+    color: rgb(52, 73, 94);
+    outline: none;
+}
+.quickChatContactsListShow
+{
+    line-height: 20px;
+}
+#oneQuickChatShowHideButton
+{
+    float: right;
+    padding-right: 10px;
+    height: 0px;
+}
+.visibleOneQuickChatRoom #oneQuickChatShowHideButton
+{
+    line-height: 57px;
+}
+.hiddenOneQuickChatRoom #oneQuickChatShowHideButton
+{
+    line-height: 26px;
+}
+.oneQuickChatShow
+{
+    line-height: 42px;
+}
+#oneQuickChatRoomInfo
+{
+    height: 100%;
+    display: inline-block;
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: bold;
+    color: #34495e;
+    margin-left: 20px;
+    margin-top: 5px;
+}
+#oneQuickChatRoomInfo img
+{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin-left: 10px;
+    margin-bottom: 2px;
+    background-color: white;
+    float: left;
+    margin-top: 8px;
+}
+#oneQuickChatRoomName
+{
+    display: inline-block;
+    margin-left: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 150px;
+}
+#oneQuickChatRoomInfo .quickChatUserStatus
+{
+    top: 30px;
+    left: 33px
+}
+#oneQuickChatRoomCancelFile, #oneQuickChatRoomSendFile
+{
+    display: none;
+    position: absolute;
+    top: 6px;
+}
+#oneQuickChatRoomCancelFile
+{
+    right: 35px;
+    background: #3498db;
+    color: white;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    top: 12px;
+    font-size: 24px;
+    padding: 0;
+    line-height: 0px;
+}
+#oneQuickChatRoomSendFile
+{
+    right: 5px;
+    background: #3598db;
+    color: white;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    font-size: 15px;
+    padding: 0;
+    padding-right: 2px;
+    top: 12px;
+}
+#quickChatUploadFile
+{
+    display: none;
+}
+#oneQuickChatRoomAttachmentFileName:before {
+    content: "\e906";
+    font-family: icomoon !important;
+    position: relative;
+    top: 1px;
+    padding-right: 5px;
+    color: rgb(51,73,94);
+}
+#oneQuickChatRoomAttachmentFileSize
+{
+    display: inline-block;
+    height: 100%;
+    position: absolute;
+    width: 50px;
+    right: 60px;
+    color: #75787d;
+}
+#quickChatSmilesBox 
+{
+    display: none;
+    position: absolute;
+    bottom: 50px;
+    left: 135px;
+    width: 150px;
+    height: auto;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 0;
+    background: white;
+    line-height: normal;
+    border: 1px solid #ccc;
+}
+#quickChatSmilesBox img 
+{
+    width: 32px;
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 1px;
+    cursor: pointer;
+}
+#oneQuickChatBody
+{
+    margin-top: -1px;
+}
+#quickChatShadowBox
+{
+    box-shadow: 0px 1px 15px 0px rgba(0,0,0,0.15);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border: solid 1px #eef2f5;
+}
+.visibleOneQuickChatRoom #oneQuickChatRoomName
+{
+    width: 150px;
+}
+.hiddenOneQuickChatRoom #oneQuickChatRoomName
+{
+    width: 190px;
+}
+.visibleOneQuickChatRoom #oneQuickChatRoomHeader
+{
+    height: 60px;
+}
+.hiddenOneQuickChatRoom #oneQuickChatRoomHeader
+{
+    height: 30px;
+}
+#oneQuickChatRoomInputField .input_pl
+{
+    display: inline-block;
+    margin-top: 15px;
+    margin-left: 15px;
+    font-size: 14px;
+    font-family: Roboto;
+    font-weight: 300;
+    color: #adadad;
+}
+.oneQuickChatMessageBox
+{
+    min-height: 25px;
+    line-height: 20px;
+    color: rgb(70,79,84);
+    margin-top: 5px; 
+    margin-bottom: 5px;
+    padding: 1px; 
+    margin-left: 20px; 
+}
+.quickChatMessageUserThumb
+{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+}
+.quickChatMessageUserThumbBox
+{
+    left: -45px;
+    top: 0;
+    position: absolute;
+}
+.quickChatCurUserMessageBox
+{
+    margin-top: 5px;
+    padding: 1px;
+    margin-left: 15px;
+    margin-right: 15px;
+    text-align: right;
+}
+.quickChatUserMessage
+{
+    display: inline-block;
+    position: relative;
+    border-radius: 4px;
+    padding: 5px;
+    font-size: 13px;
+    word-wrap: break-word;
+    font-family: Roboto;
+    font-size: 12px;
+    line-height: 1.17;
+    letter-spacing: 0.4px;
+    color: #7c8691;
+}
+.quickChatCurUserMessageBox .quickChatUserMessage
+{
+    max-width: 188px;
+    border: solid 1px #dedede;
+    border-radius: 20px;
+    padding: 10px 10px;
+}
+.quickChatNotCurUserMessageBox .quickChatUserMessage
+{
+    margin-right: 15px;
+    max-width: 173px;
+    border: solid 1px #dedede;
+    border-radius: 20px;
+    padding: 10px 10px;
+}
+.quickChatSystemMessage .quickChatUserMessage
+{
+    font-family: Roboto;
+    font-weight: 300;
+    color: #bdbdbd;
+}
+.quickChatSystemMessage.error .quickChatUserMessage{
+	color: #a94442 !important;
+} 
+.quickChatSystemMessage
+{
+    text-align: center;
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.quickChatMessageMusic
+{
+    width: 164px;
+    margin-bottom: -5px;
+}
+.quickChatNotCurUserMessageBox
+{
+    margin-left: 60px;
+    position: relative;
+}
+.quickChatMessageImage 
+{
+    width: 70px;
+    min-height: 70px;
+    padding: 2px;
+    cursor: nesw-resize;
+    cursor: -moz-zoom-in;
+    cursor: -webkit-zoom-in;
+}
+.quickChatUserMessage .playVideoButton {
+    background-image: url(/dash/assets/img/playBut.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 18px;
+    left: 15px;
+}
+.quickChatMessageVideo
+{
+    cursor: pointer;
+    max-width: 70px;
+    min-height: 70px;
+    margin-bottom: -5px; 
+}
+.send_contact 
+{
+    width: 100%;
+    overflow: hidden;
+    cursor: pointer;
+    min-width: 113px;
+}
+.send_contact img 
+{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+.send_contact .con_name 
+{
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 3px;
+}
+.send_contact .con_email 
+{
+    font-size: 12px;
+    color: gray;
+}
+.quickChatMessageLocation img
+{
+    width: 15px;
+    float: left;
+}
+.oneQuickChatMessageBox object
+{
+    width: 25px;
+    vertical-align: middle;
+}
+object.emojione {
+	max-height: 25px;
+	max-width: 25px;
+	vertical-align: middle;
+}
+img.emojione {
+    margin: 0 3px;
+	height: 25px;
+	width: 25px;
+	vertical-align: middle;
+}
+#quickChatAttachmentBox
+{
+    text-align: center;
+}
+#quickChatAttachmentBox .popup_box_panel
+{
+    width: auto;
+    height: auto;
+    display: inline-block;
+    max-width: 90%;
+    max-height: 90%;
+    min-width: 100px;
+    min-height: 100px;
+    padding: 40px 30px 30px;
+}
+#quickChatAttachmentBox .popup_box_panel img
+{
+    max-width: 100%;
+    max-height: 100%;
+}
+#quickChatAttachmentBox .popup_box_panel .close_edit
+{
+    top: 10px;
+    display: none;
+}
+#quickChatShowFile
+{
+    min-height: 150px;
+    min-width: 150px;
+    text-align: center;
+}
+.quickChatMessageLocation
+{
+    cursor: pointer;
+}
+#quickChatLocation
+{
+    width: 95%;
+    height: 100%;
+}
+#quickChatAddContact p
+{
+    text-align: center;
+    display: block;
+    font-size: 16px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    margin-left: 15px;
+}
+#quickChatAddContactTrue, #quickChatAddContactFalse
+{
+    height: 31px;
+    background: #3598db;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 0 15px;
+    line-height: 11px;
+    vertical-align: top;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+#quickChatAddContactTrue
+{
+    background: #3598db;
+}
+#quickChatAddContactFalse
+{
+    background: #34495e;
+}
+.oneQuickChatNotReadMessages
+{
+    background-color: #3498db;
+    font-size: 10px;
+    min-width: 19px;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 50%;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    line-height: 19px;
+}
+#quickChatShowFile video
+{
+    max-width: 90%;
+}
+.userLoginBox
+{
+    margin-left: 50px;
+    margin-top: 6px;
+    font-weight: 800;
+    font-style: italic;
+}
+.firstUserMessageInMessagesList
+{
+    margin-top: 30px;
+}
+#oneQuickChatRoomProgressBar
+{
+    display: none;
+     height: 50px;
+    background-color: white;
+    position: relative;
+    border: 1px solid #dde4ea;
+}
+#oneQuickChatRoomCurrenntUploadWrap
+{
+    height: 10px;
+    border: 1px solid #b3b3b3;
+    margin: 20px 10px;
+}
+#oneQuickChatRoomCurrenntUpload
+{
+    width: 0;
+    height: 100%;
+    background-color: rgb(168, 230, 118);
+}
+.quickChatPreviewTitle
+{
+    color: rgb(56,60,67);
+    white-space: nowrap;
+    word-wrap: break-word;
+    font-weight: 600;
+    font-size: 13px;
+    text-align: left;
+}
+.quickChatPreview
+{
+    display: inline-block;
+    border: 1px solid gainsboro;
+    border-radius: 5px;
+    margin-top: 3px;
+    max-height: 65px;
+    overflow: hidden;
+}
+.quickChatPreviewDescription
+{
+    font-size: 12px;
+    white-space: nowrap;
+    word-wrap: break-word;
+    color: rgb(56,60,67);
+    text-align: left;
+}
+.quickChatPreviewLinkText
+{
+    font-size: 10px;
+    white-space: nowrap;
+    word-wrap: break-word;
+    color: rgb(56,60,67);
+    text-align: left;
+}
+.quickChatPreviewInfoBox
+{
+    max-width: 120px;
+    padding: 5px;
+    display: inline-block;
+}
+.quickChatPreviewImageBox
+{
+    max-width: 65px;
+    display: block;
+    float: left;
+    height: 63px;
+}
+.quickChatPreviewImageBox img
+{
+    height: 100%;
+    max-width: 100%;
+}
+@media screen and (max-width: 768px) 
+{
+    #oneQuickChatRoom, #collectionQuickChatsBox {
+        display: none !important;
+    }
+}

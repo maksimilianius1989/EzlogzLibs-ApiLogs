@@ -1,0 +1,463 @@
+#manageButton, #sectionButton
+{
+    float: right;
+}
+#sectionButton, #manageInfo, #manageButton, #tempText
+{
+    display: none;
+}
+.editCategory, .editSubcategory, .editManage
+{
+    float: right;
+    color: #fff;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    height: 25px;
+    width: 25px;
+    line-height: 25px;
+    display: inline-block;
+    margin: 0 1px;
+    vertical-align: top;
+    background: rgb(53,152,219);
+    padding-left: 5px;
+    margin-top: 5px;
+    cursor: pointer;
+}
+.editSubcategory, .editManage
+{
+    margin-top: 0px;
+}
+.showSubcategory, .noneSubcategory, .showManagers
+{
+    float: left;
+    margin-right: 5px;
+    background-color: transparent;
+    color: #3497db;
+}
+.categoryInfo 
+{
+    height: 50px;
+    border-radius: 3px;
+    margin: 0 5px 0px 5px;
+    line-height: 35px;
+    padding: 6px;
+}
+.addSubcategory, .addManage
+{
+    float: right;
+    height: 25px;
+    width: 25px;
+    margin-top: 5px;
+    line-height: 10px;
+    padding-left: 9px !important;
+}
+#createCategoryBox .popup_box_panel, #updateManagers .popup_box_panel, #editCategoryBox .popup_box_panel, #removeCategoryBox .popup_box_panel, #removeSubcategoryBox .popup_box_panel, #addManagerBox .popup_box_panel, #removeManagerBox .popup_box_panel
+{
+    width: 400px;
+    text-align: center;
+}
+#categoryName, #newCategoryName, #addManagerSelect
+{
+    margin: 40px 0 100px;
+}
+#addCategoryFinal, #updateCategoryFinal, #removeCategory, .cancel, #removeCategoryFinal ,#removeSubcategoryFinal, #addManagerFinal, #removeManagerFinal
+{
+    margin-bottom: 20px;
+}
+#categoriesInfo h1
+{
+    margin-top: 100px;
+    text-align: center;
+    margin-bottom: 100px;
+    color: #c7c7c7;
+}
+#removeCategoryBox p, #removeSubcategoryBox p, #removeManagerBox p
+{
+    margin-bottom: 70px;
+    margin-top: 50px;
+    font-size: 20px;
+}
+#addSubcategoryBox textarea
+{
+    min-height: 300px;
+}
+#addSubcategoryBox textarea, #showSubcategoryBox textarea
+{
+    max-width: 100%;
+    min-width: 400px;
+    margin-bottom: 10px;
+}
+#addSubcategoryBox input, #showSubcategoryBox input
+{
+    width: 500px;
+    margin-bottom: 10px;
+}
+#addSubcategoryBox .popup_box_panel
+{
+    max-width: 1000px;
+}
+#showSubcategoryBox .popup_box_panel
+{
+    width: 90%;
+    max-width: 90%;
+    height: 90%;
+}
+.inputError 
+{
+    border-color: red !important;
+    transition: 1s;
+}
+#file-upload-subcategory, #file-uploadNewFile-subcategory
+{
+    display: none;
+}
+.uploadBox
+{
+    margin: 20px;
+}
+.deleteFile
+{
+    position: absolute;
+    right: 5px;
+    z-index: 1;
+    height: 20px;
+    line-height: normal;
+    width: 20px;
+    text-align: center;
+    padding: 0px 0px 0px 1px !important;
+    border-radius: 10px !important;
+    top: 5px;
+}
+.uploadImg, .uploadVideo, .uploadAudio, .otherFile, .uploadImg_updateSubcategory, .uploadVideo_updateSubcategory, .uploadAudio_updateSubcategory, .otherFile_updateSubcategory
+{
+    display: none;
+    position: relative;
+    max-height: 200px;
+}
+.uploadImg img, .uploadVideo video, .uploadAudio audio, .otherFile p, .uploadImg_updateSubcategory img, .uploadVideo_updateSubcategory video, uploadAudio_updateSubcategory audio, .otherFile_updateSubcategory p
+{
+    max-height: 200px;
+    float: right;
+}
+.uploadImg, .uploadImg_updateSubcategory, .uploadVideo, .uploadVideo_updateSubcategory, .uploadAudio, .uploadAudio_updateSubcategory, .otherFilem .otherFile_updateSubcategory
+{
+    margin: 10px;
+}
+.uploadAudio
+{
+    padding-right: 25px;
+}
+.otherFile
+{
+    padding-right: 30px;
+    padding-top: 5px;
+}
+.onesubcategoryBox, .oneManageBox
+{
+    height: 40px;
+    border-radius: 3px;
+    margin: 5px;
+    padding: 6px;
+    margin-left: 40px;
+    cursor: pointer;
+}
+.onesubcategoryBox span
+{
+    vertical-align: middle;
+    padding-left: 5px;
+}
+#showSubcategoryBox span
+{
+    width: calc(100% - 90px);
+    display: inline-block;
+    margin: 5px;
+}
+.attachmentImg, .attachmentVideo
+{
+    max-height: 100px;
+}
+.uploadAttachmentImgBox
+{
+    display: inline-block;
+    margin: 5px;
+    position: relative;
+}
+.uploadAttachmentAudioBox, .uploadAttachmentFileBox
+{
+    position: relative;
+    display: inline-block;
+    margin: 2px 20px 2px 0px;
+}
+.uploadAttachmentVideoBox
+{
+    position: relative;
+    float: left;
+    margin: 5px;
+}
+.uploadAttachmentAudioBox .deleteFile, .uploadAudio_updateSubcategory .deleteFile
+{
+}
+.attachmentsFileBox button.btn.btn-default.deleteFile,
+.attachmentsFileBox button.ez_button.deleteFile, 
+.otherFile_updateSubcategory .deleteFile {
+    top: 0px;
+}
+.uploadAttachmentVideoBox img 
+{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.attachmentVideo
+{
+    max-height: 100px;
+}
+.attachmentsVideoBox
+{
+    overflow: hidden;
+}
+#showSubcategoryBox label
+{
+    width: 75px;
+}
+.uploadBox_updateSubcategory
+{
+    margin: 5px;
+}
+#showUploadBox
+{
+    margin-bottom: 20px;
+    position: absolute;
+    bottom: 0px;
+    height: 200px;
+    overflow: auto;
+    width: calc(100% - 40px);
+    border: 1px solid #ccc8c8;
+border-radius: 3px;
+padding: 5px;
+}
+.uploadVideo_updateSubcategory, .uploadAudio_updateSubcategory, .otherFile_updateSubcategory
+{
+    position: relative;
+}
+#manageInfo
+{
+    background-color: white;
+    /*width: 40%;*/
+}
+.sectionManageInfo
+{
+    height: 50px;
+    border-radius: 3px;
+    margin: 0 5px 5px 5px;
+    line-height: 35px;
+    padding: 6px;
+}
+.oneManageBox span 
+{
+    vertical-align: middle;
+    padding-left: 5px;
+}
+.managersInfo
+{
+    display: none;
+}
+.allReadyManage
+{
+    background-color: rgb(70,174,222);
+}
+.subcategoryInfo, #addCategory, #onlyShowSubcategoryName, #onlyShowSubcategoryDescription
+{
+    display: none;
+}
+.curSection 
+{
+    background-color: white !important;
+}
+.oneCategoryBox span, .sectionManageInfo span
+{
+    cursor: pointer;
+}
+#showSubcategoryBox input
+{
+    width: calc(100% - 78px);
+    min-width: 400px;
+}
+#onlyShowSubcategoryDescription[disabled]
+{
+    background-color: transparent;
+}
+#textareaBox
+{
+    height: calc(100% - 380px);
+}
+#showSubcategoryBox textarea
+{
+    max-height: 100%;
+    height: 100%;
+}
+#updateSubcategoryFinal, #addSubcategoryFile, #addNewSubcategoryFile, #removeSubcategory
+{
+    margin: 10px 0 10px;
+}
+.newAttachmentFile
+{
+    border: 3px solid rgb(143,194,56);
+    border-radius: 3px; 
+}
+.newAttachmentFile audio, .newAttachmentFile video
+{
+    vertical-align: middle;
+}
+.uploadAttachmentAudioBox audio
+{
+    margin-right: 20px;
+}
+.uploadAttachmentFileBox a, .uploadAttachmentFileBox p
+{
+    margin-right: 30px;
+}
+#showUploadBox h1
+{
+    margin-top: 80px;
+    text-align: center;
+    color: #c7c7c7;
+}
+#mainButtonsBox
+{
+    /*width: calc(100% - 150px);*/
+    min-height: 45px;
+    display: block;
+}
+/*#mainButtonsBox button, #manageButton, #sectionButton*/
+/*{*/
+    /*margin: 0;*/
+    /*background-color: #f9f9f9;*/
+    /*color: #3598db;*/
+    /*height: 45px;*/
+/*}*/
+#iosSpecificsSection
+{
+    margin-right: 20px;
+}
+#apiDocsName
+{
+    display: inline-block;
+    width: 25%;
+    float: left;
+}
+#apiDocsDescription
+{
+    display: inline-block;
+    width: 75%;
+}
+.oneRightInfo 
+{
+    margin: 0 5px 5px 5px;
+    padding: 10px;
+    border: 1px solid #dadde0;
+}
+#apiDocs
+{
+    display: none;
+    position: relative;
+    height: calc(100% - 75px);
+}
+.oneLeftInfo
+{
+    cursor: pointer;
+    padding: 3px 3px 3px 20px;
+}
+#apiDocsName
+{
+    border-right: 4px solid #039be5;
+    /*position: absolute;*/
+    width: 210px;
+    height: calc(100% - 40px);
+    overflow-x: hidden;
+}
+#apiDocsDescription
+{
+    position: absolute;
+    width: calc(100% - 215px);
+    left: 230px;
+    overflow-x: hidden;
+    height: calc(100% - 40px);
+}
+.descriptionName, .exampleName, .oneLeftInfoName
+{
+    font-weight: 700;
+    color: #3598db;
+} 
+.descriptionText, .exampleText 
+{
+    margin-left: 15px;
+    word-wrap: break-word;
+}
+#apiDocsName, #apiDocsDescription 
+{
+     overflow-y: hidden; 
+     margin-left: -20px;
+}
+#apiDocsName:hover, #apiDocsDescription:hover 
+{
+    overflow-y: auto;
+}
+.oneLeftInfoText 
+{
+    text-transform: capitalize;
+    color: rgb(143,194,56);
+    font-weight: 600;
+    color: rgb(247, 139, 0);
+    font-style: oblique;
+    font-size: 15px;
+}
+.oneLeftInfo:hover 
+{
+    background-color: #e1effa;
+}
+.oneLeftInfoName, .oneLeftInfoText
+{
+    display: inline-block;
+}
+.curVisibleBox
+{
+    color: #039be5;
+    font-weight: 700;
+}
+.oneRightInfo code
+{
+    word-wrap: break-word;
+}
+#categoriesInfo .ez_section 
+{
+    background-color: white;
+}
+.openSubcategories .showSubcategory 
+{
+    color: #cccccc;
+}
+.onesubcategoryBox span:first-child, .oneManageBox span:first-child
+{
+    color: #3cb878;
+}
+.oneCategoryBox 
+{
+    border-bottom: 1px solid #ebebeb;
+}
+#categoriesInfo
+{
+    background-color: white;
+}
+.oneMainManageBox
+{
+    border-bottom: 1px solid #ebebeb;
+}
+#eldConfirm {
+	margin-right: 10px;
+	margin-bottom: 20px;
+}

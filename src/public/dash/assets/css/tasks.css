@@ -1,0 +1,405 @@
+#file-upload-task
+{
+    display: none;
+}
+.uploadBox
+{
+    margin: 20px;
+}
+.deleteFile
+{
+    position: absolute;
+    right: 5px;
+    z-index: 1;
+    height: 20px;
+    line-height: normal;
+    width: 20px;
+    text-align: center;
+    padding: 0px 0px 0px 1px !important;
+    border-radius: 10px !important;
+    top: 5px;
+}
+.uploadImg, .uploadVideo, .uploadImg_updateTask, .uploadVideo_updateTask
+{
+    display: none;
+    position: relative;
+    max-height: 200px;
+}
+.uploadImg img, .uploadVideo video, .uploadImg_updateTask img, .uploadVideo_updateTask video
+{
+    max-height: 200px;
+    float: right;
+    max-width: 100%;
+}
+.uploadImg, .uploadImg_updateTask, .uploadVideo, .uploadVideo_updateTask
+{
+    margin: 10px;
+}
+.attachmentsBox
+{
+    min-height: 100px;
+    margin-bottom: 10px;
+}
+.attachmentImg, .attachmentVideo
+{
+    max-height: 100px;
+}
+.attachmentVideo
+{
+    float: left;
+}
+.videoBox img
+{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.videoBox
+{
+    position: relative;
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+#by_whom span 
+{
+    float: right;
+}
+#platform[disabled] 
+{
+    color: #a79c9c;
+}
+.inpurError
+{
+    border-color: red !important;
+    transition: 1s;
+}
+.one_history
+{
+    min-height: 43px;
+}
+.box_header
+{
+    z-index: 1;
+    padding-left: 20px !important;
+}
+#fixedBox
+{
+    background-color: white;
+    width: 100%;
+    z-index: 10;
+    height: 46px;
+}
+.close_edit
+{
+    z-index: 1;    
+}
+.popup_box_panel
+{
+    margin-bottom: 0px;
+    height: 90%;
+    overflow: auto;
+}
+#contentBox
+{       
+    overflow: auto;
+    height: calc(100% - 110px);
+    margin-top: 10px;
+    padding-right: 20px;
+    margin-top: 10px;
+}
+#bottomBox
+{
+    float: right;
+    margin-right: 50px;
+    margin-top: 10px;
+}
+#history_box
+{
+    max-height: none !important;
+    margin-top: 20px;
+}
+#new_comment
+{
+    height: 75px;
+	resize: vertical;
+}
+#updateTaskBox
+{
+    border-top: 1px solid #dadde0;
+    margin-left: 0px;
+    margin-right: -20px;
+    padding-top: 15px;
+    padding-right: 50px;
+}
+.ez_button.update_task
+{
+    float: right;        
+}
+.one_box
+{
+    display: inline-block;
+    width: 49%;
+}
+.one_box.full{
+    width: 100%;
+}
+.one_box.full input{
+    width: calc(100% - 183px);
+}
+@media (max-width: 900px)
+{
+    .one_box
+    {
+        display: block;
+        width: auto;
+    }
+}
+#contentBox .file_upload
+{
+    margin-top: 10px;
+}
+.one_box:nth-child(even) 
+{
+    background: white;
+}
+.one_box span
+{
+    text-align: center;
+    min-width: 200px;
+    display: inline-block;
+}
+.fa.my-fa-arrow
+{
+    cursor: pointer;
+}
+.one_part_box
+{
+    overflow: auto;
+}
+.table-striped.table-dashboard>tbody>tr.not_mine{
+    background: #ccc ;
+}
+.Assigned{background-color: rgb(232,135,196);}
+.Created{background-color: rgb(168, 243, 221);}
+.InWork{background-color: rgb(70,174,222);}
+.OnHold{background-color: rgb(253,208,48);}
+.Completed{background-color: rgb(143,194,56);}
+.Closed{background-color: rgb(204,209,218);}
+.Assigned, .Created, .InWork, .OnHold, .Completed, .Closed{text-align: center;}
+#joinTeam, #leftTeam
+{
+    float: right;
+}
+#createTeamBox .popup_box_panel
+{
+    max-width: 500px;
+    height: auto;
+    text-align: center;
+}
+#teamName
+{
+    margin-top: 50px;
+}
+#createTeamFinal, #clearInviteList
+{
+    margin-top: 100px;
+    margin-bottom: 20px;
+}
+#addUsers
+{
+    width: 220px;
+    margin: 20px 0 30px 3px;
+}
+#leftTeamBox .popup_box_panel
+{
+    width: 400px;
+    height: 200px;
+    text-align: center;
+}
+#leftTeamBox p
+{
+    margin-bottom: 50px;
+    margin-top: 50px;
+    font-size: 20px;
+}
+#joinTeamBox .popup_box_panel
+{
+    width: 400px;
+    text-align: center;
+    height: 250px;       
+}
+#selectTeam
+{
+    margin-top: 50px;
+    margin-bottom: 80px;
+}
+#teamSectionOne h1
+{
+    margin-top: 100px;
+    text-align: center;
+    margin-bottom: 100px;
+    color: #c7c7c7;
+}
+#teamSectionTwo
+{
+    margin-top: 10px;
+}
+#changeStatus
+{
+   float: right;
+           margin-bottom: 20px;
+}
+#leftTeam, #joinTeam, #teamSectionTwo, #teamSectionOne
+{
+    display: none;
+}
+#yourStatus
+{
+    padding: 10px;
+    margin-left: 30px;
+}
+#changeStatusBox .popup_box_panel
+{
+    width: 400px;
+    text-align: center;
+    height: 350px;            
+}
+#newStatus, #newTextStatus
+{
+    margin-top: 30px;
+    margin-bottom: 30px
+}
+.Offline
+{
+    background-color: rgb(204,209,218);
+}
+.NotWorking
+{
+    background-color: rgb(253,208,48);
+}
+.Working
+{
+    background-color: rgb(143,194,56);
+}
+.teamUserName
+{
+    width: 130px;
+    display: inline-block;
+}
+.oneTeamUser
+{
+    height: 30px;
+    margin-bottom: 5px;
+}
+.userTeamStatus
+{
+    padding: 5px;
+    width: 85px;
+    display: inline-block;
+    text-align: center;
+    margin-right: 10px;
+}
+.inTeamColor
+{
+    background-color: rgb(70,174,222);
+}
+#yourTextStatus
+{
+    padding-left: 3px;
+}
+.Task
+{
+    background-color: rgb(167,219,216);
+}
+.DesignBug
+{
+    background-color: rgb(45, 173, 129);
+}
+.FunctionalBug
+{
+    background-color: rgb(240,114,65)
+}
+.FunctionalBug, .DesignBug, .Task
+{
+    text-align: center;
+}
+#searchId, #searchName, #typeFilter, #dataFilter, #platformFilter, #assignedFilter, #statusFilter
+{
+    width: 100%;
+}
+#histoty_box .ez_table th
+{
+    cursor: pointer;
+    font-family: Roboto;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 0.2px;
+    color: #34495e;
+}
+
+#filters td
+{
+    padding: 3px 2px;
+        line-height: 40px;
+}
+#filters select, #filters input
+{
+    /*height: 21px;*/
+    vertical-align: middle;
+}
+#oneHistoryBox
+{
+    display: inline-block;
+    width: calc(100% - 135px);
+    word-break: break-word;
+}
+#taskSection table th
+{
+    border-top: 1px solid #dadde0;
+    padding: 10px; 
+}
+
+#taskSection
+{
+    background-color: white;
+    padding: 15px;
+}
+.show_all_sp
+{
+    margin: 0;
+}
+.uploadFile, .uploadFile_updateTask {
+    display: inline-block;
+    position: relative;
+    padding: 4px 50px 4px 4px;
+    border: solid 1px #cdcdcd;
+    border-radius: 4px;
+    margin: 5px 10px 5px 0;
+}
+.uploadFile p, .uploadFile_updateTask p {
+    margin: 0;
+}
+.uploadFile .deleteFile, .uploadFile_updateTask .deleteFile {
+    right: 5px;
+    top: 5px;
+}
+.attachmentsBox a {
+    display: inline-block;
+    padding: 4px;
+    border: 1px solid #cdcdcd;
+    border-radius: 4px;
+}
+#attachmentModal .modal-body img, #attachmentModal .modal-body video {
+	display: block; 
+	margin: 0 auto; 
+	max-width: 100%; 
+}
+#downloadIcon {
+	position: absolute; 
+	margin-top: -4px; 
+	right: 45px;
+}

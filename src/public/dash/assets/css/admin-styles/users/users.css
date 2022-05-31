@@ -1,0 +1,7 @@
+#usersAdminTable .table_item {
+    padding-top: 24px;
+    padding-bottom: 14px;
+}
+#usersAdminTable .table_row:hover {
+    background: none;
+}

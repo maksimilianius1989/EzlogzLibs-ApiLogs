@@ -1,0 +1,211 @@
+.finances_user_name{
+    font-size: 18px;
+    font-weight: 500;
+}
+.finances_info{
+    font-size: 14px;
+    color: var(--bluish-grey);
+}
+.scanner_status{
+    display: flex;
+    align-items: center;
+}
+.scanner_status__icon{
+    position: relative;
+    display: block;
+    width: 16px;
+    height: 16px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+.scanner_status__icon.success{
+    background-color: var(--asparagus);
+}
+.scanner_status__icon.danger{
+    background-color: var(--coral);
+}
+.scanner_status__icon.success:before{
+    content: '';
+    width: 9px;
+    height: 4px;
+    border: none;
+    border-left: 1px solid white;
+    border-bottom: 1px solid white;
+    transform: rotate(-45deg);
+    margin-top: -2px;
+}
+.scanner_status__icon.danger:before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 1px;
+    background-color: #fff;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+.scanner_status__icon.danger:after{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 1px;
+    background-color: #fff;
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.scanner_status__number{
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: 12px;
+}
+.scanner_status__label{
+    font-size: 14px;
+    line-height: 0.9;
+    border-left: 1px solid var(--text);
+    margin-left: 10px;
+    padding-left: 10px;
+}
+.monthly_payment__number,
+.balance__container{
+    font-size: 18px;
+    font-weight: 500;
+}
+.balance__container i{
+    font-size: 42px;
+    line-height: 1;
+}
+.balance__container i:before{
+    margin: 0;
+    padding: 0;
+}
+.balance__number{
+    margin-left: 14px;
+}
+.monthly_payment__label,
+.balance__label{
+    line-height: 0.9;
+    border-left: 1px solid var(--text);
+    margin-left: 10px;
+    padding-left: 10px;
+}
+.monthly_payment{
+    display: flex;
+    align-items: center;
+}
+.current_card{
+    font-size: 18px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+.current_card i{
+    font-size: 42px;
+    line-height: 1;
+}
+.current_card i:before{
+    margin: 0;
+    padding: 0;
+}
+.current_card__label{
+    margin-left: 16px;
+    margin-right: 10px;
+}
+.payment-systems{
+    display: flex;
+}
+.payment-system__container{
+    display: flex;
+    margin: -8px;
+    flex-grow: 1;
+}
+.payment-system__item{
+    border: 1px solid var(--silver);
+    padding: 16px;
+    border-radius: 4px;
+    margin: 8px;
+    flex-grow: 1;
+    cursor: pointer;
+    min-width: 240px;
+}
+.payment-system__item.active{
+    border-color: var(--primary);
+}
+.payment-title{
+    font-size: 12px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: flex-start;
+    padding-left: 24px;
+    position: relative;
+}
+.payment-title:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 12px;
+    height: 12px;
+    border: 1px solid var(--bluish-grey);
+    border-radius: 50%;
+    margin-right: 12px;
+    transition: .3s ease;
+}
+.payment-title:after{
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 3px;
+    width: 7px;
+    height: 3px;
+    border: none;
+    border-left: 1px solid white;
+    border-bottom: 1px solid white;
+    transform: rotate(-45deg);
+}
+.payment-system__item.active .payment-title:before{
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+.payment-logo{
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.payment-logo img{
+    display: block;
+    width: auto;
+    height: 40px;
+}
+.payment-logo__item{
+    flex: 0 0 30%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+.payment-logo__item img{
+    display: block;
+    height: 100%;
+    width: auto;
+}
+#paymentSystemsList .tableTabButtonsBox{
+    border: none;
+}
+.review_payment__title{
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+}
+
+.help-block{
+    color: var(--bluish-grey);
+}
+.card-helper{
+    color: var(--bluish-grey);
+    display: block;
+    margin-top: 8px;
+}

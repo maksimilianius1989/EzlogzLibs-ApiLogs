@@ -1,0 +1,373 @@
+.ez_section {
+    background-color: #fff;
+}
+
+#admin_filters {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--silver);
+    border-top: 1px solid var(--silver);
+}
+
+.range_select,
+.data_select {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+    padding: 12px 32px;
+}
+
+.range_select {
+    border-right: 1px solid var(--silver);
+}
+
+.range_select .item,
+.data_select .item {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    position: relative
+}
+
+.range_select .item-name,
+.data_select .item-name {
+    font-size: 12px;
+    color: var(--text);
+}
+
+.range_select .item input,
+.data_select .item input {
+    width: auto;
+    height: auto;
+    visibility: hidden;
+}
+
+.range_select .item input:checked+label,
+.data_select .item input:checked+label {
+    border-color: #fff;
+    background-color: var(--primary);
+}
+
+.range_select .item input:checked+label:after,
+.data_select .item input:checked+label:after {
+    opacity: 1;
+}
+
+.range_select .item label,
+.data_select .item label {
+    background-color: #fff;
+    border: 1px solid var(--bluish-grey);
+    border-radius: 50%;
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    left: 0;
+    position: absolute;
+}
+
+.range_select .item label:after,
+.data_select .item label:after {
+    border: 1px solid #fff;
+    border-top: none;
+    border-right: none;
+    content: "";
+    width: 7px;
+    height: 4px;
+    top: 4px;
+    left: 3px;
+    opacity: 0;
+    position: absolute;
+    transform: rotate(-45deg);
+}
+
+.range_select .item-name,
+.data_select .item-name {
+    margin-left: 20px;
+}
+
+#admin_filters.filter_finance .range_select {
+    justify-content: center;
+}
+
+#admin_filters.filter_finance .range_select .item {
+    margin-right: 65px;
+}
+
+#admin_filters.filter_finance .range_select .item:last-child {
+    margin-right: 0;
+}
+
+.subhead.section-heading {
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.graph_online {
+    padding: 12px 32px;
+}
+
+#chart13,
+#chart_finance {
+    height: 600px!important;
+    max-height: 600px;
+    width: 100%;
+    max-width: 100%;
+    margin: auto;
+}
+
+
+/* === map === */
+
+.gmnoprint.gm-style-cc,
+.gmnoprint .gm-style-cc,
+.gmnoprint .gm-style-mtc,
+.gm-svpc {
+    display: none!important;
+}
+
+.gmnoprint.gm-bundled-control.gm-bundled-control-on-bottom {
+    bottom: 50%!important;
+}
+
+.gmnoprint>div {
+    background-color: var(--primary) !important;
+    top: 0!important;
+    color: #fff!important;
+    border-radius: 4px!important;
+}
+
+.gm-fullscreen-control {
+    bottom: 0!important;
+    top: auto!important;
+    background-color: var(--primary) !important;
+    color: #fff!important;
+    border-radius: 4px!important;
+}
+
+button.gm-control-active img {
+    display: none!important;
+}
+
+button.gm-control-active::after {
+    content: '';
+    display: block;
+    color: var(--pale-grey);
+    font-size: 20px;
+}
+
+button.gm-control-active:first-child::after {
+    content: '+';
+}
+
+button.gm-control-active:last-child::after {
+    content: '\2014';
+}
+
+button.gm-control-active.gm-fullscreen-control::after {
+    content: url('../../../../../newimg/ic-more-copy.svg');
+    padding-top: 5px;
+}
+
+button[aria-label="Zoom in"]+div {
+    width: 100%!important;
+    margin: 0!important;
+}
+
+
+/* === table invoices */
+
+#invoices .item {
+    text-transform: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 24px 24px 12px;
+}
+
+#invoices .item_content {
+    padding: 18px 24px;
+}
+
+
+/* eld full reports */
+
+#all_eld,
+#all_eld_orders {
+    padding: 0 24px;
+}
+
+#all_eld {
+    border-top: 1px solid var(--silver);
+}
+
+#all_eld .subhead,
+#all_eld_orders .subhead {
+    margin: 0;
+    padding-top: 32px;
+}
+
+.contentEldFullReport {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 24px 0 0;
+}
+
+.one_status_amount_row {
+    width: 215px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: var(--pale-grey);
+    color: var(--text);
+    border-radius: 4px;
+    padding: 16px;
+    margin-bottom: 24px;
+    margin-right: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.one_status_amount_row:last-child {
+    margin-right: 0;
+}
+
+.one_status_amount_row:hover {
+    transform: scale(1.1);
+}
+
+.one_status_amount_row:hover .status_name {
+    color: var(--primary);
+}
+
+.one_status_amount_row .status_amount {
+    width: 40px;
+    min-width: 40px;
+    height: 40px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+
+.one_status_amount_row .status_name {
+    font-size: 14px;
+    font-weight: normal;
+    line-height: normal;
+    color: var(--text);
+}
+
+#all_eld .one_status_amount_row[data-statusid="0"] .status_amount,
+#all_eld .one_status_amount_row[data-statusid="9"] .status_amount,
+#all_eld .one_status_amount_row[data-statusid="11"] .status_amount,
+#all_eld .one_status_amount_row[data-statusid="106"] .status_amount {
+    border-color: orange;
+}
+
+#all_eld .one_status_amount_row[data-statusid="1"] .status_amount,
+#all_eld .one_status_amount_row[data-statusid="3"] .status_amount,
+#all_eld .one_status_amount_row[data-statusid="4"] .status_amount {
+    border-color: green;
+}
+
+#all_eld .one_status_amount_row[data-statusid="2"] .status_amount,
+#all_eld .one_status_amount_row[data-statusid="10"] .status_amount,
+#all_eld .one_status_amount_row[data-statusid="103"] .status_amount,
+#all_eld .one_status_amount_row[data-statusid="104"] .status_amount {
+    border-color: var(--primary);
+}
+
+#all_eld .one_status_amount_row[data-statusid="5"] .status_amount,
+#all_eld .one_status_amount_row[data-statusid="8"] .status_amount,
+#all_eld .one_status_amount_row[data-statusid="12"] .status_amount {
+    border-color: red;
+}
+
+#all_eld_orders .one_status_amount_row[data-statusid="0"] .status_amount,
+#all_eld_orders .one_status_amount_row[data-statusid="5"] .status_amount,
+#all_eld_orders .one_status_amount_row[data-statusid="101"] .status_amount {
+    border-color: #4f65e3;
+}
+
+#all_eld_orders .one_status_amount_row[data-statusid="4"] .status_amount {
+    border-color: var(--primary);
+}
+
+#all_eld_orders .one_status_amount_row[data-statusid="1"] .status_amount,
+#all_eld_orders .one_status_amount_row[data-statusid="3"] .status_amount {
+    border-color: green;
+}
+
+#all_eld_orders .one_status_amount_row[data-statusid="2"] .status_amount {
+    border-color: red;
+}
+
+
+/* === eld full reports modal */
+
+#full_report_status_device .modal-title,
+#modalCarrier .modal-title {
+    text-transform: uppercase!important;
+}
+
+#full_report_status_device .modal-body,
+#modalCarrier .modal-body {
+    padding: 0!important;
+}
+
+#full_report_status_device .table,
+#modalCarrier .table {
+    border: none!important;
+}
+
+@media screen and (max-width: 1200px) {
+    #full_report_status_device .table,
+    #full_report_status_device .modal-body,
+    #modalCarrier .table,
+    #modalCarrier .modal-body {
+        min-width: auto!important;
+    }
+}
+
+#full_report_status_device .table.table-dashboard.table-sm>thead>tr>th:first-child,
+#full_report_status_device .table.table-dashboard.table-sm>thead>tr>td:first-child,
+#full_report_status_device .table.table-dashboard.table-sm>tbody>tr>td:first-child,
+#full_report_status_device .table.table-dashboard.table-sm>tfoot>tr>td:first-child {
+    padding: 18px 18px 18px 32px;
+}
+
+#full_report_status_device .table.table-dashboard.table-sm>tbody>tr>td,
+#full_report_status_device .table.table-dashboard.table-sm>thead>tr>th {
+    padding: 18px 0;
+}
+
+#full_report_status_device .modal-footer,
+#modalCarrier .modal-footer {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-end;
+    padding: 24px;
+}
+
+#full_report_status_device .modal-pagin,
+#modalCarrier .pg_pagin {
+    display: none!important;
+}
+
+#full_report_status_device .clickable_item {
+    cursor: pointer;
+}

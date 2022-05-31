@@ -1,0 +1,48 @@
+.simplePaginator {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end
+}
+.simplePaginator .pagin_per_page{
+    min-width: 30px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    padding-left: 20px;
+    cursor: pointer;
+    padding: 0;
+    text-align: center;
+    text-align-last: center;
+    background-color: #fff;
+}
+.simplePaginator .pagin_displayBox,
+.simplePaginator .displayResultBox,
+.simplePaginator .pagin_numbers,
+.simplePaginator .pagin_buttons{
+    display: flex;
+    align-items: center;
+}
+.simplePaginator .pagin_numbers{
+    margin: 0 8px;
+}
+.simplePaginator .displayResultBox{
+    margin-right: 10px;
+}
+.simplePaginator .pagin_displayBox{
+    margin: 0 8px;
+}
+.simplePaginator .pagin_button{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+}
+.simplePaginator .pagin_displayText{
+    margin-right: 8px;
+}
+.simplePaginator .pagin_total{
+    margin-right: 3px;
+}

@@ -1,0 +1,200 @@
+table{
+    width: 100%;
+}
+.table-dashboard, 
+.table.table-dashboard tr, 
+.table.table-dashboard>thead>tr>th,
+.table-dashboard.table-actions-block td:last-child, 
+.table-dashboard.table-actions-block th:last-child{
+    border: inherit;
+}
+.table.table-dashboard>thead>tr>th{
+    text-align: left;
+}
+.table.table-dashboard>thead>tr>th.text-center{
+    text-align: center;
+}
+.table.table-dashboard>thead>tr>td{
+    padding: 16px 8px;
+}
+.table.table-dashboard tr td select,
+.table.table-dashboard tr td input[type="text"]{
+    width: 100%;
+    min-width: 100px;
+    background-color: #fff;
+}
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td{
+    border-top: 0;
+}
+.table{
+    border-top: 1px solid var(--silver);
+}
+.table.table-dashboard tr{
+    border-bottom: 1px solid var(--ice-blue) !important;
+}
+.table-striped.table-dashboard>tbody>tr:nth-of-type(even){
+    background: transparent;
+}
+table.table-inspection-alerts>tbody>tr>td:first-child,
+.table.table-dashboard.table-sm>thead>tr>th:first-child,
+.table.table-dashboard.table-sm>thead>tr>td:first-child,
+.table.table-dashboard.table-sm>tbody>tr>td:first-child,
+.table.table-dashboard.table-sm>tfoot>tr>td:first-child{
+    padding-left: 24px!important;
+}
+table.table-inspection-alerts>tbody>tr>td:last-child,
+.table.table-dashboard.table-actions-block.table-sm>tbody>tr>td:last-child,
+.table.table-dashboard.table-sm>thead>tr>th:last-child,
+.table.table-dashboard.table-sm>thead>tr>td:last-child,
+.table.table-dashboard.table-sm>tbody>tr>td:last-child,
+.table.table-dashboard.table-sm>tfoot>tr>td:last-child{
+    padding-right: 24px!important;
+}
+.table.table-dashboard input[type=text]{
+    height: 40px;
+    border: 1px solid var(--bluish-grey);
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    box-sizing: border-box;
+}
+.table.table-dashboard .right-addon input{
+    padding-right: 40px;
+}
+.table.table-dashboard.table-sm>thead>tr>th{
+    padding: 16px 8px;
+    font-size: 14px;
+    text-transform: initial;
+    font-weight: 500;
+}
+.table.table-dashboard.table-sm>tbody>tr>td{
+    padding: 16px 8px;
+    font-size: 14px;
+}
+.table.table-dashboard.table-sm>tfoot>tr>td{
+    padding: 16px 8px;
+}
+.table .one_table_block{
+    background: var(--pale-grey) !important;
+}
+.truckname--with-icon{
+    display: flex;
+    align-items: center;
+}
+.table [class^="icon-"], .table [class*=" icon-"]{
+    font-size: 20px;
+}
+.table-striped.table-dashboard>tbody>tr.excluded:nth-of-type(odd),
+.table-striped.table-dashboard>tbody>tr.excluded:nth-of-type(even),
+.table.table-dashboard tr.excluded{
+    opacity: .6;
+    background-color: var(--silver);
+}
+
+#dvirs_box .table.table-dashboard.table-sm>tbody>tr>td{
+    padding: 8px 8px;
+}
+#dvirs_box .table.table-dashboard.table-sm>tbody>tr>td:first-child{
+    padding-left: 24px;
+}
+#dvirs_box .table.table-dashboard.table-sm>tbody>tr>td:last-child{
+    padding-right: 24px;
+}
+
+.table_filter select {
+    color: #394e58!important;
+}
+.table_filter{
+    position: relative;
+}
+.table_filter > span {
+    position: absolute;
+    font-size: 10px;
+    color: #394e58;
+    opacity: 0.5;
+    left: 16px;
+    top: 18px;
+}
+.table_filter:first-child > span{
+    left: 33px;
+}
+.table_filter .datepicker {
+    padding-top: 18px!important;
+}
+.table_filter input[type="text"]:focus,
+.table_filter input[type="text"]:active{
+    box-shadow: 0 0 0 1px var(--primary) !important;
+}
+#surveyResultsTable .table_date_time{
+    width: 170px;
+}
+#surveyResultsTable th{
+    text-transform: unset !important;
+}
+
+.overflow-table {
+    overflow: hidden;
+}
+
+.dateDate {
+    font-size: 8px;
+    opacity: 0.6;
+}
+
+.countMes {
+    font-size: 10px;
+    font-weight: 500;
+    color: #fff;
+    background-color: #e87cfe;
+    border-radius: 7px;
+    padding: 0 6px;
+    margin-left: 4px;
+}
+.font-500 {
+    font-weight: 500;
+}
+.pointer {
+    cursor: pointer;
+}
+#trucks_table tr th:last-child,
+#trucks_table tr td:last-child{
+    text-align: right;
+}
+.overflowX--auto {
+    overflow-x: auto!important;
+}
+
+
+table.table-inspection-alerts td:last-child{
+    text-align: right;
+}
+table.table-inspection-alerts td .pie{
+    float: none;
+    display: inline-block;
+}
+.camera_card__large .table.table-dashboard.table-sm>thead>tr>th{
+    text-transform: none;
+}
+.camera_card__large .table,
+#cams_table,
+#trucks_table,
+#logbookEventsHistory .table,
+#logbookGeneralEventsHistory .table,
+#new_alerts_table,
+#table2,
+#table3,
+#retult_table{
+    border-top: 0
+}
+#logbookEventsHistory{
+    max-height: 300px;
+    overflow: auto;
+}
+td[title] {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

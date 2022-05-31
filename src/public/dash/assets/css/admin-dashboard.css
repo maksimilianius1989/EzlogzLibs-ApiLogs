@@ -1,0 +1,254 @@
+.sec_options select {
+    padding-right: 20px
+}
+#days_table, #days_table_head {
+    width: 280px
+}
+#days_table_head {
+    font-size: 0;
+    height: 20px
+}
+#days_table div, #days_table_head div {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    position: relative
+}
+#days_table_head div {
+    height: 20px;
+    background: wheat
+}
+#days_table div.worked {
+    background: #16a085;
+    cursor: pointer;
+    color: #fff
+}
+#days_table div .day_of_month, #days_table_head div .day_of_month {
+    display: inline-block;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    font-size: 11px
+}
+#days_table_head div .day_of_month {
+    top: -3px
+}
+#days_table div .worked_time {
+    display: inline-block;
+    margin-top: 14px;
+    width: 100%;
+    text-align: center
+}
+#day_report {
+    margin-top: 20px
+}
+.sec_options {
+    display: inline-block;
+    width: 49%;
+    vertical-align: top
+}
+#tot_label {
+    position: relative
+}
+#tot_hint {
+    position: absolute;
+    left: 0;
+    bottom: -20px;
+    width: 401px;
+    font-size: 11px
+}
+#report_result_box {
+    display: none
+}
+.sec_options label {
+    margin: 0 10px 0 0;
+    width: 100px;
+    min-height: 0;
+    line-height: 30px
+}
+#report_result_box p label {
+    margin: 0;
+    min-height: 0;
+    line-height: 30px
+}
+#report_result_box {
+    line-height: 30px
+}
+#report_result_box {
+    line-height: 30px
+}
+.sec_options span, #report_result_box span, h3 {
+    margin: 0;
+    vertical-align: top;
+    font-weight: 400;
+    min-height: 0;
+    display: inline-block;
+    line-height: 30px
+}
+#history_box, .one_box {
+    margin-bottom: 10px
+}
+#report_text {
+    padding: 10px
+}
+#total_time {
+    padding: 3px
+}
+.create_task {
+    float: right
+}
+.one_box label:not(.control-label) {
+    width: 163px;
+    display: inline-block
+}
+.one_box input:not(.form-control), .one_box select:not(.form-control), .one_box textarea:not(.form-control) {
+    width: 200px
+}
+.description {
+    width: 500px;
+    height: 150px;
+    max-width: 100%;
+}
+#create_task_box input, #create_task_box select, #create_task_box textarea {
+    margin-bottom: 10px;
+    width: 500px;
+    max-width: 100%;
+}
+#new_comment {
+    width: 100%;
+    height: 150px
+}
+#history_box {
+    overflow-y: auto;
+    max-height: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 7px
+}
+.one_history {
+    border-bottom: 1px solid;
+    position: relative
+}
+.show_all_sp {
+    margin: 10px;
+    font-size: 15px;
+}
+.hours_span, .mins_span {
+    margin-left: 5px
+}
+#by_whom {
+    position: absolute;
+    top: 0;
+    right: 0
+}
+.highlight a {
+    background: #16a085 !important;
+    color: #fff !important
+}
+#report_text {
+    display: block;
+    width: 100%;
+    min-height: 301px
+}
+.hours_span {
+    margin-right: 15px
+}
+#days_table div.vacation {
+    background-color: #FF9800;
+    color: #ffffff;
+}
+.vacation a {
+    background-color: #FF9800 !important;
+    color: #ffffff !important;
+}
+.show_all_sp:not(:first-child) {
+    margin-left: 20px;
+}
+#taskSection .create_task {
+    background: white;
+    color: #3497db;
+    font-weight: 600;
+}
+#taskSection .subhead {
+	padding: 10px 0px;
+}
+#task_card .one_box {
+    height: auto;
+}
+#agree_box .cancel {
+    margin: 0;
+}
+#eld_popup #info .btn.btn-default,
+#eld_popup #info .ez_button {
+    margin: 10px 0;
+}
+#history_box, .one_box {
+    height: auto;
+}
+.ez_section.section-panel.ez_sectionlast > p {
+    margin-left: 20px;
+}
+#admin_filters {
+    padding-left: 20px;
+}
+#admin_filters + svg {
+    padding: 0 20px;
+}
+.tablePagination th.down i.fa.fa-caret-down, .tablePagination th.up i.fa.fa-caret-up {
+    display: inline-block;
+}
+.tablePagination th i, .tablePagination th.paginationSortFalse i {
+    display: none;
+}
+.tablePagination th.paginationSearchProcces, .pg_button[disabled] {
+    cursor: initial !important;
+    color: #b1afaf !important;
+}
+.paginationInput[disabled] {
+    cursor: initial !important;
+    background-color: white !important;
+}
+.paginationSortFalse {
+    cursor: default !important;
+}
+.tablePagination tr:first-child th:not(.paginationSortFalse) {
+    cursor: pointer;
+}
+.order_info .one_box p {
+    position: relative;
+}
+.order_info .one_box label:not(.control-label) {
+    display: inline-block;
+    width: 102px;
+    overflow: hidden;
+}
+.order_info .one_box span:not(.label) {
+    display: inline-block;
+    width: 200px;
+    text-align: left;
+    vertical-align: top;
+}
+.order_info .one_box .fa-pencil {
+    color: #3598db;
+    font-size: 15px;
+    display: inline-block;
+    position: static;
+    cursor: pointer;
+    vertical-align: unset;
+    margin-left: 8px;
+}
+.order_info .one_box .error_mes {
+    color: #F44336;
+}
+.order_info .one_box {
+    vertical-align: top;
+}
+.cables_info {
+    margin: 6px 0;
+}
+.cables_info .label {
+    padding: .04em .4em .04em;
+}
+#taskSection .show_all_sp{
+	margin-left: 10px;
+}

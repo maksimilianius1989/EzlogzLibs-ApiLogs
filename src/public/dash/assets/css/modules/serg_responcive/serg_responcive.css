@@ -1,0 +1,306 @@
+@media(max-width: 1600px) {
+    #save_pdf {
+        margin-left: 8px;
+    }
+    .ifta_filters__container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .ifta_filters__btns {
+        margin-top: 12px;
+    }
+}
+@media(max-width: 1500px) {
+    .search_block_cont {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .search_block_cont-item:last-child {
+        margin-top: 12px;
+    }
+}
+@media(max-width: 1400px) {
+    .motor_carr_cont {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .runGenerate_button {
+        margin: 8px 8px 0 0;
+    }
+}
+@media(max-width: 1300px) {
+    #logbookHeader {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    #log_title {
+        margin-top: 16px;
+    }
+    #draw-signature {
+        max-width: 100%;
+    }
+}
+@media(max-width: 1200px) {
+    #filter {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    #filter select {
+        max-width: 100%;
+    }
+    #save_pdf {
+        margin-left: 0;
+        margin-top: 8px;
+        max-width: 200px;
+    }
+}
+@media(max-width: 968px) {
+    .ifta_filters__btns {
+        margin-top: 0;
+    }
+}
+@media(max-width: 767px) {
+    #search_block  {
+        flex-wrap: wrap;
+    }
+    #search_block .drivers_log_pdf  {
+        margin-top: 0;
+    }
+    .simplePaginator .pagin_buttons {
+        font-size: 14px;
+    }
+    #logbookHeader {
+        flex-direction: column;
+    }
+    .edit_info .edit_info-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .edit_info .edit_info-content button + button {
+        margin-top: 12px;
+    }
+    #edit_main_info,
+    #save_info {
+        margin-top: 12px;
+    }
+    .nav_sub {
+        width: 100%;
+    }
+    #logbookHeader #log_title .log_buttons_block {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    #logbookHeader .logbook_driver-info {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        padding: 16px;
+    }
+    .logbook_driver-info .datepicker--container {
+        margin: 12px 0; 
+    }
+    .logbook #log_box {
+        padding: 0!important;
+    }
+    .section-panel.logbook {
+        margin-top: 0!important;
+    }
+    #log_box .logbook-info--form.edit_active {
+        padding: 0;
+    }
+    #save_pdf {
+        width: 100%;
+        max-width: 100%;
+    }
+    #reports .trip_ifta_cont {
+        flex-wrap: wrap;
+        padding: 0;
+        border-bottom: 0;
+    }
+    #reports .trip_ifta_cont #nav_dis_con {
+        width: 100%;
+    }
+    #reports .trip_button_cont {
+        margin: 15px auto 0;
+    }
+    .ifta_trip_way_points .padding-24 {
+        padding: 0;
+    }
+    .dataTables_wrapper .row:first-child {
+        flex-direction: row;
+    }
+    .dataTables_wrapper .row:first-child select {
+        min-width: 60px;
+    }
+    .dataTables_wrapper .row:first-child input {
+        min-width: 200px;
+    }
+    #search_block .shortPdf {
+        margin-top: 0;
+    }
+    .dvir_add_cont {
+        margin-right: 8px;
+        margin-bottom: 12px;
+    }
+    .search_block_cont {
+        padding-bottom: 4px;
+    }
+}
+
+@media(max-width: 600px) {
+    #search_block  {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    #search_block .drivers_log_pdf  {
+        margin-top: 16px;
+    }
+    #log_info .logbook-info--item {
+        flex-direction: column;
+    }
+    #log_info .log-form--label {
+        margin-right: 12px;
+        margin-bottom: 12px;
+        font-weight: bold;
+    }
+    #field_mainOffice input, 
+    #field_mainOffice select, 
+    #field_homeTerminal input, 
+    #field_homeTerminal select, 
+    #field_driver input {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 8px;
+        margin-right: 0;
+    }
+    .draw-signature_cont {
+        flex-direction: column;
+    }
+    .log-form--label {
+        font-weight: bold;
+    }
+    .draw-signature-button_cont {
+        flex-direction: column;
+        width: 100%;
+    }
+    .draw-signature-button_cont > * {
+        padding: 8px 0;
+        margin-right: -8px;
+    }
+    .draw-signature-button_cont button {
+        width: 100%;
+    }
+    #logbook__container {
+        padding: 0;
+    }
+    #log_st_buttons {
+        padding: 0 16px;
+    }
+    #log_status_info .check_buttons_block {
+        flex-basis: 100%;
+    }
+    #log_status_info [type=checkbox], 
+    #log_status_info [type=radio] {
+        display: none;
+    }
+    .form-group_item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .form-group_item label {
+        margin-bottom: 12px;
+    }
+    .form-group_item input {
+        width: 100%;
+    }
+    .form-group_item .location_name_cont {
+        width: 100%!important;
+    }
+    #sendLogLocation {
+        margin-left: 0!important;
+    }
+    #add_status_attachment {
+        padding-left: 0;
+    }
+    #filter .table-view-btns {
+        flex-direction: column;
+        width: 100%;
+    }
+    #filter .check-btn--variant {
+        border: 1px solid var(--bluish-grey);
+        border-radius: 4px;
+        margin-bottom: 5px;
+    }
+    .ifta_reports__container button {
+        width: 100%;
+    }
+    .ifta_summary__totals.border-between-items>* {
+        padding: 8px 0;
+    }
+    .search_block_cont-item:last-child {
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .search_block_cont-item button {
+        width: 100%;
+    }
+    .dvir_add_cont {
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .dvir_add_btn {
+        margin: 12px 0 0 0;
+    }
+    .motor_carr_cont {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .motor_carr_cont-item:last-child {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .runGenerate_button {
+        margin: 8px 0 0 0;
+        width: 100%;
+    }
+    .search_block_content .search_block-item {
+        width: 100%;
+    }
+    #logbookHeader .logbook_driver-info div {
+        width: 100%;
+    }
+    .logbook_driver-info .datepicker--container,
+    .logbook_driver-info #select_carrier {
+        width: 100%;
+        max-width: 100%;
+    }
+    .logbook.driver #log_title {
+        margin-top: 0;
+    }
+    .logbook .log_buttons_block button {
+        width: 100%;
+        margin: 0;
+    }
+    #logbookHeader #log_title .log_buttons_block {
+        padding: 0 16px;
+    }
+}   
+
+@media(max-width: 450px) {
+    #log_title .edit_info {
+        position: relative;
+        background: transparent;
+        left: initial!important;
+        top: auto;
+        padding: 0;
+    }
+    .edit_info .edit_info-content button + button {
+        width: 100%;
+        margin-right: 0;
+    }
+    #select_carrier {
+        max-width: 100%;
+    }
+}

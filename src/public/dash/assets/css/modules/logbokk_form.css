@@ -1,0 +1,135 @@
+#log_info{
+    border-left: none;
+    border-right: none;
+}
+.logbook-info--form{
+    transition: .5s ease;
+    transition-property: opacity, padding;
+}
+.logbook-info--form.edit_active{
+    padding: 24px;
+    margin-top: 24px;
+}
+.logbook-info--form.closed{
+    padding: 0;
+    opacity: 0;
+}
+.edit_active_box{
+    padding-top: 24px;
+}
+.logbook-info--form.edit_active .logbook-item--value{
+    display: none;
+}
+.logbook-info--item{
+    transition: all .3s ease;
+}
+.logbook-info--form.edit_active .logbook-info--item{
+    background-color: var(--pale-grey);
+    margin-bottom: 8px;
+    border-radius: 4px;
+}
+.logbook-info--form.edit_active .edit_parameter{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.logbook-info--form.edit_active .edit_parameter .add-button--plus{
+    margin-left: auto;
+    margin-right: 0;
+}
+.logbook-info--form.edit_active .log-form--label{
+    font-weight: 500;
+}
+.removeble-box--item{
+    background-color: var(--primary);
+    display: inline-flex;
+    align-items: center;
+    color: white;
+    padding-right: 0;
+    border-radius: 15px;
+    margin: 4px;
+    font-size: 12px;
+    line-height: 14px;
+    padding-left: 12px;
+    cursor: pointer;
+}
+.removeble-box--item i{
+    font-size: 18px;
+    transition: transform .3s ease;
+}
+.removeble-box--delete-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0;
+    line-height: 0;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    padding: 0;
+    padding-right: 4px;
+    color: white;
+}
+.removeble-box--delete-btn:hover i{
+    transform: rotate(90deg)
+}
+.added-removeble-items--list{
+    width: 100%;
+    padding-top: 16px;
+    margin-top: 16px;
+    border-top: 1px solid var(--cloudy-blue);
+}
+.added-removeble-items--list:empty,
+.selected-items--list:empty{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+.document-name:last-child span{
+    display: none;
+}
+.old-signature--image{
+    max-width: 100px;
+}
+.log_buttons_block .dropdown-container{
+    position: relative;
+    order: -1;
+}
+
+.log_buttons_block .dropdown-menu{
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 300px;
+    background-color: white;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2), 0 1px 10px 0 rgba(0, 0, 0, 0.07);
+    z-index: 9;
+}
+.log_buttons_block .dropdown-menu li {
+    border-bottom: 1px solid var(--pale-grey);
+}
+.log_buttons_block .dropdown-menu .btn-switcher{
+    padding: 12px 24px;
+    background-color: white;
+    transition: background-color .3s ease;
+}
+.log_buttons_block .dropdown-menu .btn-switcher:hover{
+    background-color: var(--pale-grey);
+}
+
+#logbook_edit_buttons{
+    opacity: 0;
+    visibility: hidden;
+}
+#logsButtons #logbook_edit_buttons,
+.dash_logbook_section #logbook_edit_buttons,
+#logbook_edit_buttons.shown{
+    opacity: 1;
+    visibility: visible;
+}
+.driver-panel svg#logBook,
+.driver-panel svg.svgLogBook{
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto;
+}

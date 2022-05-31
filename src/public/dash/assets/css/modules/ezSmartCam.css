@@ -1,0 +1,117 @@
+.map_view .cams_list{
+    display: none;
+}
+.map_view_cam_state{
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.cam_amount{
+    flex: 0 0 30px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 14px;
+    margin-right: 16px;
+    transition: .3s ease;
+    transition-property: background-color, border-color
+}
+.moving .cam_amount{
+    background-color: var(--asparagus);
+}
+.idle .cam_amount{
+    background-color: var(--primary);
+}
+.parked .cam_amount{
+    background-color: var(--coral);
+}
+.status-Moving{
+    color: var(--asparagus);
+    border-color: var(--asparagus);
+}
+.status-Idle{
+    color: var(--primary);
+    border-color: var(--primary);
+}
+.status-Parked{
+    color: var(--coral);
+    border-color: var(--coral);
+}
+.circle .cam_amount{
+    border: 1px solid var(--orangey-yellow);
+    color: var(--text);
+}
+.circle.disabled .cam_amount{
+    border: 1px solid var(--silver);
+    color: var(--text);
+}
+.one_cam_state_block{
+    display: flex;
+    align-items: center;
+    padding-right: 24px;
+    margin-right: 24px;
+    border-right: 1px solid var(--silver);
+}
+.one_cam_state_block:last-child{
+    margin-right: 0;
+    padding-right: 0;
+    border-right: 0;
+}
+
+#camSettingsSwitcher .btn-switcher{
+    background-color: white;
+    padding: 12px 24px;
+    border-bottom: 1px solid var(--silver);
+}
+
+.map_table_wrap .one_camera,
+#cams_table .one_camera{
+    display: flex;
+    align-items: center;
+}
+.map_table_wrap .one_camera img,
+#cams_table .one_camera img{
+    margin-right: 12px;
+    display: block;
+    max-width: 100%;
+}
+#cams_table .one_unit i,
+.map_table_wrap .one_unit i{
+    font-size: 26px;
+    margin-right: 10px;
+}
+#cams_table .one_unit i:before,
+.map_table_wrap .one_unit i:before{
+    margin: 0;
+}
+
+.showList{
+    width: 44px;
+    height: 44px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: var(--primary);
+    color: white;
+    border-radius: 4px;
+    z-index: 97;
+    font-size: 20px;
+    line-height: 1;
+}
+.showList i{
+    display: inline-block;
+    transform: rotateY(180deg);
+    transition: .3s ease;
+}
+.showList i:before{
+    margin: 0;
+}
+.hideList .showList i{
+    transform: rotateY(0deg);
+}
