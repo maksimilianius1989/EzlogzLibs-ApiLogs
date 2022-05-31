@@ -1,6 +1,7 @@
 <?php
 
 if (!isset($GLOBALS['API_LOGS'])) {
+    global $id;
     $GLOBALS['API_LOGS'] = [
         'USER_ID' => $id ?? 0,
     ];
