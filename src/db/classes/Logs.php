@@ -2,11 +2,26 @@
 
 namespace Ezlogz\ApiLogs\db\classes;
 
+use Exception;
+
 require_once __DIR__ . '/../connect.php';
 
 class Logs
 {
-    public static function AddLog($action, $req, $web = 0)
+    public static function AddLogV2(int $userId, array $body, int $platform, int $depthCallOfFunctions = 1, array $headers = [], array $cookie = [])
+    {
+        $GLOBALS['API_LOGS']['USER_ID'] = $userId;
+        
+        $backtrace = debug_backtrace();
+        $action = 'unknown';
+        if (isset($backtrace[$depthCallOfFunctions])) {
+            $action = $backtrace[$depthCallOfFunctions]['function'];
+        }
+
+        return self::AddLog($action, $body, $platform, array_merge($headers, $cookie));
+    }
+    
+    public static function AddLog($action, $req, $web = 0, array $cookie = [])
     {
         $GLOBALS['API_LOGS']['IP'] = getenv('HTTP_CLIENT_IP') ?:
             getenv('HTTP_X_FORWARDED_FOR') ?:
@@ -21,10 +36,10 @@ class Logs
         $insParams['web'] = $web;
         $insParams['action'] = $action;
         $insParams['platform'] = isset($_SERVER['HTTP_USER_AGENT']) ? json_encode($_SERVER['HTTP_USER_AGENT']) : '';
-        $insParams['requestData'] = json_encode($req, JSON_UNESCAPED_SLASHES);
+        $insParams['requestData'] = is_object($req) || is_array($req) ? json_encode($req, JSON_UNESCAPED_SLASHES) : (string) $req;
         $insParams['responseData'] = '';
-        $insParams['cookies'] = json_encode($_COOKIE, JSON_UNESCAPED_SLASHES);
-        $insParams['userId'] = $id ?? $GLOBALS['API_LOGS']['USER_ID'] ?? 0;
+        $insParams['cookies'] = !empty($cookie) ? json_encode($cookie, JSON_UNESCAPED_SLASHES) : json_encode($_COOKIE, JSON_UNESCAPED_SLASHES);
+        $insParams['userId'] = $GLOBALS['API_LOGS']['USER_ID'] ?? 0;
         Logs::createLogTable();
         if ($GLOBALS['API_LOGS']['LOCAL_ENV'])
             $GLOBALS['API_LOGS']['GLOB_LOG_ID'] = $GLOBALS['API_LOGS']['DB2']->insert("`api_logs_{$GLOBALS['API_LOGS']['REQUEST_DATE']}`", $insParams);
@@ -39,6 +54,53 @@ class Logs
                 l($e->getMessage());
                 l($insParams);
             }
+        
+        return $GLOBALS['API_LOGS']['GLOB_MONGO_LOG_ID'] ?: $GLOBALS['API_LOGS']['GLOB_LOG_ID'];
+    }
+    
+    public static function AddLogResponse($resp, $logId = 0)
+    {
+        if (empty($logId)) {
+            $logId = $GLOBALS['API_LOGS']['GLOB_MONGO_LOG_ID'] ?? $GLOBALS['API_LOGS']['GLOB_LOG_ID'];
+        }
+        
+        if (is_object($resp) || is_array($resp)) {
+            $resp = json_encode($resp, JSON_UNESCAPED_SLASHES);
+        }
+        
+        $responseDateTime = time();
+        $userId = isset($id) && !empty($id) ? $id : 0;
+        if ($userId != 0) {
+            if ($GLOBALS['API_LOGS']['LOCAL_ENV'])
+                $GLOBALS['API_LOGS']['DB2']->update("`api_logs_{$GLOBALS['API_LOGS']['REQUEST_DATE']}`", 'responseDateTime=?, responseData=?, userId=?', 'id=?', [$responseDateTime, $resp, $userId, $logId]);
+            if (!$GLOBALS['API_LOGS']['LOCAL_ENV'])
+                try {
+                    $GLOBALS['API_LOGS']['MONGO_LOGS_TABLE']->updateOne(
+                        ['_id' => new \MongoDB\BSON\ObjectId($logId)],
+                        ['$set' => ['responseDateTime' => $responseDateTime, 'responseData' => $resp, 'userId' => $userId]]
+                    );
+                } catch (Exception $e) {
+                    l('MONGO AddLogResponse');
+                    l($e->getMessage());
+                    l([$responseDateTime, $resp, $userId, $logId]);
+                }
+            
+        } else {
+            if ($GLOBALS['API_LOGS']['LOCAL_ENV'])
+                $GLOBALS['API_LOGS']['DB2']->update("`api_logs_{$GLOBALS['API_LOGS']['REQUEST_DATE']}`", 'responseDateTime=?, responseData=?', 'id=?', [$responseDateTime, $resp, $logId]);
+            if (!$GLOBALS['API_LOGS']['LOCAL_ENV'])
+                try {
+                    $GLOBALS['API_LOGS']['MONGO_LOGS_TABLE']->updateOne(
+                        ['_id' => new \MongoDB\BSON\ObjectId($logId)],
+                        ['$set' => ['responseDateTime' => $responseDateTime, 'responseData' => $resp]]
+                    );
+                } catch (Exception $e) {
+                    l('MONGO AddLogResponse2');
+                    l($e->getMessage());
+                    l([$responseDateTime, $resp, $logId]);
+                }
+            
+        }
     }
     
     public static function LogEmail($action, $req)
@@ -210,43 +272,6 @@ class Logs
                 l([$userId, $GLOBALS['API_LOGS']['GLOB_LOG_ID']]);
             }
         
-    }
-    
-    public static function AddLogResponse($resp)
-    {
-        $responseDateTime = time();
-        $userId = isset($id) && !empty($id) ? $id : 0;
-        if ($userId != 0) {
-            if ($GLOBALS['API_LOGS']['LOCAL_ENV'])
-                $GLOBALS['API_LOGS']['DB2']->update("`api_logs_{$GLOBALS['API_LOGS']['REQUEST_DATE']}`", 'responseDateTime=?, responseData=?, userId=?', 'id=?', [$responseDateTime, $resp, $userId, $GLOBALS['API_LOGS']['GLOB_LOG_ID']]);
-            if (!$GLOBALS['API_LOGS']['LOCAL_ENV'])
-                try {
-                    $GLOBALS['API_LOGS']['MONGO_LOGS_TABLE']->updateOne(
-                        ['_id' => new \MongoDB\BSON\ObjectId($GLOBALS['API_LOGS']['GLOB_MONGO_LOG_ID'])],
-                        ['$set' => ['responseDateTime' => $responseDateTime, 'responseData' => $resp, 'userId' => $userId]]
-                    );
-                } catch (Exception $e) {
-                    l('MONGO AddLogResponse');
-                    l($e->getMessage());
-                    l([$responseDateTime, $resp, $userId, $GLOBALS['API_LOGS']['GLOB_LOG_ID']]);
-                }
-            
-        } else {
-            if ($GLOBALS['API_LOGS']['LOCAL_ENV'])
-                $GLOBALS['API_LOGS']['DB2']->update("`api_logs_{$GLOBALS['API_LOGS']['REQUEST_DATE']}`", 'responseDateTime=?, responseData=?', 'id=?', [$responseDateTime, $resp, $GLOBALS['API_LOGS']['GLOB_LOG_ID']]);
-            if (!$GLOBALS['API_LOGS']['LOCAL_ENV'])
-                try {
-                    $GLOBALS['API_LOGS']['MONGO_LOGS_TABLE']->updateOne(
-                        ['_id' => new \MongoDB\BSON\ObjectId($GLOBALS['API_LOGS']['GLOB_MONGO_LOG_ID'])],
-                        ['$set' => ['responseDateTime' => $responseDateTime, 'responseData' => $resp]]
-                    );
-                } catch (Exception $e) {
-                    l('MONGO AddLogResponse2');
-                    l($e->getMessage());
-                    l([$responseDateTime, $resp, $GLOBALS['API_LOGS']['GLOB_LOG_ID']]);
-                }
-            
-        }
     }
     
     public static function customLog($action, $req, $web = 0, $global = false)
