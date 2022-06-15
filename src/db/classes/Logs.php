@@ -8,7 +8,7 @@ require_once __DIR__ . '/../connect.php';
 
 class Logs
 {
-    public static function AddLogV2(int $userId, ?array $body, int $platform, int $depthCallOfFunctions = 1, array $headers = [], array $cookie = [])
+    public static function AddLogV2(int $userId, $body, int $platform, int $depthCallOfFunctions = 1, array $headers = [], array $cookie = [])
     {
         $GLOBALS['API_LOGS']['USER_ID'] = $userId;
         
