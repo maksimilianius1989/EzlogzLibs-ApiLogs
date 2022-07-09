@@ -1,8 +1,8 @@
 <?php
 
-if (isset($_SERVER['DOCUMENT_ROOT']) && file_exists($_SERVER['DOCUMENT_ROOT'] . '/config.php')) {
-	include_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
-}
+//if (isset($_SERVER['DOCUMENT_ROOT']) && file_exists($_SERVER['DOCUMENT_ROOT'] . '/config.php')) {
+//	include_once $_SERVER['DOCUMENT_ROOT'] . '/config.php';
+//}
 
 if (!isset($GLOBALS['API_LOGS'])) {
 	global $id;
